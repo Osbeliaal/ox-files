@@ -1,0 +1,190 @@
+[
+ {
+  "version": "5.10",
+  "titulo": {
+   "es": "Más fluido",
+   "en": "Smoother"
+  },
+  "cambios": {
+   "es": [
+    "Arreglado el lag de unos segundos al activar las casillas resaltadas: la cámara ahora se mide con mucho menos esfuerzo y solo mientras caminas."
+   ],
+   "en": [
+    "Fixed the few-seconds lag when turning on highlighted tiles: the camera is now measured with much less effort and only while you walk."
+   ]
+  }
+ },
+ {
+  "version": "5.8",
+  "titulo": {
+   "es": "Licencias por personaje",
+   "en": "Per-character licenses"
+  },
+  "cambios": {
+   "es": [
+    "Cada licencia funciona solo con su personaje, en cualquier dispositivo: si alguien la comparte, no le sirve a otro personaje.",
+    "Al activar eliges \"Licencia mensual\" o \"Soy beta tester\". La de beta tester es permanente, sin renovaciones ni cobro mensual.",
+    "La licencia mensual muestra su fecha de vencimiento; al vencer, el helper se detiene y pide la renovación.",
+    "Una sola versión para Android, iPhone y PC (navegador).",
+    "En iPhone y PC el helper se actualiza solo. En Android te avisa cuando hay versión nueva y la descargas con un toque."
+   ],
+   "en": [
+    "Each license only works with its own character, on any device: if someone shares it, it is useless for another character.",
+    "When activating you choose \"Monthly license\" or \"I am a beta tester\". The beta tester one is permanent, with no renewals and no monthly fee.",
+    "The monthly license shows its expiration date; when it expires, the helper stops and asks for renewal.",
+    "One single version for Android, iPhone and PC (browser).",
+    "On iPhone and PC the helper updates itself. On Android it tells you when there is a new version and you download it with one tap."
+   ]
+  }
+ },
+ {
+  "version": "5.7",
+  "titulo": {
+   "es": "Idioma: español e inglés",
+   "en": "Language: Spanish and English"
+  },
+  "cambios": {
+   "es": [
+    "Al abrir Minibia por primera vez eliges el idioma del helper: español o inglés.",
+    "En inglés cambia todo: panel, botones, estados, alertas, notificaciones, licencia y esta guía.",
+    "Puedes cambiarlo cuando quieras en Sistema → Idioma."
+   ],
+   "en": [
+    "The first time you open Minibia you choose the helper language: Spanish or English.",
+    "In English everything changes: panel, buttons, status, alerts, notifications, license and this guide.",
+    "You can change it anytime in System → Language."
+   ]
+  }
+ },
+ {
+  "version": "5.6",
+  "titulo": {
+   "es": "iPhone y navegador",
+   "en": "iPhone and browser"
+  },
+  "cambios": {
+   "es": [
+    "Minibia Helper ya funciona en iPhone con Safari (extensión gratuita \"Userscripts\").",
+    "En iPhone y en el navegador la pantalla se mantiene encendida mientras el helper trabaja.",
+    "Si sales del juego y el helper estaba trabajando, al volver te avisa cuánto tiempo estuvo en pausa."
+   ],
+   "en": [
+    "Minibia Helper now works on iPhone with Safari (free \"Userscripts\" extension).",
+    "On iPhone and in the browser the screen stays on while the helper works.",
+    "If you leave the game while the helper is working, when you come back it tells you how long it was paused."
+   ]
+  }
+ },
+ {
+  "version": "5.5",
+  "titulo": {
+   "es": "Guía y novedades",
+   "en": "Guide and what's new"
+  },
+  "cambios": {
+   "es": [
+    "Esta ventana: todas las funciones y lo último de cada versión. Se abre al activar tu licencia y cada vez que se actualiza la app. Puedes volver a verla en Acerca de → \"Novedades y guía\"."
+   ],
+   "en": [
+    "This window: every feature and the latest of each version. It opens when you activate your license and every time the app updates. You can see it again in About → \"What's new & guide\"."
+   ]
+  }
+ },
+ {
+  "version": "5.4",
+  "titulo": {
+   "es": "Licencias",
+   "en": "Licenses"
+  },
+  "cambios": {
+   "es": [
+    "Al tocar el icono por primera vez se pide el nombre del personaje y la licencia. Se guarda en el teléfono: ese personaje ya no la vuelve a pedir.",
+    "Licencia Beta tester: permanente, sin renovaciones ni cobro mensual.",
+    "Si entras con otro personaje sin licencia, se pide de nuevo y el helper no corre hasta activarla.",
+    "Tu licencia aparece en Acerca de y en el estado (pestaña Sistema)."
+   ],
+   "en": [
+    "The first time you tap the icon it asks for the character name and the license. It is saved on the phone: that character will not ask again.",
+    "Beta tester license: permanent, no renewals and no monthly fee.",
+    "If you log in with another character without a license, it asks again and the helper will not run until it is activated.",
+    "Your license is shown in About and in the status (System tab)."
+   ]
+  }
+ },
+ {
+  "version": "5.3",
+  "titulo": {
+   "es": "Segundo plano y notificaciones (app de Android)",
+   "en": "Background and notifications (Android app)"
+  },
+  "cambios": {
+   "es": [
+    "El helper sigue trabajando aunque salgas al inicio, abras otra app o apagues la pantalla. Mientras trabaja verás una notificación fija (\"runeando · 12 runas\").",
+    "Todas las alertas (GM, botcheck, vida baja, muerte, desconexión…) llegan como notificación de Android con sonido y vibración; al tocarla vuelves al juego.",
+    "Botón \"Sin límite de batería\" en Sistema: evita que Android corte la app en AFK largo.",
+    "El estado muestra si el segundo plano está activo, si la batería tiene límite y si los avisos están permitidos."
+   ],
+   "en": [
+    "The helper keeps working even if you go to the home screen, open another app or turn off the screen. While it works you will see a persistent notification (\"making runes · 12 runes\").",
+    "Every alert (GM, botcheck, low health, death, disconnection…) arrives as an Android notification with sound and vibration; tap it to return to the game.",
+    "\"No battery limit\" button in System: stops Android from killing the app during long AFK.",
+    "The status shows whether background mode is on, whether the battery is limited and whether alerts are allowed."
+   ]
+  }
+ },
+ {
+  "version": "5.2",
+  "titulo": {
+   "es": "Hotbar del celular",
+   "en": "Phone hotbar"
+  },
+  "cambios": {
+   "es": [
+    "En los campos de \"Tecla\" escribe el número de casilla del hotbar (1–8) o F1–F12: el helper la usa solo, sin tocar la pantalla (comida, pociones, runas, rope, shovel…).",
+    "Si usas la casilla \"Atacar al más cercano\", el helper no la vuelve a pulsar mientras ya tengas objetivo (no lo suelta).",
+    "Panel compacto abajo al centro, entre el joystick y el hotbar; abierto ya no tapa la vida y el maná."
+   ],
+   "en": [
+    "In the \"Key\" fields type the hotbar slot number (1–8) or F1–F12: the helper uses it by itself, without touching the screen (food, potions, runes, rope, shovel…).",
+    "If you use the \"Attack nearest\" slot, the helper does not press it again while you already have a target (so it does not drop it).",
+    "Compact panel at the bottom center, between the joystick and the hotbar; when open it no longer covers health and mana."
+   ]
+  }
+ },
+ {
+  "version": "5.1",
+  "titulo": {
+   "es": "Icono y gestos",
+   "en": "Icon and gestures"
+  },
+  "cambios": {
+   "es": [
+    "Tocar el icono solo abre o cierra el helper (ya no abre el menú del juego). Arrástralo para moverlo.",
+    "Desliza con 2 dedos hacia un lado, en cualquier parte, para ocultar o mostrar el icono.",
+    "Los toques sobre el panel ya no llegan al juego."
+   ],
+   "en": [
+    "Tapping the icon only opens or closes the helper (it no longer opens the game menu). Drag it to move it.",
+    "Swipe sideways with 2 fingers, anywhere, to hide or show the icon.",
+    "Taps on the panel no longer reach the game."
+   ]
+  }
+ },
+ {
+  "version": "5.0",
+  "titulo": {
+   "es": "App para Android",
+   "en": "Android app"
+  },
+  "cambios": {
+   "es": [
+    "Minibia Helper como app: se instala y abre el juego con el helper incluido, en pantalla completa y sin que se apague la pantalla.",
+    "El botón \"atrás\" no cierra el juego: manda la app a segundo plano."
+   ],
+   "en": [
+    "Minibia Helper as an app: install it and it opens the game with the helper included, full screen and without the screen turning off.",
+    "The \"back\" button does not close the game: it sends the app to the background."
+   ]
+  }
+ }
+]

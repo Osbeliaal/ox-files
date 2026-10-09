@@ -31,6 +31,22 @@
   .aviso{margin-top:14px;padding:10px 12px;border-left:3px solid var(--oro);background:rgba(245,164,0,.08);font-size:14px}
   b{color:#ececec}
   footer{margin-top:24px;text-align:center;color:var(--dim);font-size:12px}
+  h2{font-size:17px;color:#ececec;margin:28px 0 10px}
+  .log details{background:var(--panel);border:1px solid var(--line);margin:0 0 8px}
+  .log details[open]{border-color:#5a5e5e}
+  .log summary{cursor:pointer;padding:12px 14px;list-style:none;display:flex;gap:10px;align-items:baseline}
+  .log summary::-webkit-details-marker{display:none}
+  .log summary::before{content:'▸';color:var(--oro);transition:transform .15s}
+  .log details[open] summary::before{transform:rotate(90deg)}
+  .log .v{color:var(--oro);font-weight:700;white-space:nowrap}
+  .log .t{color:#ececec;font-weight:700}
+  .log .nuevo{margin-left:auto;font-size:11px;color:#10140c;background:var(--verde);padding:1px 7px;font-weight:700}
+  .log ul{margin:0;padding:0 16px 12px 38px;font-size:14px}
+  .log li{margin:0 0 6px}
+  .autor{display:flex;gap:14px;align-items:center;margin-top:18px;padding:14px 16px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--oro)}
+  .autor img{width:44px;height:44px;flex:none}
+  .autor .k{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+  .autor .pj{font-size:22px;font-weight:700;color:#ffd166;margin:2px 0 4px}
 </style>
 </head>
 <body>
@@ -97,7 +113,17 @@
     <p class="nota" data-es="Necesitas una licencia para tu personaje. Cada licencia funciona solo con su personaje."
        data-en="You need a license for your character. Each license only works with its own character.">Necesitas una licencia para tu personaje. Cada licencia funciona solo con su personaje.</p>
   </div>
-  <footer>By Osbeliaal</footer>
+  <div class="autor">
+    <img src="icon.png" alt="">
+    <div>
+      <div class="k" data-es="Creado por" data-en="Created by">Creado por</div>
+      <div class="pj">Osbeliaal</div>
+      <div class="nota" data-es="Mi personaje en Minibia. ¡Búscame en el juego!" data-en="My character in Minibia. Find me in game!">Mi personaje en Minibia. ¡Búscame en el juego!</div>
+    </div>
+  </div>
+  <h2 id="logt">Novedades</h2>
+  <div class="log" id="log"></div>
+  <footer>Minibia Helper · By Osbeliaal</footer>
 </div>
 <script>
 (function () {
@@ -120,7 +146,27 @@
     });
     document.querySelectorAll('.lang button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-l') === l); });
     try { localStorage.setItem('l', l); } catch (e) {}
+    lang = l; pintarLog();
   }
+  // Registro de cambios (novedades.json): la versión más nueva abierta, las demás plegadas
+  var lang = 'es', log = null;
+  function pintarLog() {
+    var cont = document.getElementById('log'); if (!cont || !log) { return; }
+    document.getElementById('logt').textContent = lang === 'en' ? "What's new" : 'Novedades';
+    cont.innerHTML = '';
+    log.forEach(function (e, i) {
+      var d = document.createElement('details'); if (i === 0) { d.open = true; }
+      var sm = document.createElement('summary');
+      var v = document.createElement('span'); v.className = 'v'; v.textContent = 'v' + e.version;
+      var t = document.createElement('span'); t.className = 't'; t.textContent = (e.titulo[lang] || e.titulo.es);
+      sm.appendChild(v); sm.appendChild(t);
+      if (i === 0) { var n = document.createElement('span'); n.className = 'nuevo'; n.textContent = lang === 'en' ? 'LATEST' : 'NUEVO'; sm.appendChild(n); }
+      var ul = document.createElement('ul');
+      (e.cambios[lang] || e.cambios.es).forEach(function (c) { var li = document.createElement('li'); li.textContent = c; ul.appendChild(li); });
+      d.appendChild(sm); d.appendChild(ul); cont.appendChild(d);
+    });
+  }
+  fetch('novedades.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (j) { log = j; pintarLog(); }).catch(function () {});
   document.querySelectorAll('.lang button').forEach(function (b) { b.onclick = function () { idioma(b.getAttribute('data-l')); }; });
   var l0 = null; try { l0 = localStorage.getItem('l'); } catch (e) {}
   idioma(l0 || (/^es/i.test(navigator.language || '') ? 'es' : 'en'));
