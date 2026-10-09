@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Minibia Helper</title>
+<link rel="icon" href="icon.png">
+<style>
+  :root{--bg:#161818;--panel:#222424;--line:#3a3d3d;--txt:#dcdcdc;--dim:#9a9d9d;--oro:#f5a400;--verde:#9fe870}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 Verdana,Tahoma,sans-serif}
+  .wrap{max-width:640px;margin:0 auto;padding:20px 16px 40px}
+  header{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  header img{width:48px;height:48px;image-rendering:pixelated}
+  h1{margin:0;font-size:22px;color:#ececec}
+  .ver{color:var(--oro);font-size:13px}
+  .lang{margin-left:auto;display:flex;gap:4px}
+  .lang button{background:#2b2d2d;color:var(--txt);border:1px solid var(--line);padding:4px 10px;font:inherit;font-size:13px;cursor:pointer}
+  .lang button.on{border-color:var(--oro);color:#ffd166}
+  .tabs{display:flex;gap:6px;margin:18px 0 0}
+  .tabs button{flex:1;padding:12px 6px;font:700 15px Verdana,Tahoma,sans-serif;color:var(--txt);background:#2b2d2d;border:1px solid var(--line);border-bottom:0;cursor:pointer}
+  .tabs button.on{background:var(--panel);color:#ffd166;border-color:var(--oro)}
+  .card{background:var(--panel);border:1px solid var(--oro);padding:16px}
+  .sec{display:none}.sec.on{display:block}
+  ol{padding-left:22px;margin:0}
+  li{margin:0 0 14px}
+  .btn{display:block;text-align:center;margin:10px 0 4px;padding:14px;font:700 17px Verdana,Tahoma,sans-serif;color:#10140c;background:var(--verde);text-decoration:none;border:0}
+  .btn.sec2{background:#3e4142;color:#ececec}
+  .nota{font-size:13px;color:var(--dim)}
+  .aviso{margin-top:14px;padding:10px 12px;border-left:3px solid var(--oro);background:rgba(245,164,0,.08);font-size:14px}
+  b{color:#ececec}
+  footer{margin-top:24px;text-align:center;color:var(--dim);font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="icon.png" alt="">
+    <div><h1>Minibia Helper</h1><div class="ver" id="ver">v5.8</div></div>
+    <div class="lang"><button data-l="es" class="on">ES</button><button data-l="en">EN</button></div>
+  </header>
+
+  <div class="tabs">
+    <button data-s="android">Android</button><button data-s="iphone">iPhone</button><button data-s="pc">PC</button>
+  </div>
+  <div class="card">
+
+    <div class="sec" id="android">
+      <ol>
+        <li data-es="Toca el botón para descargar la app:" data-en="Tap the button to download the app:">Toca el botón para descargar la app:
+          <a class="btn" id="apk" href="app.apk" data-es="⬇ Descargar Minibia Helper" data-en="⬇ Download Minibia Helper">⬇ Descargar Minibia Helper</a></li>
+        <li data-es="Abre el archivo descargado y toca &lt;b&gt;Instalar&lt;/b&gt;. Si Android dice que no se permite, toca &lt;b&gt;Ajustes → Permitir de esta fuente&lt;/b&gt; y regresa."
+            data-en="Open the downloaded file and tap &lt;b&gt;Install&lt;/b&gt;. If Android says it is not allowed, tap &lt;b&gt;Settings → Allow from this source&lt;/b&gt; and go back.">Abre el archivo descargado y toca <b>Instalar</b>. Si Android dice que no se permite, toca <b>Ajustes → Permitir de esta fuente</b> y regresa.</li>
+        <li data-es="Si sale &lt;b&gt;Play Protect&lt;/b&gt;, toca &lt;b&gt;Más detalles → Instalar de todas formas&lt;/b&gt;."
+            data-en="If &lt;b&gt;Play Protect&lt;/b&gt; shows up, tap &lt;b&gt;More details → Install anyway&lt;/b&gt;.">Si sale <b>Play Protect</b>, toca <b>Más detalles → Instalar de todas formas</b>.</li>
+        <li data-es="Abre &lt;b&gt;Minibia Helper&lt;/b&gt;, elige tu idioma, entra con tu personaje y toca el icono redondo para activar tu licencia."
+            data-en="Open &lt;b&gt;Minibia Helper&lt;/b&gt;, choose your language, log in with your character and tap the round icon to activate your license.">Abre <b>Minibia Helper</b>, elige tu idioma, entra con tu personaje y toca el icono redondo para activar tu licencia.</li>
+      </ol>
+      <div class="aviso" data-es="Cuando haya una versión nueva, la app te avisará y la descargas con un toque (se instala encima, sin perder tu configuración)."
+           data-en="When there is a new version the app will tell you and you download it with one tap (it installs over the old one, keeping your settings).">Cuando haya una versión nueva, la app te avisará y la descargas con un toque (se instala encima, sin perder tu configuración).</div>
+    </div>
+
+    <div class="sec" id="iphone">
+      <ol>
+        <li data-es="Instala la app gratuita &lt;b&gt;Userscripts&lt;/b&gt; y ábrela una vez (no toques nada):"
+            data-en="Install the free &lt;b&gt;Userscripts&lt;/b&gt; app and open it once (no need to touch anything):">Instala la app gratuita <b>Userscripts</b> y ábrela una vez (no toques nada):
+          <a class="btn sec2" href="https://apps.apple.com/app/id1463298887" data-es="App Store: Userscripts" data-en="App Store: Userscripts">App Store: Userscripts</a></li>
+        <li data-es="Abre esta página en &lt;b&gt;Safari&lt;/b&gt;. Toca el botón &lt;b&gt;AA&lt;/b&gt; (o 🧩) a la izquierda de la dirección → &lt;b&gt;Administrar extensiones&lt;/b&gt; → activa &lt;b&gt;Userscripts&lt;/b&gt;. Luego en ese menú toca &lt;b&gt;Userscripts&lt;/b&gt; → &lt;b&gt;Permitir siempre → en todos los sitios web&lt;/b&gt;."
+            data-en="Open this page in &lt;b&gt;Safari&lt;/b&gt;. Tap the &lt;b&gt;AA&lt;/b&gt; button (or 🧩) left of the address → &lt;b&gt;Manage Extensions&lt;/b&gt; → turn on &lt;b&gt;Userscripts&lt;/b&gt;. Then in that menu tap &lt;b&gt;Userscripts&lt;/b&gt; → &lt;b&gt;Always Allow → on Every Website&lt;/b&gt;.">Abre esta página en <b>Safari</b>. Toca el botón <b>AA</b> (o 🧩) a la izquierda de la dirección → <b>Administrar extensiones</b> → activa <b>Userscripts</b>. Luego en ese menú toca <b>Userscripts</b> → <b>Permitir siempre → en todos los sitios web</b>.</li>
+        <li data-es="Toca este botón, luego &lt;b&gt;AA → Userscripts → Instalar&lt;/b&gt;:"
+            data-en="Tap this button, then &lt;b&gt;AA → Userscripts → Install&lt;/b&gt;:">Toca este botón, luego <b>AA → Userscripts → Instalar</b>:
+          <a class="btn" href="h.user.js" data-es="Instalar Minibia Helper" data-en="Install Minibia Helper">Instalar Minibia Helper</a></li>
+        <li data-es="Entra a &lt;b&gt;minibia.com/play&lt;/b&gt; en Safari: elige tu idioma y toca el icono redondo para activar tu licencia."
+            data-en="Go to &lt;b&gt;minibia.com/play&lt;/b&gt; in Safari: choose your language and tap the round icon to activate your license.">Entra a <b>minibia.com/play</b> en Safari: elige tu idioma y toca el icono redondo para activar tu licencia.</li>
+      </ol>
+      <div class="aviso" data-es="Se actualiza solo. Para dejarlo trabajando: Safari abierto en el juego, el iPhone cargando y &lt;b&gt;Ajustes → Pantalla y brillo → Bloqueo automático → Nunca&lt;/b&gt;."
+           data-en="It updates itself. To leave it working: Safari open on the game, the iPhone charging and &lt;b&gt;Settings → Display &amp; Brightness → Auto-Lock → Never&lt;/b&gt;.">Se actualiza solo. Para dejarlo trabajando: Safari abierto en el juego, el iPhone cargando y <b>Ajustes → Pantalla y brillo → Bloqueo automático → Nunca</b>.</div>
+    </div>
+
+    <div class="sec" id="pc">
+      <ol>
+        <li data-es="Instala la extensión &lt;b&gt;Tampermonkey&lt;/b&gt; en tu navegador (Chrome, Edge, Firefox u Opera):"
+            data-en="Install the &lt;b&gt;Tampermonkey&lt;/b&gt; extension in your browser (Chrome, Edge, Firefox or Opera):">Instala la extensión <b>Tampermonkey</b> en tu navegador (Chrome, Edge, Firefox u Opera):
+          <a class="btn sec2" href="https://www.tampermonkey.net/" data-es="Descargar Tampermonkey" data-en="Get Tampermonkey">Descargar Tampermonkey</a></li>
+        <li data-es="En Chrome/Edge: entra a &lt;b&gt;Extensiones → Administrar&lt;/b&gt;, activa &lt;b&gt;Modo de desarrollador&lt;/b&gt; y en los detalles de Tampermonkey activa &lt;b&gt;Permitir secuencias de comandos de usuario&lt;/b&gt;."
+            data-en="In Chrome/Edge: go to &lt;b&gt;Extensions → Manage&lt;/b&gt;, turn on &lt;b&gt;Developer mode&lt;/b&gt; and in Tampermonkey details turn on &lt;b&gt;Allow user scripts&lt;/b&gt;.">En Chrome/Edge: entra a <b>Extensiones → Administrar</b>, activa <b>Modo de desarrollador</b> y en los detalles de Tampermonkey activa <b>Permitir secuencias de comandos de usuario</b>.</li>
+        <li data-es="Haz clic aquí y en la ventana de Tampermonkey pulsa &lt;b&gt;Instalar&lt;/b&gt;:"
+            data-en="Click here and press &lt;b&gt;Install&lt;/b&gt; in the Tampermonkey window:">Haz clic aquí y en la ventana de Tampermonkey pulsa <b>Instalar</b>:
+          <a class="btn" href="h.user.js" data-es="Instalar Minibia Helper" data-en="Install Minibia Helper">Instalar Minibia Helper</a></li>
+        <li data-es="Entra a &lt;b&gt;minibia.com/play&lt;/b&gt;: elige tu idioma y pulsa &lt;b&gt;Ctrl+Shift+H&lt;/b&gt; para abrir el helper y activar tu licencia."
+            data-en="Go to &lt;b&gt;minibia.com/play&lt;/b&gt;: choose your language and press &lt;b&gt;Ctrl+Shift+H&lt;/b&gt; to open the helper and activate your license.">Entra a <b>minibia.com/play</b>: elige tu idioma y pulsa <b>Ctrl+Shift+H</b> para abrir el helper y activar tu licencia.</li>
+      </ol>
+      <div class="aviso" data-es="Se actualiza solo (Tampermonkey revisa las versiones nuevas)." data-en="It updates itself (Tampermonkey checks for new versions).">Se actualiza solo (Tampermonkey revisa las versiones nuevas).</div>
+    </div>
+
+    <p class="nota" data-es="Necesitas una licencia para tu personaje. Cada licencia funciona solo con su personaje."
+       data-en="You need a license for your character. Each license only works with its own character.">Necesitas una licencia para tu personaje. Cada licencia funciona solo con su personaje.</p>
+  </div>
+  <footer>By Osbeliaal</footer>
+</div>
+<script>
+(function () {
+  var ua = navigator.userAgent || '';
+  var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var so = ios ? 'iphone' : (/Android/i.test(ua) ? 'android' : 'pc');
+  function verSec(id) {
+    document.querySelectorAll('.sec').forEach(function (s) { s.classList.toggle('on', s.id === id); });
+    document.querySelectorAll('.tabs button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-s') === id); });
+  }
+  document.querySelectorAll('.tabs button').forEach(function (b) { b.onclick = function () { verSec(b.getAttribute('data-s')); }; });
+  verSec(so);
+  function idioma(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-' + l + ']').forEach(function (e) {
+      var t = e.getAttribute('data-' + l);
+      var hijo = e.querySelector(':scope > a.btn');
+      e.innerHTML = t;
+      if (hijo && e.tagName === 'LI') { hijo.textContent = hijo.getAttribute('data-' + l); e.appendChild(hijo); }
+    });
+    document.querySelectorAll('.lang button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-l') === l); });
+    try { localStorage.setItem('l', l); } catch (e) {}
+  }
+  document.querySelectorAll('.lang button').forEach(function (b) { b.onclick = function () { idioma(b.getAttribute('data-l')); }; });
+  var l0 = null; try { l0 = localStorage.getItem('l'); } catch (e) {}
+  idioma(l0 || (/^es/i.test(navigator.language || '') ? 'es' : 'en'));
+  fetch('version.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (v) { document.getElementById('ver').textContent = 'v' + v.version; }).catch(function () {});
+})();
+</script>
+</body>
+</html>
