@@ -50,6 +50,11 @@
   .autor .cap{padding:10px 16px 12px;background:#0d0d0d;border-top:1px solid #3a2a10;text-align:center}
   .autor .k{font-size:11px;color:#d8d8d8;text-transform:uppercase;letter-spacing:.12em}
   .autor .pj{font:400 44px/1 'UnifrakturMaguntia',serif;color:#ffd166;text-shadow:0 0 12px rgba(255,90,0,.6),0 2px 0 #000}
+  .plan-b{margin-top:14px;border:1px solid var(--line);background:#252727;padding:0 12px}
+  .plan-b summary{cursor:pointer;padding:12px 0;color:#ffd166;font-weight:700;font-size:14px}
+  .plan-b p{margin:0 0 4px;font-size:14px}
+  .plan-b ol{margin:12px 0 4px;font-size:14px}
+  .plan-b li{margin:0 0 10px}
 </style>
 </head>
 <body>
@@ -93,8 +98,21 @@
         <li data-es="Entra a &lt;b&gt;minibia.com/play&lt;/b&gt; en Safari: elige tu idioma y toca el icono redondo para activar tu licencia."
             data-en="Go to &lt;b&gt;minibia.com/play&lt;/b&gt; in Safari: choose your language and tap the round icon to activate your license.">Entra a <b>minibia.com/play</b> en Safari: elige tu idioma y toca el icono redondo para activar tu licencia.</li>
       </ol>
-      <div class="aviso" data-es="Se actualiza solo. Para dejarlo trabajando: Safari abierto en el juego, el iPhone cargando y &lt;b&gt;Ajustes → Pantalla y brillo → Bloqueo automático → Nunca&lt;/b&gt;."
-           data-en="It updates itself. To leave it working: Safari open on the game, the iPhone charging and &lt;b&gt;Settings → Display &amp; Brightness → Auto-Lock → Never&lt;/b&gt;.">Se actualiza solo. Para dejarlo trabajando: Safari abierto en el juego, el iPhone cargando y <b>Ajustes → Pantalla y brillo → Bloqueo automático → Nunca</b>.</div>
+      <details class="plan-b">
+        <summary data-es="¿No te sale «Instalar» en el menú AA?" data-en="No «Install» in the AA menu?">¿No te sale «Instalar» en el menú AA?</summary>
+        <p data-es="Descarga el archivo y ponlo en la carpeta de Userscripts:" data-en="Download the file and put it in the Userscripts folder:">Descarga el archivo y ponlo en la carpeta de Userscripts:</p>
+        <a class="btn sec2" href="h.user.js" download="MinibiaHelper.user.js" data-es="Descargar archivo" data-en="Download file">Descargar archivo</a>
+        <ol>
+          <li data-es="Toca &lt;b&gt;Descargar archivo&lt;/b&gt; y luego &lt;b&gt;Descargar&lt;/b&gt;."
+              data-en="Tap &lt;b&gt;Download file&lt;/b&gt;, then &lt;b&gt;Download&lt;/b&gt;.">Toca <b>Descargar archivo</b> y luego <b>Descargar</b>.</li>
+          <li data-es="Abre la app &lt;b&gt;Archivos&lt;/b&gt; → &lt;b&gt;Descargas&lt;/b&gt;. Mantén presionado &lt;b&gt;MinibiaHelper.user.js&lt;/b&gt; → &lt;b&gt;Mover&lt;/b&gt; → &lt;b&gt;En mi iPhone&lt;/b&gt; → &lt;b&gt;Userscripts&lt;/b&gt; → &lt;b&gt;Mover&lt;/b&gt;. Si te pregunta, elige &lt;b&gt;Reemplazar&lt;/b&gt;."
+              data-en="Open the &lt;b&gt;Files&lt;/b&gt; app → &lt;b&gt;Downloads&lt;/b&gt;. Long-press &lt;b&gt;MinibiaHelper.user.js&lt;/b&gt; → &lt;b&gt;Move&lt;/b&gt; → &lt;b&gt;On My iPhone&lt;/b&gt; → &lt;b&gt;Userscripts&lt;/b&gt; → &lt;b&gt;Move&lt;/b&gt;. If asked, choose &lt;b&gt;Replace&lt;/b&gt;.">Abre la app <b>Archivos</b> → <b>Descargas</b>. Mantén presionado <b>MinibiaHelper.user.js</b> → <b>Mover</b> → <b>En mi iPhone</b> → <b>Userscripts</b> → <b>Mover</b>. Si te pregunta, elige <b>Reemplazar</b>.</li>
+          <li data-es="Cierra y vuelve a abrir la pestaña de &lt;b&gt;minibia.com/play&lt;/b&gt; en Safari."
+              data-en="Close and reopen the &lt;b&gt;minibia.com/play&lt;/b&gt; tab in Safari.">Cierra y vuelve a abrir la pestaña de <b>minibia.com/play</b> en Safari.</li>
+        </ol>
+      </details>
+      <div class="aviso" data-es="Para actualizar a una versión nueva, vuelve a tocar &lt;b&gt;Instalar Minibia Helper&lt;/b&gt; (o vuelve a descargar el archivo). Para dejarlo trabajando: Safari abierto en el juego, el iPhone cargando y &lt;b&gt;Ajustes → Pantalla y brillo → Bloqueo automático → Nunca&lt;/b&gt;."
+           data-en="To update to a new version, tap &lt;b&gt;Install Minibia Helper&lt;/b&gt; again (or download the file again). To leave it working: Safari open on the game, the iPhone charging and &lt;b&gt;Settings → Display &amp; Brightness → Auto-Lock → Never&lt;/b&gt;.">Para actualizar a una versión nueva, vuelve a tocar <b>Instalar Minibia Helper</b> (o vuelve a descargar el archivo). Para dejarlo trabajando: Safari abierto en el juego, el iPhone cargando y <b>Ajustes → Pantalla y brillo → Bloqueo automático → Nunca</b>.</div>
     </div>
 
     <div class="sec" id="pc">
