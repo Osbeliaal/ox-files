@@ -6,6 +6,8 @@
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>Minibia Helper</title>
 <link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#161818;--panel:#222424;--line:#3a3d3d;--txt:#dcdcdc;--dim:#9a9d9d;--oro:#f5a400;--verde:#9fe870}
   *{box-sizing:border-box}
@@ -44,9 +46,9 @@
   .log ul{margin:0;padding:0 16px 12px 38px;font-size:14px}
   .log li{margin:0 0 6px}
   .autor{display:flex;gap:14px;align-items:center;margin-top:18px;padding:14px 16px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--oro)}
-  .autor img{width:44px;height:44px;flex:none}
+  .autor img{width:72px;height:72px;flex:none;object-fit:contain;image-rendering:pixelated}
   .autor .k{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
-  .autor .pj{font-size:22px;font-weight:700;color:#ffd166;margin:2px 0 4px}
+  .autor .pj{font:400 38px/1.1 'UnifrakturMaguntia',serif;color:#ffd166;margin:2px 0 0;text-shadow:0 0 10px rgba(245,164,0,.35)}
 </style>
 </head>
 <body>
@@ -114,11 +116,10 @@
        data-en="You need a license for your character. Each license only works with its own character.">Necesitas una licencia para tu personaje. Cada licencia funciona solo con su personaje.</p>
   </div>
   <div class="autor">
-    <img src="icon.png" alt="">
+    <img class="demonio" src="osbeliaal.png" alt="Osbeliaal" onerror="this.onerror=null;this.src='icon.png'">
     <div>
       <div class="k" data-es="Creado por" data-en="Created by">Creado por</div>
       <div class="pj">Osbeliaal</div>
-      <div class="nota" data-es="Mi personaje en Minibia. ¡Búscame en el juego!" data-en="My character in Minibia. Find me in game!">Mi personaje en Minibia. ¡Búscame en el juego!</div>
     </div>
   </div>
   <h2 id="logt">Novedades</h2>
