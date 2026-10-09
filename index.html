@@ -45,10 +45,11 @@
   .log .nuevo{margin-left:auto;font-size:11px;color:#10140c;background:var(--verde);padding:1px 7px;font-weight:700}
   .log ul{margin:0;padding:0 16px 12px 38px;font-size:14px}
   .log li{margin:0 0 6px}
-  .autor{display:flex;gap:14px;align-items:center;margin-top:18px;padding:14px 16px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--oro)}
-  .autor img{width:72px;height:72px;flex:none;object-fit:contain;image-rendering:pixelated}
-  .autor .k{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
-  .autor .pj{font:400 38px/1.1 'UnifrakturMaguntia',serif;color:#ffd166;margin:2px 0 0;text-shadow:0 0 10px rgba(245,164,0,.35)}
+  .autor{position:relative;margin-top:18px;border:1px solid var(--oro);overflow:hidden;background:#000}
+  .autor img{display:block;width:100%;height:auto}
+  .autor .cap{padding:10px 16px 12px;background:#0d0d0d;border-top:1px solid #3a2a10;text-align:center}
+  .autor .k{font-size:11px;color:#d8d8d8;text-transform:uppercase;letter-spacing:.12em}
+  .autor .pj{font:400 44px/1 'UnifrakturMaguntia',serif;color:#ffd166;text-shadow:0 0 12px rgba(255,90,0,.6),0 2px 0 #000}
 </style>
 </head>
 <body>
@@ -116,8 +117,8 @@
        data-en="You need a license for your character. Each license only works with its own character.">Necesitas una licencia para tu personaje. Cada licencia funciona solo con su personaje.</p>
   </div>
   <div class="autor">
-    <img class="demonio" src="osbeliaal.png" alt="Osbeliaal" onerror="this.onerror=null;this.src='icon.png'">
-    <div>
+    <img src="osbeliaal.jpg" alt="Osbeliaal">
+    <div class="cap">
       <div class="k" data-es="Creado por" data-en="Created by">Creado por</div>
       <div class="pj">Osbeliaal</div>
     </div>
