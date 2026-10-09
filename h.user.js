@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Minibia Helper
 // @namespace    local
-// @version      5.8
+// @version      5.9
 // @description  Runas, autoheal, automana, magebomb, training, cave hunt, kiting, casillas resaltadas, timers de hechizos, magic wall y wild growth, reinicio tras desconexión, perfil por personaje, título de pestaña, respuesta al GM y botcheck seguro
 // @match        https://minibia.com/play*
 // @match        https://www.minibia.com/play*
