@@ -1,12 +1,13 @@
 [
  {
-  "version": "5.32",
+  "version": "5.33",
   "titulo": {
    "es": "Cave hunt: escaleras, rope y shovel",
    "en": "Cave hunt: stairs, rope and shovel"
   },
   "cambios": {
    "es": [
+    "Arreglado: el Cave hunt a veces se ponía a escarbar con la shovel en tierra normal. Ahora solo usa la shovel en hoyos cerrados de verdad (stone pile, loose stone pile...).",
     "Ida y vuelta arreglado: al regresar por la ruta, el Cave hunt ya sabe subir con la rope por donde bajó por un hoyo, bajar por el hoyo por donde subió con la rope (abriéndolo con la shovel si está cerrado) y bajar o subir por las escaleras. Antes se quedaba atorado empujando con las flechas.",
     "Al regresar ya no repite la rope o la shovel que grabaste para la ida (te subía o te abría un hoyo en el lugar equivocado).",
     "Escaleras de distintos tipos: las «ladder» y «trapdoor» que se pisan ya no se confunden con las de clic derecho. Las que se pisan, las camina; las de clic derecho (ladder, rope-ladder, sewer grate), las usa.",
@@ -14,6 +15,7 @@
     "Después de cambiar de piso sigue con el punto que le toca y no se salta partes de la ruta."
    ],
    "en": [
+    "Fixed: Cave hunt sometimes started digging with the shovel on normal ground. Now it only uses the shovel on real closed holes (stone pile, loose stone pile...).",
     "Round trip fixed: when going back along the route, Cave hunt now knows how to go up with the rope where it went down a hole, go down the hole where it went up with the rope (opening it with the shovel if it is closed) and go down or up stairs. Before, it got stuck pushing the arrow keys.",
     "On the way back it no longer repeats the rope or shovel you recorded for the way out (it used to take you up or open a hole in the wrong place).",
     "Different kinds of stairs: «ladder» and «trapdoor» tiles you step on are no longer mixed up with right-click ones. It walks onto the ones you step on and uses the right-click ones (ladder, rope-ladder, sewer grate).",
