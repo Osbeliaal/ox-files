@@ -1,12 +1,13 @@
 [
  {
-  "version": "5.23",
+  "version": "5.24",
   "titulo": {
-   "es": "Licencia Founder y Combo runa",
-   "en": "Founder license and Rune combo"
+   "es": "Licencia Founder, Combo runa y Training",
+   "en": "Founder license, Rune combo and Training"
   },
   "cambios": {
    "es": [
+    "Training mejorado: ahora ataca SOLO a personajes de tu party cuyo nombre escribas (puedes poner varios, separados por coma) o a monstruos de la lista, como Monk. Mantiene su posición (si lo empujan, regresa), deja de atacar al objetivo cuando baja a 15 % de vida (configurable) y cambia a otro de la lista o espera a que se cure. Si tu propia vida baja demasiado, se pausa y te avisa.",
     "Nueva licencia Founder: permanente, con todas las funciones y para todos tus personajes. Se activa una vez y queda para cualquier personaje que uses en ese dispositivo; cada personaje conserva su propia configuración. Al activar toca \"Founder\".",
     "Combo runa (antes Magebomb; exclusivo licencia Founder y Beta tester): cuando el líder de tu party tira una runa, cada personaje tira la suya al mismo objetivo (o a la misma casilla si es de área). Ya no hace falta configurar teclas ni señales.",
     "Retrasos humanos en el Combo runa: cada personaje reacciona y tira sus runas a destiempo, en cadena y nunca igual. Tú eliges los tiempos y el panel trae los recomendados.",
@@ -14,6 +15,7 @@
     "Cave hunt mejorado (exclusivo licencia Founder y Beta tester): rutas con nombre, rodea obstáculos, usa escaleras, rope y shovel en la casilla exacta, come de los cuerpos si no traes comida, cambia monedas, se cura y toma pociones durante la caza, se aleja de los monstruos con maná baja, espera en los spawns y no ataca monstruos detrás de paredes."
    ],
    "en": [
+    "Improved Training: it now attacks ONLY characters in your party whose name you type (you can list several, comma separated) or monsters on the list, like Monk. It holds its position (if pushed, it walks back), stops attacking the target when it drops to 15% health (configurable) and switches to another one on the list or waits for it to heal. If your own health gets too low, it pauses and alerts you.",
     "New Founder license: permanent, with every feature and for all your characters. Activate it once and it works for any character you use on that device; each character keeps its own settings. When activating tap \"Founder\".",
     "Rune combo (formerly Magebomb; Founder and Beta tester exclusive): when your party leader throws a rune, each character throws theirs at the same target (or the same tile for area runes). No more keys or signals to set up.",
     "Human-like delays in Rune combo: each character reacts and throws runes slightly out of sync, in a chain and never the same way. You choose the timings and the panel shows the recommended ones.",
