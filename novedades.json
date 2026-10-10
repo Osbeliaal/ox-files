@@ -7,7 +7,7 @@
   },
   "cambios": {
    "es": [
-    "Nuevas licencias: Lite (runas, training, casillas, anti-GM, alertas y perfiles), Estándar (todo lo de Lite + combate, Combo runa y reinicio automático) y Gold (todo lo de Estándar + Cave hunt). Duran 1 mes; al vencer, el helper te pide renovarla.",
+    "Nuevas licencias: Lite (runas, training, casillas, anti-GM, alertas y perfiles), Estándar (todo lo de Lite + combate con autohaste, Combo runa y reinicio automático) y Gold (todo lo de Estándar + Cave hunt). Duran 1 mes; al vencer, el helper te pide renovarla.",
     "Para comprar o renovar tu licencia escríbele a Osbeliaal: correo Osbeliaal@gmail.com o Telegram @osbeliaal (también está en Acerca de).",
     "Al activar ya no tienes que elegir el tipo de licencia: el helper lo reconoce solo con la licencia que pegas.",
     "Training mejorado: ahora ataca SOLO a personajes de tu party cuyo nombre escribas (puedes poner varios, separados por coma) o a monstruos de la lista, como Monk. Mantiene su posición (si lo empujan, regresa), deja de atacar al objetivo cuando baja a 15 % de vida (configurable) y cambia a otro de la lista o espera a que se cure. Si tu propia vida baja demasiado, se pausa y te avisa.",
@@ -20,7 +20,7 @@
     "Cave hunt mejorado (licencias Gold, Founder y Beta tester): rutas con nombre, rodea obstáculos, usa escaleras, rope y shovel en la casilla exacta, come de los cuerpos si no traes comida, cambia monedas, se cura y toma pociones durante la caza, se aleja de los monstruos con maná baja, espera en los spawns y no ataca monstruos detrás de paredes."
    ],
    "en": [
-    "New licenses: Lite (runes, training, tiles, anti-GM, alerts and profiles), Standard (everything in Lite + combat, Rune combo and auto reconnect) and Gold (everything in Standard + Cave hunt). They last 1 month; when it expires, the helper asks you to renew it.",
+    "New licenses: Lite (runes, training, tiles, anti-GM, alerts and profiles), Standard (everything in Lite + combat with autohaste, Rune combo and auto reconnect) and Gold (everything in Standard + Cave hunt). They last 1 month; when it expires, the helper asks you to renew it.",
     "To buy or renew your license write to Osbeliaal: email Osbeliaal@gmail.com or Telegram @osbeliaal (also shown in About).",
     "When activating you no longer choose the license type: the helper recognizes it from the license you paste.",
     "Improved Training: it now attacks ONLY characters in your party whose name you type (you can list several, comma separated) or monsters on the list, like Monk. It holds its position (if pushed, it walks back), stops attacking the target when it drops to 15% health (configurable) and switches to another one on the list or waits for it to heal. If your own health gets too low, it pauses and alerts you.",
