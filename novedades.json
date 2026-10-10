@@ -2,27 +2,23 @@
  {
   "version": "5.21",
   "titulo": {
-   "es": "Licencia Founder, Colmena y Combo runa",
-   "en": "Founder license, Nest and Rune combo"
+   "es": "Licencia Founder y Combo runa",
+   "en": "Founder license and Rune combo"
   },
   "cambios": {
    "es": [
     "Nueva licencia Founder: permanente y con todas las funciones incluidas. Al activar tu licencia toca \"Founder\".",
-    "Combo runa (antes Magebomb; para Beta tester y Founder): cuando el líder de tu party tira una runa, cada personaje tira la suya al mismo objetivo (o a la misma casilla si es de área), en cadena y con retrasos humanos que tú eliges. Ya no hace falta configurar teclas ni señales.",
-    "Colmena (exclusivo Founder): cada personaje de tu party con el helper cuida a los demás. Si un PK o un monstruo le pega a alguno, lo atacan con runas, lo persiguen si huye y, al matarlo, toman su loot (si alcanza la cap) y vuelven a su sitio.",
-    "La Colmena nunca ataca a un jugador que no haya atacado a tu party.",
-    "PVP Lock: la Colmena lo quita solo mientras pelea con el PK y lo vuelve a poner en cuanto termina, incluso si la página se recarga. Si lo prefieres, desactiva esa opción y solo te avisa.",
-    "Retrasos humanos: cada personaje reacciona y tira runas a destiempo, en cadena y nunca igual. Tú eliges los tiempos y el panel trae los recomendados.",
-    "Cave hunt mejorado (Founder): rutas con nombre, rodea obstáculos, usa escaleras, rope y shovel en la casilla exacta, come de los cuerpos si no traes comida, cambia monedas, se cura y toma pociones durante la caza, se aleja de los monstruos con maná baja, espera en los spawns y no ataca monstruos detrás de paredes."
+    "Combo runa (antes Magebomb; exclusivo licencia Founder y Beta tester): cuando el líder de tu party tira una runa, cada personaje tira la suya al mismo objetivo (o a la misma casilla si es de área). Ya no hace falta configurar teclas ni señales.",
+    "Retrasos humanos en el Combo runa: cada personaje reacciona y tira sus runas a destiempo, en cadena y nunca igual. Tú eliges los tiempos y el panel trae los recomendados.",
+    "PVP Lock: si el combo va contra un jugador, se quita solo mientras dura y se vuelve a poner al terminar, incluso si la página se recarga. Si lo prefieres, desactiva esa opción y solo te avisa.",
+    "Cave hunt mejorado (exclusivo licencia Founder y Beta tester): rutas con nombre, rodea obstáculos, usa escaleras, rope y shovel en la casilla exacta, come de los cuerpos si no traes comida, cambia monedas, se cura y toma pociones durante la caza, se aleja de los monstruos con maná baja, espera en los spawns y no ataca monstruos detrás de paredes."
    ],
    "en": [
     "New Founder license: permanent and with every feature included. When activating your license tap \"Founder\".",
-    "Rune combo (formerly Magebomb; for Beta tester and Founder): when your party leader throws a rune, each character throws theirs at the same target (or the same tile for area runes), in a chain and with human-like delays you choose. No more keys or signals to set up.",
-    "Nest (Founder exclusive): every character in your party running the helper looks after the others. If a PK or a monster hits any of them, they attack it with runes, chase it if it runs and, after killing it, take its loot (if cap allows) and go back to their spot.",
-    "The Nest never attacks a player who has not attacked your party.",
-    "PVP Lock: the Nest turns it off only while fighting the PK and turns it back on as soon as the fight ends, even if the page reloads. If you prefer, turn that option off and it only alerts you.",
-    "Human-like delays: each character reacts and throws runes slightly out of sync, in a chain and never the same way. You choose the timings and the panel shows the recommended ones.",
-    "Improved Cave hunt (Founder): named routes, goes around obstacles, uses stairs, rope and shovel on the exact tile, eats from corpses when you carry no food, converts coins, heals and uses potions while hunting, moves away from monsters on low mana, waits at spawns and skips monsters behind walls."
+    "Rune combo (formerly Magebomb; Founder and Beta tester exclusive): when your party leader throws a rune, each character throws theirs at the same target (or the same tile for area runes). No more keys or signals to set up.",
+    "Human-like delays in Rune combo: each character reacts and throws runes slightly out of sync, in a chain and never the same way. You choose the timings and the panel shows the recommended ones.",
+    "PVP Lock: if the combo targets a player, it is turned off only while it lasts and turned back on when it ends, even if the page reloads. If you prefer, turn that option off and it only alerts you.",
+    "Improved Cave hunt (Founder and Beta tester exclusive): named routes, goes around obstacles, uses stairs, rope and shovel on the exact tile, eats from corpses when you carry no food, converts coins, heals and uses potions while hunting, moves away from monsters on low mana, waits at spawns and skips monsters behind walls."
    ]
   }
  },
