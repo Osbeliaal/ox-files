@@ -1,28 +1,34 @@
 [
  {
-  "version": "5.25",
+  "version": "5.26",
   "titulo": {
-   "es": "Licencia Founder, Combo runa y Training",
-   "en": "Founder license, Rune combo and Training"
+   "es": "Nuevas licencias, Combo runa y Training",
+   "en": "New licenses, Rune combo and Training"
   },
   "cambios": {
    "es": [
+    "Nuevas licencias: Lite (runas, training, casillas, anti-GM, alertas y perfiles), Estándar (todo lo de Lite + combate, Combo runa y reinicio automático) y Gold (todo lo de Estándar + Cave hunt). Duran 1 mes; al vencer, el helper te pide renovarla.",
+    "Para comprar o renovar tu licencia escríbele a Osbeliaal: correo Osbeliaal@gmail.com o Telegram @osbeliaal (también está en Acerca de).",
+    "Al activar ya no tienes que elegir el tipo de licencia: el helper lo reconoce solo con la licencia que pegas.",
     "Training mejorado: ahora ataca SOLO a personajes de tu party cuyo nombre escribas (puedes poner varios, separados por coma) o a monstruos de la lista, como Monk. Mantiene su posición (si lo empujan, regresa), deja de atacar al objetivo cuando baja a 15 % de vida (configurable) y cambia a otro de la lista o espera a que se cure. Si tu propia vida baja demasiado, se pausa y te avisa.",
     "Combo runa más seguro: solo sigue los tiros que salen exactamente de la casilla del líder, así nunca confunde el tiro de otro jugador que esté a su lado.",
     "Nueva licencia Founder: permanente, con todas las funciones y para todos tus personajes. Se activa una vez y queda para cualquier personaje que uses en ese dispositivo; cada personaje conserva su propia configuración. Al activar toca \"Founder\".",
-    "Combo runa (antes Magebomb; exclusivo licencia Founder y Beta tester): cuando el líder de tu party tira una runa, cada personaje tira la suya al mismo objetivo (o a la misma casilla si es de área). Ya no hace falta configurar teclas ni señales.",
+    "Combo runa (antes Magebomb; desde la licencia Estándar): cuando el líder de tu party tira una runa, cada personaje tira la suya al mismo objetivo (o a la misma casilla si es de área). Ya no hace falta configurar teclas ni señales.",
     "Retrasos humanos en el Combo runa: cada personaje reacciona y tira sus runas a destiempo, en cadena y nunca igual. Tú eliges los tiempos y el panel trae los recomendados.",
     "PVP Lock: si el combo va contra un jugador, se quita solo mientras dura y se vuelve a poner al terminar, incluso si la página se recarga. Si lo prefieres, desactiva esa opción y solo te avisa.",
-    "Cave hunt mejorado (exclusivo licencia Founder y Beta tester): rutas con nombre, rodea obstáculos, usa escaleras, rope y shovel en la casilla exacta, come de los cuerpos si no traes comida, cambia monedas, se cura y toma pociones durante la caza, se aleja de los monstruos con maná baja, espera en los spawns y no ataca monstruos detrás de paredes."
+    "Cave hunt mejorado (licencias Gold, Founder y Beta tester): rutas con nombre, rodea obstáculos, usa escaleras, rope y shovel en la casilla exacta, come de los cuerpos si no traes comida, cambia monedas, se cura y toma pociones durante la caza, se aleja de los monstruos con maná baja, espera en los spawns y no ataca monstruos detrás de paredes."
    ],
    "en": [
+    "New licenses: Lite (runes, training, tiles, anti-GM, alerts and profiles), Standard (everything in Lite + combat, Rune combo and auto reconnect) and Gold (everything in Standard + Cave hunt). They last 1 month; when it expires, the helper asks you to renew it.",
+    "To buy or renew your license write to Osbeliaal: email Osbeliaal@gmail.com or Telegram @osbeliaal (also shown in About).",
+    "When activating you no longer choose the license type: the helper recognizes it from the license you paste.",
     "Improved Training: it now attacks ONLY characters in your party whose name you type (you can list several, comma separated) or monsters on the list, like Monk. It holds its position (if pushed, it walks back), stops attacking the target when it drops to 15% health (configurable) and switches to another one on the list or waits for it to heal. If your own health gets too low, it pauses and alerts you.",
     "Safer Rune combo: it only follows shots that come exactly from the leader tile, so it never mistakes a shot from another player standing next to them.",
     "New Founder license: permanent, with every feature and for all your characters. Activate it once and it works for any character you use on that device; each character keeps its own settings. When activating tap \"Founder\".",
-    "Rune combo (formerly Magebomb; Founder and Beta tester exclusive): when your party leader throws a rune, each character throws theirs at the same target (or the same tile for area runes). No more keys or signals to set up.",
+    "Rune combo (formerly Magebomb; from the Standard license up): when your party leader throws a rune, each character throws theirs at the same target (or the same tile for area runes). No more keys or signals to set up.",
     "Human-like delays in Rune combo: each character reacts and throws runes slightly out of sync, in a chain and never the same way. You choose the timings and the panel shows the recommended ones.",
     "PVP Lock: if the combo targets a player, it is turned off only while it lasts and turned back on when it ends, even if the page reloads. If you prefer, turn that option off and it only alerts you.",
-    "Improved Cave hunt (Founder and Beta tester exclusive): named routes, goes around obstacles, uses stairs, rope and shovel on the exact tile, eats from corpses when you carry no food, converts coins, heals and uses potions while hunting, moves away from monsters on low mana, waits at spawns and skips monsters behind walls."
+    "Improved Cave hunt (Gold, Founder and Beta tester licenses): named routes, goes around obstacles, uses stairs, rope and shovel on the exact tile, eats from corpses when you carry no food, converts coins, heals and uses potions while hunting, moves away from monsters on low mana, waits at spawns and skips monsters behind walls."
    ]
   }
  },

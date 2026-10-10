@@ -61,6 +61,14 @@
   .seg li{display:flex;gap:10px;margin:0 0 12px;font-size:14px}
   .seg .ico{flex:none;width:24px;text-align:center;font-size:18px;line-height:1.3}
   .seg .disc{margin-top:6px;padding:10px 12px;border-left:3px solid var(--oro);background:rgba(245,164,0,.08);font-size:13px;color:var(--dim)}
+  .lics{background:var(--panel);border:1px solid var(--line);padding:14px 16px}
+  .lic{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .lic .n{font-weight:700;color:#ffd166;font-size:16px}
+  .lic .d{color:var(--dim);font-size:13px;text-align:right}
+  .lic .f{grid-column:1/-1;font-size:14px}
+  .lics .nota{margin:12px 0}
+  .contacto{padding:10px 12px;border-left:3px solid var(--oro);background:rgba(245,164,0,.08);font-size:14px}
+  .contacto a{color:#9fe870}
 </style>
 </head>
 <body>
@@ -147,6 +155,19 @@
       <div class="pj">Osbeliaal</div>
     </div>
   </div>
+  <h2 data-es="Licencias" data-en="Licenses">Licencias</h2>
+  <div class="lics">
+      <div class="lic"><div class="n">Lite</div><div class="d" data-es="1 mes" data-en="1 month">1 mes</div><div class="f" data-es="Runas y comida, training y anti-idle, casillas resaltadas, anti-GM y botcheck, alertas y perfil por personaje." data-en="Runes and food, training and anti-idle, highlighted tiles, anti-GM and botcheck, alerts and per-character profile.">Runas y comida, training y anti-idle, casillas resaltadas, anti-GM y botcheck, alertas y perfil por personaje.</div></div>
+      <div class="lic"><div class="n">Estándar</div><div class="d" data-es="1 mes" data-en="1 month">1 mes</div><div class="f" data-es="Todo lo de Lite + combate (autoheal, autolife, automana), Combo runa y reinicio automático." data-en="Everything in Lite + combat (autoheal, autolife, automana), Rune combo and auto reconnect.">Todo lo de Lite + combate (autoheal, autolife, automana), Combo runa y reinicio automático.</div></div>
+      <div class="lic"><div class="n">Gold</div><div class="d" data-es="1 mes" data-en="1 month">1 mes</div><div class="f" data-es="Todo lo de Estándar + Cave hunt (caza con ruta grabada)." data-en="Everything in Standard + Cave hunt (hunting on a recorded route).">Todo lo de Estándar + Cave hunt (caza con ruta grabada).</div></div>
+      <div class="lic"><div class="n">Founder</div><div class="d" data-es="Permanente" data-en="Permanent">Permanente</div><div class="f" data-es="Todo incluido, con funciones exclusivas, y para todos tus personajes." data-en="Everything included, with exclusive features, and for all your characters.">Todo incluido, con funciones exclusivas, y para todos tus personajes.</div></div>
+    <p class="nota" data-es="Las licencias Lite, Estándar y Gold duran &lt;b&gt;1 mes&lt;/b&gt;. Cuando vence, el helper se detiene y te pide la nueva." data-en="Lite, Standard and Gold licenses last &lt;b&gt;1 month&lt;/b&gt;. When it expires, the helper stops and asks for the new one.">Las licencias Lite, Estándar y Gold duran <b>1 mes</b>. Cuando vence, el helper se detiene y te pide la nueva.</p>
+    <div class="contacto">
+      <div data-es="&lt;b&gt;Para comprar o renovar tu licencia, escríbele a Osbeliaal:&lt;/b&gt;" data-en="&lt;b&gt;To buy or renew your license, write to Osbeliaal:&lt;/b&gt;"><b>Para comprar o renovar tu licencia, escríbele a Osbeliaal:</b></div>
+      <div>✉ <a href="mailto:Osbeliaal@gmail.com">Osbeliaal@gmail.com</a></div>
+      <div>✈ Telegram <a href="https://t.me/osbeliaal">@osbeliaal</a></div>
+    </div>
+  </div>
   <h2 data-es="Transparencia: ¿es seguro?" data-en="Transparency: is it safe?">Transparencia: ¿es seguro?</h2>
   <div class="seg">
     <p class="intro" data-es="Minibia Helper es un pequeño programa que ayuda con tareas del juego. Así funciona, explicado fácil:" data-en="Minibia Helper is a small program that helps with in-game tasks. This is how it works, explained simply:">Minibia Helper es un pequeño programa que ayuda con tareas del juego. Así funciona, explicado fácil:</p>
@@ -165,7 +186,7 @@
   </div>
   <h2 id="logt">Novedades</h2>
   <div class="log" id="log"></div>
-  <footer>Minibia Helper · By Osbeliaal</footer>
+  <footer>Minibia Helper · By Osbeliaal · <a href="mailto:Osbeliaal@gmail.com" style="color:inherit">Osbeliaal@gmail.com</a> · Telegram <a href="https://t.me/osbeliaal" style="color:inherit">@osbeliaal</a></footer>
 </div>
 <script>
 (function () {
