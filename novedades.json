@@ -1,20 +1,20 @@
 [
  {
-  "version": "5.21",
+  "version": "5.22",
   "titulo": {
    "es": "Licencia Founder y Combo runa",
    "en": "Founder license and Rune combo"
   },
   "cambios": {
    "es": [
-    "Nueva licencia Founder: permanente y con todas las funciones incluidas. Al activar tu licencia toca \"Founder\".",
+    "Nueva licencia Founder: permanente, con todas las funciones y para todos tus personajes. Se activa una vez y queda para cualquier personaje que uses en ese dispositivo; cada personaje conserva su propia configuración. Al activar toca \"Founder\".",
     "Combo runa (antes Magebomb; exclusivo licencia Founder y Beta tester): cuando el líder de tu party tira una runa, cada personaje tira la suya al mismo objetivo (o a la misma casilla si es de área). Ya no hace falta configurar teclas ni señales.",
     "Retrasos humanos en el Combo runa: cada personaje reacciona y tira sus runas a destiempo, en cadena y nunca igual. Tú eliges los tiempos y el panel trae los recomendados.",
     "PVP Lock: si el combo va contra un jugador, se quita solo mientras dura y se vuelve a poner al terminar, incluso si la página se recarga. Si lo prefieres, desactiva esa opción y solo te avisa.",
     "Cave hunt mejorado (exclusivo licencia Founder y Beta tester): rutas con nombre, rodea obstáculos, usa escaleras, rope y shovel en la casilla exacta, come de los cuerpos si no traes comida, cambia monedas, se cura y toma pociones durante la caza, se aleja de los monstruos con maná baja, espera en los spawns y no ataca monstruos detrás de paredes."
    ],
    "en": [
-    "New Founder license: permanent and with every feature included. When activating your license tap \"Founder\".",
+    "New Founder license: permanent, with every feature and for all your characters. Activate it once and it works for any character you use on that device; each character keeps its own settings. When activating tap \"Founder\".",
     "Rune combo (formerly Magebomb; Founder and Beta tester exclusive): when your party leader throws a rune, each character throws theirs at the same target (or the same tile for area runes). No more keys or signals to set up.",
     "Human-like delays in Rune combo: each character reacts and throws runes slightly out of sync, in a chain and never the same way. You choose the timings and the panel shows the recommended ones.",
     "PVP Lock: if the combo targets a player, it is turned off only while it lasts and turned back on when it ends, even if the page reloads. If you prefer, turn that option off and it only alerts you.",
