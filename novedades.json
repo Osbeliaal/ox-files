@@ -1,6 +1,6 @@
 [
  {
-  "version": "5.29",
+  "version": "5.30",
   "titulo": {
    "es": "Nuevas licencias, Combo runa y Training",
    "en": "New licenses, Rune combo and Training"
@@ -8,6 +8,9 @@
   "cambios": {
    "es": [
     "Nuevas licencias: Lite (runas, training, casillas, anti-GM, alertas y perfiles), Estándar (todo lo de Lite + combate con autohaste, Combo runa y reinicio automático) y Gold (todo lo de Estándar + Cave hunt). Duran 1 mes; al vencer, el helper te pide renovarla.",
+    "Estándar y Gold ahora sirven para todos tus personajes: las activas una vez y valen para cualquier personaje del dispositivo. Lite sigue siendo para un solo personaje.",
+    "Prueba de 1 día: pídele a Osbeliaal una prueba que desbloquea todo lo de Gold. Cuando termina, se bloquea sola y vuelves a tu licencia Lite (no se borra).",
+    "Con Lite verás un aviso para mejorar tu licencia o pedir la prueba de 1 día.",
     "Para comprar o renovar tu licencia escríbele a Osbeliaal: correo Osbeliaal@gmail.com o Telegram @osbeliaal (también está en Acerca de).",
     "Al activar ya no tienes que elegir el tipo de licencia: el helper lo reconoce solo con la licencia que pegas.",
     "Página de Minibia Helper renovada: toca cada licencia (Lite, Estándar, Gold y Founder) para ver todo lo que incluye y cuál te conviene.",
@@ -23,6 +26,9 @@
    ],
    "en": [
     "New licenses: Lite (runes, training, tiles, anti-GM, alerts and profiles), Standard (everything in Lite + combat with autohaste, Rune combo and auto reconnect) and Gold (everything in Standard + Cave hunt). They last 1 month; when it expires, the helper asks you to renew it.",
+    "Standard and Gold now work on all your characters: activate them once and they apply to any character on that device. Lite is still for a single character.",
+    "1-day trial: ask Osbeliaal for a trial that unlocks everything in Gold. When it ends, it locks by itself and you are back on your Lite license (it is not deleted).",
+    "With Lite you will see a notice to upgrade your license or ask for the 1-day trial.",
     "To buy or renew your license write to Osbeliaal: email Osbeliaal@gmail.com or Telegram @osbeliaal (also shown in About).",
     "When activating you no longer choose the license type: the helper recognizes it from the license you paste.",
     "Minibia Helper page refreshed: tap each license (Lite, Standard, Gold and Founder) to see everything it includes and which one suits you.",
