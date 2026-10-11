@@ -1,5 +1,28 @@
 [
  {
+  "version": "5.34",
+  "titulo": {
+   "es": "Defensa contra PK y avisos al celular",
+   "en": "PK defense and phone alerts"
+  },
+  "cambios": {
+   "es": [
+    "Cave hunt · Defensa contra jugadores (PK): nueva casilla «Defenderme si un jugador me ataca». Si alguien te ataca a ti, el helper cuenta tus runas de ataque y tus curaciones, revisa tu vida y cuántos PKs son, y decide solo: pelear con runas o escapar por la ruta. Nunca ataca a quien no te atacó, ni a tu party.",
+    "Al pelear quita el PVP Lock solo durante la pelea y lo vuelve a poner al terminar. Si tu vida baja durante la pelea, cambia a escapar. Si el PK ya casi muere (20 % o menos), lo remata.",
+    "Después de escapar vuelve a cazar solo cuando pasa un rato sin ataques (60 s por defecto) y tu vida se recuperó.",
+    "Te avisa de todo: cuando te defiendes, cuando escapas, cuando muere el PK y cuando vuelves a cazar.",
+    "Avisos al celular (pestaña Alertas): recibe las alertas en tu celular aunque juegues en la PC, por Telegram (recomendado), WhatsApp (CallMeBot) o la app ntfy. Viene apagado; trae pasos para activarlo y un botón de prueba. Solo se envía el texto de la alerta al servicio que elijas."
+   ],
+   "en": [
+    "Cave hunt · Defense against players (PK): new checkbox «Defend myself if a player attacks me». If someone attacks you, the helper counts your attack runes and heals, checks your health and how many PKs there are, and decides by itself: fight back with runes or escape along the route. It never attacks someone who did not attack you, nor your party.",
+    "When fighting it removes the PVP Lock only during the fight and puts it back afterwards. If your health drops during the fight, it switches to escaping. If the PK is almost dead (20% or less), it finishes him.",
+    "After escaping it goes back to hunting only after a while without attacks (60 s by default) and once your health has recovered.",
+    "It alerts you about everything: when you fight back, when you escape, when the PK dies and when you go back to hunting.",
+    "Phone alerts (Alerts tab): get your alerts on your phone even if you play on PC, through Telegram (recommended), WhatsApp (CallMeBot) or the ntfy app. Off by default; it includes setup steps and a test button. Only the alert text is sent to the service you choose."
+   ]
+  }
+ },
+ {
   "version": "5.33",
   "titulo": {
    "es": "Cave hunt: escaleras, rope y shovel",
