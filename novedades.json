@@ -1,5 +1,28 @@
 [
  {
+  "version": "5.35",
+  "titulo": {
+   "es": "Macros: crea tus propias reglas",
+   "en": "Macros: create your own rules"
+  },
+  "cambios": {
+   "es": [
+    "Nuevo: Macros (pestaña Combate, desde la licencia Estándar). Escribe tus propias reglas en español sencillo, una por línea: «si (condición) entonces (acción)». Por ejemplo: si monstruos >= 3 y jugadores == 0 entonces runa \"great fireball\" en objetivo cada 2s.",
+    "Condiciones: tu vida y maná (en % o en puntos), cap, monstruos en pantalla o pegados a ti, jugadores y jugadores con calavera, tu objetivo y su vida, protection zone, cuántos de un monstruo ves y cuántos objetos tienes.",
+    "Acciones: decir un hechizo, tirar una runa a tu objetivo o a ti, usar un objeto, pulsar una tecla del hotbar, atacar al más cercano, soltar el objetivo, avisarte (también al celular), pausar la caza, el runeo o el training mientras se cumpla, y «parar» para no revisar las reglas de abajo.",
+    "El helper revisa lo que escribes al momento y te dice en qué línea hay un error y por qué. Trae ejemplos listos y una ayuda con todo lo que puedes usar. También funciona en inglés (if / then / every).",
+    "Seguro: las reglas solo leen el juego y hacen acciones del juego; no pueden tocar tus archivos ni tus licencias."
+   ],
+   "en": [
+    "New: Macros (Combat tab, from the Standard license). Write your own rules in plain words, one per line: «if (condition) then (action)». For example: if monsters >= 3 and players == 0 then rune \"great fireball\" on target every 2s.",
+    "Conditions: your health and mana (in % or points), cap, monsters on screen or next to you, players and players with a skull, your target and its health, protection zone, how many of a monster you see and how many items you have.",
+    "Actions: say a spell, throw a rune at your target or at yourself, use an item, press a hotbar key, attack the nearest one, release the target, alert you (also on your phone), pause the hunt, runes or training while it is true, and «stop» to skip the rules below.",
+    "The helper checks what you write instantly and tells you which line has an error and why. It comes with ready examples and a help with everything you can use. It also works in Spanish (si / entonces / cada).",
+    "Safe: rules only read the game and do game actions; they cannot touch your files or your licenses."
+   ]
+  }
+ },
+ {
   "version": "5.34",
   "titulo": {
    "es": "Defensa contra PK y avisos al celular",
