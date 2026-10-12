@@ -1,6 +1,7 @@
 [
  {
   "version": "5.35",
+  "fecha": "2026-10-11",
   "titulo": {
    "es": "Macros: crea tus propias reglas",
    "en": "Macros: create your own rules"
@@ -24,6 +25,7 @@
  },
  {
   "version": "5.34",
+  "fecha": "2026-10-11",
   "titulo": {
    "es": "Defensa contra PK y avisos al celular",
    "en": "PK defense and phone alerts"
@@ -47,6 +49,7 @@
  },
  {
   "version": "5.33",
+  "fecha": "2026-10-10",
   "titulo": {
    "es": "Cave hunt: escaleras, rope y shovel",
    "en": "Cave hunt: stairs, rope and shovel"
@@ -72,6 +75,7 @@
  },
  {
   "version": "5.31",
+  "fecha": "2026-10-10",
   "titulo": {
    "es": "Nuevas licencias, Combo runa y Training",
    "en": "New licenses, Rune combo and Training"
@@ -117,6 +121,7 @@
  },
  {
   "version": "5.10",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Más fluido",
    "en": "Smoother"
@@ -132,6 +137,7 @@
  },
  {
   "version": "5.8",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Licencias por personaje",
    "en": "Per-character licenses"
@@ -155,6 +161,7 @@
  },
  {
   "version": "5.7",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Idioma: español e inglés",
    "en": "Language: Spanish and English"
@@ -174,6 +181,7 @@
  },
  {
   "version": "5.6",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "iPhone y navegador",
    "en": "iPhone and browser"
@@ -193,6 +201,7 @@
  },
  {
   "version": "5.5",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Guía y novedades",
    "en": "Guide and what's new"
@@ -208,6 +217,7 @@
  },
  {
   "version": "5.4",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Licencias",
    "en": "Licenses"
@@ -229,6 +239,7 @@
  },
  {
   "version": "5.3",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Segundo plano y notificaciones (app de Android)",
    "en": "Background and notifications (Android app)"
@@ -250,6 +261,7 @@
  },
  {
   "version": "5.2",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Hotbar del celular",
    "en": "Phone hotbar"
@@ -269,6 +281,7 @@
  },
  {
   "version": "5.1",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Icono y gestos",
    "en": "Icon and gestures"
@@ -288,6 +301,7 @@
  },
  {
   "version": "5.0",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "App para Android",
    "en": "Android app"

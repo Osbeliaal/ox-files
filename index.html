@@ -42,6 +42,8 @@
   .log details[open] summary::before{transform:rotate(90deg)}
   .log .v{color:var(--oro);font-weight:700;white-space:nowrap}
   .log .t{color:#ececec;font-weight:700}
+  .log .f{color:var(--dim);font-size:12px;white-space:nowrap;margin-left:auto;padding-left:6px}
+  .log .f + .nuevo{margin-left:0}
   .log .nuevo{margin-left:auto;font-size:11px;color:#10140c;background:var(--verde);padding:1px 7px;font-weight:700}
   .log ul{margin:0;padding:0 16px 12px 38px;font-size:14px}
   .log li{margin:0 0 6px}
@@ -270,6 +272,12 @@
   }
   // Registro de cambios (novedades.json): la versión más nueva abierta, las demás plegadas
   var lang = 'es', log = null;
+  function fechaCorta(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); if (!m) { return ''; }
+    var es = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'], en = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var mes = Number(m[2]) - 1, dia = Number(m[3]);
+    return lang === 'en' ? en[mes] + ' ' + dia + ', ' + m[1] : dia + ' ' + es[mes] + ' ' + m[1];
+  }
   function pintarLog() {
     var cont = document.getElementById('log'); if (!cont || !log) { return; }
     document.getElementById('logt').textContent = lang === 'en' ? "What's new" : 'Novedades';
@@ -280,6 +288,7 @@
       var v = document.createElement('span'); v.className = 'v'; v.textContent = 'v' + e.version;
       var t = document.createElement('span'); t.className = 't'; t.textContent = (e.titulo[lang] || e.titulo.es);
       sm.appendChild(v); sm.appendChild(t);
+      if (e.fecha) { var f = document.createElement('span'); f.className = 'f'; f.textContent = fechaCorta(e.fecha); sm.appendChild(f); }
       if (i === 0) { var n = document.createElement('span'); n.className = 'nuevo'; n.textContent = lang === 'en' ? 'LATEST' : 'NUEVO'; sm.appendChild(n); }
       var ul = document.createElement('ul');
       (e.cambios[lang] || e.cambios.es).forEach(function (c) { var li = document.createElement('li'); li.textContent = c; ul.appendChild(li); });
