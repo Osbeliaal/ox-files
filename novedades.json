@@ -1,5 +1,27 @@
 [
  {
+  "version": "5.36",
+  "fecha": "2026-10-12",
+  "titulo": {
+   "es": "Vendedores autorizados",
+   "en": "Authorized sellers"
+  },
+  "cambios": {
+   "es": [
+    "Ahora también puedes comprar tu licencia con vendedores autorizados por Osbeliaal. Funcionan igual que las de siempre: pega tu licencia y el helper la reconoce sola.",
+    "Tu licencia muestra quién te la vendió, y cuando toca renovarla el helper te dice a quién escribirle.",
+    "Las licencias siguen firmadas: nadie puede fabricarlas ni usar la de otro personaje, las venda quien las venda.",
+    "Nuevo botón «Activar otra licencia» en «Acerca de»: para renovar, subir de Lite a Estándar o Gold, o activar una prueba de 1 día cuando quieras."
+   ],
+   "en": [
+    "You can now also buy your license from sellers authorized by Osbeliaal. They work just like the usual ones: paste your license and the helper recognizes it by itself.",
+    "Your license shows who sold it to you, and when it is time to renew, the helper tells you who to message.",
+    "Licenses are still signed: nobody can forge them or use another character's license, no matter who sells them.",
+    "New «Activate another license» button in «About»: to renew, upgrade from Lite to Standard or Gold, or activate a 1-day trial whenever you want."
+   ]
+  }
+ },
+ {
   "version": "5.35",
   "fecha": "2026-10-11",
   "titulo": {
