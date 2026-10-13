@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Vendedor · Minibia Helper</title>
+<link rel="icon" href="icon.png">
+<style>
+  :root{--bg:#161818;--panel:#222424;--line:#3a3d3d;--txt:#dcdcdc;--dim:#9a9d9d;--oro:#f5a400;--verde:#9fe870;--rojo:#ff9b8a}
+  *{box-sizing:border-box}
+  html,body{background:var(--bg)}
+  body{margin:0;color:var(--txt);font:15px/1.5 Verdana,Tahoma,sans-serif}
+  .wrap{max-width:560px;margin:0 auto;padding:18px 16px 40px}
+  header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  header img{width:42px;height:42px;image-rendering:pixelated}
+  h1{margin:0;font-size:19px;color:#ececec}
+  .sub{color:var(--oro);font-size:12px}
+  .quien{margin-left:auto;text-align:right;font-size:12px;color:var(--dim)}
+  .quien b{color:#ffd166;display:block;font-size:14px}
+  .card{background:var(--panel);border:1px solid var(--line);padding:14px;margin:0 0 14px}
+  .card.oro{border-color:var(--oro)}
+  h2{font-size:15px;margin:0 0 10px;color:#ececec}
+  label{display:block;margin:10px 0 4px;font-size:13px;color:var(--dim)}
+  input,textarea,select{width:100%;font:16px Verdana,Tahoma,sans-serif;padding:9px 10px;background:#0b0c0c;color:#ececec;border:1px solid;border-color:#000 #5a5e5e #5a5e5e #000;border-radius:0}
+  textarea{min-height:90px;font-size:12px;font-family:ui-monospace,Consolas,monospace;word-break:break-all}
+  .tipos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .tipos button{padding:12px 6px;font:700 14px Verdana,Tahoma,sans-serif;color:var(--txt);background:#2b2d2d;border:1px solid var(--line);cursor:pointer}
+  .tipos button small{display:block;font-weight:400;font-size:11px;color:var(--dim)}
+  .tipos button.on{border-color:var(--oro);color:#ffd166;background:#2f2a1c}
+  .fila{display:flex;gap:8px}
+  .fila > *{flex:1}
+  .btn{display:block;width:100%;margin:12px 0 0;padding:13px;font:700 16px Verdana,Tahoma,sans-serif;color:#10140c;background:var(--verde);border:0;cursor:pointer;text-align:center;text-decoration:none}
+  .btn.gris{background:#3e4142;color:#ececec;font-size:14px;padding:10px}
+  .btn.chico{display:inline-block;width:auto;margin:6px 6px 0 0;padding:8px 12px;font-size:13px}
+  .btn:disabled{opacity:.5}
+  .msg{min-height:18px;font-size:13px;margin-top:8px}
+  .msg.err{color:var(--rojo)} .msg.ok{color:var(--verde)}
+  .lic{font:13px/1.4 ui-monospace,Consolas,monospace;word-break:break-all;background:#0b0c0c;border:1px solid #000;padding:10px;color:#ffd166;user-select:all}
+  .nota{font-size:12px;color:var(--dim)}
+  .oculto{display:none!important}
+  .venta{border-top:1px solid var(--line);padding:8px 0;font-size:13px;display:flex;gap:8px;align-items:center}
+  .venta:first-child{border-top:0}
+  .venta .d{flex:1;min-width:0}
+  .venta .d b{color:#ececec}
+  .venta .x{font-size:11px;color:var(--dim)}
+  .venta button{flex:none;background:#2b2d2d;color:var(--txt);border:1px solid var(--line);padding:6px 9px;font-size:12px;cursor:pointer}
+  .tag{display:inline-block;font-size:10px;padding:0 5px;margin-left:4px;border:1px solid var(--line);color:var(--dim)}
+  .tag.nuevo{border-color:var(--verde);color:var(--verde)}
+  .resumen{display:flex;gap:8px;margin:0 0 8px}
+  .resumen div{flex:1;background:#1a1c1c;border:1px solid var(--line);padding:6px;text-align:center;font-size:11px;color:var(--dim)}
+  .resumen b{display:block;font-size:18px;color:#ececec}
+  a{color:var(--verde)}
+  footer{text-align:center;color:var(--dim);font-size:11px;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="icon.png" alt="">
+    <div><h1>Minibia Helper</h1><div class="sub">Panel de vendedor</div></div>
+    <div class="quien oculto" id="quien"><b id="qNom"></b><span id="qCod"></span></div>
+  </header>
+
+  <!-- 1) Primera vez: pegar la llave -->
+  <section class="card oro oculto" id="vLlave">
+    <h2>Configura tu llave (solo la primera vez)</h2>
+    <p class="nota">Osbeliaal te mandó un texto que empieza con <b>MBHS1.</b> y un PIN por separado. Pega los dos aquí. La llave se guarda en este celular o PC, protegida con tu PIN.</p>
+    <label for="inLlave">Llave</label>
+    <textarea id="inLlave" placeholder="MBHS1.…" autocomplete="off" spellcheck="false"></textarea>
+    <label for="inPin1">PIN</label>
+    <input id="inPin1" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX">
+    <button class="btn" id="btnGuardarLlave">Guardar llave</button>
+    <div class="msg" id="msgLlave"></div>
+  </section>
+
+  <!-- 2) Desbloquear con el PIN -->
+  <section class="card oro oculto" id="vPin">
+    <h2>Escribe tu PIN</h2>
+    <input id="inPin" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX">
+    <button class="btn" id="btnAbrir">Entrar</button>
+    <div class="msg" id="msgPin"></div>
+    <button class="btn gris" id="btnOtraLlave" style="margin-top:18px">Usar otra llave</button>
+  </section>
+
+  <!-- 3) Vender -->
+  <section class="oculto" id="vVender">
+    <div class="card oro">
+      <h2>Nueva licencia</h2>
+      <label for="inChar">Nombre del personaje del cliente (exacto, como sale en el juego)</label>
+      <input id="inChar" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Ej. Edmund Crowe">
+      <label>Tipo</label>
+      <div class="tipos" id="tipos">
+        <button data-t="L">Lite<small>1 personaje</small></button>
+        <button data-t="M">Estándar<small>todos sus personajes</small></button>
+        <button data-t="G" class="on">Gold<small>+ Cave hunt</small></button>
+        <button data-t="T">Prueba Gold<small>por horas</small></button>
+      </div>
+      <div class="fila">
+        <div><label for="inDur" id="lblDur">Días</label><input id="inDur" type="number" inputmode="numeric" min="1" max="31" value="30"></div>
+        <div><label for="inCobro">Cobrado (opcional)</label><input id="inCobro" autocomplete="off" placeholder="Ej. 150"></div>
+      </div>
+      <label for="inNota">Nota (opcional: WhatsApp o nombre del cliente)</label>
+      <input id="inNota" autocomplete="off" placeholder="Ej. Juan · 55 1234 5678">
+      <button class="btn" id="btnCrear">Crear licencia</button>
+      <div class="msg" id="msgCrear"></div>
+    </div>
+
+    <div class="card oculto" id="res">
+      <h2 id="resTit">Licencia lista</h2>
+      <div class="lic" id="resLic"></div>
+      <div>
+        <button class="btn chico" id="btnCopLic">Copiar licencia</button>
+        <button class="btn chico" id="btnCopMsg">Copiar mensaje para el cliente</button>
+        <a class="btn chico" id="btnWa" target="_blank" rel="noopener">Mandar por WhatsApp</a>
+      </div>
+      <label>Mensaje para el cliente</label>
+      <textarea id="resMsg" readonly style="min-height:200px;font:13px/1.45 Verdana,Tahoma,sans-serif;word-break:normal"></textarea>
+    </div>
+
+    <div class="card">
+      <h2>Tu link de referidos</h2>
+      <p class="nota">Compártelo en tus grupos: la página de descarga muestra tu contacto para comprar, y así Osbeliaal sabe que el cliente llegó por ti.</p>
+      <div class="lic" id="refLink"></div>
+      <button class="btn chico" id="btnCopRef">Copiar link</button>
+    </div>
+
+    <div class="card">
+      <h2>Mis ventas</h2>
+      <div class="resumen"><div><b id="rHoy">0</b>hoy</div><div><b id="rMes">0</b>este mes</div><div><b id="rTot">0</b>en total</div><div><b id="rNuevas">0</b>sin reportar</div></div>
+      <p class="nota">Mándale tu reporte a Osbeliaal (por ejemplo cada semana): toca el botón y pégalo en su WhatsApp o Telegram.</p>
+      <button class="btn" id="btnReporte">Copiar reporte de ventas nuevas</button>
+      <div>
+        <button class="btn chico gris" id="btnReporteTodo">Copiar reporte completo</button>
+        <button class="btn chico gris" id="btnDescargar">Descargar respaldo</button>
+      </div>
+      <div class="msg" id="msgRep"></div>
+      <div id="lista" style="margin-top:8px"></div>
+    </div>
+
+    <button class="btn gris" id="btnSalir">Bloquear (pedir PIN otra vez)</button>
+  </section>
+
+  <section class="card oculto" id="vSinCrypto">
+    <h2>Este navegador no sirve para crear licencias</h2>
+    <p>Abre esta página en Chrome, Safari o Edge actualizados, desde <b>https://osbeliaal.github.io/ox-files/vendedor.html</b>.</p>
+  </section>
+
+  <footer>Minibia Helper · Vendedor autorizado de Osbeliaal · Tus ventas se guardan solo en este dispositivo.</footer>
+</div>
+<script>
+(function () {
+  'use strict';
+  var K_LLAVE = 'mbhv_llave', K_VENTAS = 'mbhv_ventas';
+  var NOMBRE = { L: 'Lite', M: 'Estándar', G: 'Gold', T: 'Prueba Gold' };
+  var PAGINA = 'https://osbeliaal.github.io/ox-files/';
+  var $ = function (id) { return document.getElementById(id); };
+  var llave = null;      // datos públicos de la llave guardada: { c, n, k, s, i, x, r }
+  var priv = null;       // CryptoKey (solo en memoria, no se puede exportar)
+  var tipo = 'G', ultima = null;
+
+  function ls(k, v) {
+    try { if (v === undefined) { return localStorage.getItem(k); } if (v === null) { localStorage.removeItem(k); } else { localStorage.setItem(k, v); } } catch (e) {}
+    return null;
+  }
+  function b64d(s) {
+    s = String(s).trim().replace(/-/g, '+').replace(/_/g, '/'); while (s.length % 4) { s += '='; }
+    var b = atob(s), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) { u[i] = b.charCodeAt(i); } return u;
+  }
+  function b64u(buf) {
+    var u = new Uint8Array(buf), s = ''; for (var i = 0; i < u.length; i++) { s += String.fromCharCode(u[i]); }
+    return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  function norm(n) { return String(n || '').trim().toLowerCase().replace(/\s+/g, ' '); }
+  function pinNorm(p) { return String(p || '').replace(/[\s-]/g, '').toUpperCase(); }
+  function z(n) { return ('0' + n).slice(-2); }
+  function msg(id, t, tipoMsg) { var e = $(id); e.textContent = t || ''; e.className = 'msg' + (tipoMsg ? ' ' + tipoMsg : ''); }
+  function ver(id) { ['vLlave', 'vPin', 'vVender', 'vSinCrypto'].forEach(function (v) { $(v).classList.toggle('oculto', v !== id); }); }
+
+  function leerLlaveTexto(t) {
+    t = String(t || '').replace(/\s+/g, '');
+    var i = t.indexOf('MBHS1.');
+    if (i < 0) { throw new Error('Esa no es una llave de vendedor (debe empezar con MBHS1.)'); }
+    var j = JSON.parse(new TextDecoder().decode(b64d(t.slice(i + 6))));
+    if (!j.c || !j.k || !j.s || !j.i || !j.x) { throw new Error('La llave está incompleta. Cópiala completa otra vez.'); }
+    return j;
+  }
+  function abrir(ll, pin) {
+    var enc = new TextEncoder();
+    return crypto.subtle.importKey('raw', enc.encode(pinNorm(pin)), 'PBKDF2', false, ['deriveKey']).then(function (base) {
+      return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64d(ll.s), iterations: ll.r || 250000, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+    }).then(function (aes) {
+      return crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64d(ll.i) }, aes, b64d(ll.x));
+    }).then(function (pkcs8) {
+      return crypto.subtle.importKey('pkcs8', pkcs8, { name: 'ECDSA', namedCurve: 'P-256' }, false, ['sign']);
+    }, function () { throw new Error('PIN incorrecto'); });
+  }
+
+  // ----- fechas -----
+  function finDias(d) { var t = new Date(); t.setDate(t.getDate() + d); return '' + t.getFullYear() + z(t.getMonth() + 1) + z(t.getDate()); }
+  function finHoras(h) { var t = new Date(Date.now() + h * 3600000); return '' + t.getUTCFullYear() + z(t.getUTCMonth() + 1) + z(t.getUTCDate()) + z(t.getUTCHours()) + z(t.getUTCMinutes()); }
+  function fechaTxt(f) {
+    f = String(f || '');
+    if (f.length === 12) { var d = new Date(Date.UTC(+f.slice(0, 4), +f.slice(4, 6) - 1, +f.slice(6, 8), +f.slice(8, 10), +f.slice(10, 12))); return z(d.getDate()) + '/' + z(d.getMonth() + 1) + '/' + d.getFullYear() + ' ' + z(d.getHours()) + ':' + z(d.getMinutes()); }
+    return f.slice(6, 8) + '/' + f.slice(4, 6) + '/' + f.slice(0, 4);
+  }
+  function ahoraTxt() { var d = new Date(); return d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' + z(d.getDate()) + ' ' + z(d.getHours()) + ':' + z(d.getMinutes()); }
+
+  // ----- ventas -----
+  function ventas() { try { var v = JSON.parse(ls(K_VENTAS) || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+  function guardarVentas(v) { ls(K_VENTAS, JSON.stringify(v)); }
+  function limpio(s) { return String(s || '').replace(/[|\r\n]+/g, ' / ').trim(); }
+  function lineaReporte(v) { return ['MBHR1', llave.c, v.cuando, NOMBRE[v.t], limpio(v.personaje), v.fin, limpio(v.cobro), limpio(v.nota), v.lic].join('|'); }
+  function reporte(lista) {
+    return 'Reporte de ventas de ' + llave.n + ' (' + llave.c + ') · ' + lista.length + ' venta(s) · ' + ahoraTxt() + '\n' + lista.map(lineaReporte).join('\n');
+  }
+  function linkRef() { return PAGINA + '?ref=' + encodeURIComponent(llave.c); }
+  function mensajeCliente(v) {
+    return '¡Gracias por tu compra! 🎮\n' +
+      'Tu licencia ' + NOMBRE[v.t] + ' de Minibia Helper para *' + v.personaje + '* (vence el ' + fechaTxt(v.fin) + '):\n\n' +
+      v.lic + '\n\n' +
+      'Cómo activarla:\n' +
+      '1. Entra a minibia.com/play con tu personaje *' + v.personaje + '*.\n' +
+      '2. El Minibia Helper te pide la licencia al abrirlo (si ya tenías una, ve a «Acerca de» → «Activar otra licencia»).\n' +
+      '3. Escribe el nombre de tu personaje, pega la licencia y toca «Activar».\n\n' +
+      '¿Todavía no tienes el helper? Descárgalo aquí: ' + linkRef() + '\n\n' +
+      'Cualquier duda, aquí ando. — ' + llave.n;
+  }
+  function pintarVentas() {
+    var v = ventas(), hoy = ahoraTxt().slice(0, 10), mes = hoy.slice(0, 7);
+    $('rHoy').textContent = v.filter(function (x) { return x.cuando.slice(0, 10) === hoy; }).length;
+    $('rMes').textContent = v.filter(function (x) { return x.cuando.slice(0, 7) === mes; }).length;
+    $('rTot').textContent = v.length;
+    $('rNuevas').textContent = v.filter(function (x) { return !x.rep; }).length;
+    var cont = $('lista'); cont.innerHTML = '';
+    if (!v.length) { cont.innerHTML = '<p class="nota">Todavía no has vendido licencias en este dispositivo.</p>'; return; }
+    v.slice().reverse().slice(0, 60).forEach(function (x) {
+      var f = document.createElement('div'); f.className = 'venta';
+      var d = document.createElement('div'); d.className = 'd';
+      var b = document.createElement('b'); b.textContent = x.personaje; d.appendChild(b);
+      var tg = document.createElement('span'); tg.className = 'tag' + (x.rep ? '' : ' nuevo'); tg.textContent = x.rep ? 'reportada' : 'sin reportar'; d.appendChild(tg);
+      var s = document.createElement('div'); s.className = 'x';
+      s.textContent = NOMBRE[x.t] + ' · vence ' + fechaTxt(x.fin) + ' · ' + x.cuando + (x.cobro ? ' · $' + String(x.cobro).replace(/^\$/, '') : '') + (x.nota ? ' · ' + x.nota : '');
+      d.appendChild(s); f.appendChild(d);
+      var bt = document.createElement('button'); bt.textContent = 'Mensaje';
+      bt.onclick = function () { mostrarResultado(x); window.scrollTo({ top: $('res').offsetTop - 10, behavior: 'smooth' }); };
+      f.appendChild(bt); cont.appendChild(f);
+    });
+  }
+  function copiar(t, idMsg, ok) {
+    function bien() { if (idMsg) { msg(idMsg, ok || 'Copiado ✔', 'ok'); } return true; }
+    function aMano() {
+      var ta = document.createElement('textarea'); ta.value = t; ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0'; document.body.appendChild(ta); ta.focus(); ta.select();
+      var r = false; try { r = document.execCommand('copy'); } catch (e) {} ta.remove();
+      if (r) { return bien(); } if (idMsg) { msg(idMsg, 'No pude copiar: mantén presionado el texto y cópialo a mano.', 'err'); } return false;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) { return navigator.clipboard.writeText(t).then(bien, aMano); }
+    return Promise.resolve(aMano());
+  }
+
+  // ----- crear licencia -----
+  function elegirTipo(t) {
+    tipo = t;
+    [].forEach.call($('tipos').children, function (b) { b.classList.toggle('on', b.getAttribute('data-t') === t); });
+    var dur = $('inDur');
+    if (t === 'T') { $('lblDur').textContent = 'Horas (máx. 72)'; dur.max = 72; dur.value = 24; }
+    else { $('lblDur').textContent = 'Días (máx. 31)'; dur.max = 31; if (+dur.value > 31 || +dur.value < 1 || dur.dataset.t === 'T') { dur.value = 30; } }
+    dur.dataset.t = t;
+  }
+  function crear() {
+    var nom = $('inChar').value.trim().replace(/\s+/g, ' ');
+    if (nom.length < 2) { msg('msgCrear', 'Escribe el nombre del personaje del cliente.', 'err'); $('inChar').focus(); return; }
+    var n = Math.floor(+$('inDur').value);
+    var max = tipo === 'T' ? 72 : 31;
+    if (!(n >= 1 && n <= max)) { msg('msgCrear', tipo === 'T' ? 'La prueba puede durar de 1 a 72 horas.' : 'La licencia puede durar de 1 a 31 días.', 'err'); return; }
+    var fin = tipo === 'T' ? finHoras(n) : finDias(n);
+    var datos = 'MBH2|' + tipo + '|' + norm(nom) + '|' + fin + '|' + llave.c;
+    $('btnCrear').disabled = true; msg('msgCrear', 'Creando…');
+    crypto.subtle.sign({ name: 'ECDSA', hash: 'SHA-256' }, priv, new TextEncoder().encode(datos)).then(function (sig) {
+      var lic = 'MBH-' + tipo + '-' + fin + '-' + llave.c + '.' + b64u(sig);
+      // comprobación: que la firma sí valga con la clave pública de la llave (la misma que revisa el helper)
+      return crypto.subtle.importKey('raw', b64d(llave.k), { name: 'ECDSA', namedCurve: 'P-256' }, false, ['verify']).then(function (pub) {
+        return crypto.subtle.verify({ name: 'ECDSA', hash: 'SHA-256' }, pub, sig, new TextEncoder().encode(datos));
+      }).then(function (ok) {
+        if (!ok) { throw new Error('la firma no coincide con tu llave'); }
+        var v = { t: tipo, personaje: nom, fin: fin, lic: lic, cuando: ahoraTxt(), cobro: $('inCobro').value.trim(), nota: $('inNota').value.trim() };
+        var l = ventas(); l.push(v); guardarVentas(l);
+        msg('msgCrear', '✔ Licencia ' + NOMBRE[tipo] + ' creada para ' + nom + '.', 'ok');
+        $('inChar').value = ''; $('inCobro').value = ''; $('inNota').value = '';
+        mostrarResultado(v); pintarVentas();
+        window.scrollTo({ top: $('res').offsetTop - 10, behavior: 'smooth' });
+      });
+    }).catch(function (e) { msg('msgCrear', 'No pude crear la licencia: ' + e.message, 'err'); }).then(function () { $('btnCrear').disabled = false; });
+  }
+  function mostrarResultado(v) {
+    ultima = v;
+    $('res').classList.remove('oculto');
+    $('resTit').textContent = NOMBRE[v.t] + ' · ' + v.personaje + ' · vence ' + fechaTxt(v.fin);
+    $('resLic').textContent = v.lic;
+    var m = mensajeCliente(v);
+    $('resMsg').value = m;
+    $('btnWa').href = 'https://wa.me/?text=' + encodeURIComponent(m);
+  }
+
+  // ----- arranque -----
+  function entrar(ll, pk) {
+    llave = ll; priv = pk;
+    $('quien').classList.remove('oculto'); $('qNom').textContent = ll.n; $('qCod').textContent = 'código ' + ll.c;
+    $('refLink').textContent = linkRef();
+    ver('vVender'); pintarVentas();
+    setTimeout(function () { try { $('inChar').focus(); } catch (e) {} }, 50);
+  }
+  function inicio() {
+    if (!(window.crypto && crypto.subtle && window.TextEncoder)) { ver('vSinCrypto'); return; }
+    var t = ls(K_LLAVE);
+    if (t) {
+      try { llave = leerLlaveTexto(t); } catch (e) { ls(K_LLAVE, null); llave = null; }
+    }
+    if (llave) {
+      $('quien').classList.remove('oculto'); $('qNom').textContent = llave.n; $('qCod').textContent = 'código ' + llave.c;
+      ver('vPin'); setTimeout(function () { $('inPin').focus(); }, 50);
+    } else { ver('vLlave'); }
+  }
+
+  $('btnGuardarLlave').onclick = function () {
+    var ll;
+    try { ll = leerLlaveTexto($('inLlave').value); } catch (e) { msg('msgLlave', e.message, 'err'); return; }
+    if (pinNorm($('inPin1').value).length < 4) { msg('msgLlave', 'Escribe tu PIN.', 'err'); return; }
+    msg('msgLlave', 'Comprobando…');
+    abrir(ll, $('inPin1').value).then(function (pk) {
+      ls(K_LLAVE, $('inLlave').value.replace(/\s+/g, ''));
+      $('inLlave').value = ''; $('inPin1').value = '';
+      entrar(ll, pk);
+    }, function (e) { msg('msgLlave', e.message + '. Revisa el PIN que te dio Osbeliaal.', 'err'); });
+  };
+  $('btnAbrir').onclick = function () {
+    msg('msgPin', 'Abriendo…');
+    abrir(llave, $('inPin').value).then(function (pk) { $('inPin').value = ''; msg('msgPin', ''); entrar(llave, pk); }, function (e) { msg('msgPin', e.message, 'err'); });
+  };
+  $('inPin').addEventListener('keydown', function (e) { if (e.key === 'Enter') { $('btnAbrir').click(); } });
+  $('inChar').addEventListener('keydown', function (e) { if (e.key === 'Enter') { crear(); } });
+  $('btnOtraLlave').onclick = function () {
+    if (!confirm('¿Quitar la llave de este dispositivo? Tus ventas guardadas aquí no se borran.')) { return; }
+    ls(K_LLAVE, null); llave = null; $('quien').classList.add('oculto'); ver('vLlave');
+  };
+  [].forEach.call($('tipos').children, function (b) { b.onclick = function () { elegirTipo(b.getAttribute('data-t')); }; });
+  $('btnCrear').onclick = crear;
+  $('btnCopLic').onclick = function () { if (ultima) { copiar(ultima.lic, 'msgCrear', 'Licencia copiada ✔'); } };
+  $('btnCopMsg').onclick = function () { if (ultima) { copiar(mensajeCliente(ultima), 'msgCrear', 'Mensaje copiado ✔ Pégalo en el chat del cliente.'); } };
+  $('btnCopRef').onclick = function () { copiar(linkRef(), 'msgRep', 'Link copiado ✔'); };
+  $('btnReporte').onclick = function () {
+    var l = ventas(), nuevas = l.filter(function (x) { return !x.rep; });
+    if (!nuevas.length) { msg('msgRep', 'No hay ventas nuevas desde tu último reporte.', 'ok'); return; }
+    copiar(reporte(nuevas), 'msgRep', 'Reporte copiado ✔ (' + nuevas.length + ' venta(s)). Pégalo en el chat de Osbeliaal.').then(function (ok) {
+      if (!ok) { return; }
+      l.forEach(function (x) { x.rep = 1; }); guardarVentas(l); pintarVentas();
+    });
+  };
+  $('btnReporteTodo').onclick = function () {
+    var l = ventas(); if (!l.length) { msg('msgRep', 'Todavía no tienes ventas.', 'ok'); return; }
+    copiar(reporte(l), 'msgRep', 'Reporte completo copiado ✔ (' + l.length + ' venta(s)).');
+  };
+  $('btnDescargar').onclick = function () {
+    var l = ventas(); if (!l.length) { msg('msgRep', 'Todavía no tienes ventas.', 'ok'); return; }
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([reporte(l) + '\n'], { type: 'text/plain' }));
+    a.download = 'ventas-' + llave.c + '-' + ahoraTxt().slice(0, 10) + '.txt';
+    document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  };
+  $('btnSalir').onclick = function () { priv = null; ultima = null; $('res').classList.add('oculto'); ver('vPin'); };
+  elegirTipo('G');
+  inicio();
+})();
+</script>
+</body>
+</html>
