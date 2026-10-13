@@ -1,6 +1,89 @@
 [
  {
+  "version": "5.35",
+  "fecha": "2026-10-11",
+  "titulo": {
+   "es": "Macros: crea tus propias reglas",
+   "en": "Macros: create your own rules"
+  },
+  "cambios": {
+   "es": [
+    "Nuevo: Macros (pestaña propia «Macros», exclusivo de la licencia Gold). Escribe tus propias reglas en español sencillo, una por línea: «si (condición) entonces (acción)». Por ejemplo: si monstruos >= 3 y jugadores == 0 entonces runa \"great fireball\" en objetivo cada 2s.",
+    "Con ayuda de una IA: escribe en palabras normales qué quieres que haga tu personaje, toca «Copiar instrucciones para la IA», pégalas en ChatGPT (o la IA que uses) y pega aquí lo que te conteste. Si algo sale mal, el helper te da un mensaje para que la IA lo corrija.",
+    "Condiciones: tu vida y maná (en % o en puntos), cap, monstruos en pantalla o pegados a ti, jugadores y jugadores con calavera, tu objetivo y su vida, protection zone, cuántos de un monstruo ves y cuántos objetos tienes.",
+    "Acciones: decir un hechizo, tirar una runa a tu objetivo o a ti, usar un objeto, pulsar una tecla del hotbar, atacar al más cercano, soltar el objetivo, avisarte (también al celular), pausar la caza, el runeo o el training mientras se cumpla, y «parar» para no revisar las reglas de abajo.",
+    "El helper revisa lo que escribes al momento y te dice en qué línea hay un error y por qué. Trae ejemplos listos y una ayuda con todo lo que puedes usar. También funciona en inglés (if / then / every).",
+    "Seguro: las reglas solo leen el juego y hacen acciones del juego; no pueden tocar tus archivos ni tus licencias.",
+    "Cave hunt: los monstruos a atacar ahora se guardan junto con la ruta con nombre (y viajan con ella cuando copias o pegas una ruta). Al cargar la ruta ya no tienes que volver a escribirlos.",
+    "Nuevo botón «📡 Agregar monstruos de alrededor»: escribe solo los monstruos que ves en pantalla, sin repetir y sin jugadores, NPCs ni invocaciones.",
+    "Kiting rehecho (paladin, sorcerer y druid): ahora mantiene a los monstruos a la distancia que elijas (3 sqm por defecto) y se queda quieto disparando; solo da un paso cuando alguno se acerca. Camina recto como un jugador, no choca con paredes, no se mete a esquinas y busca hacia dónde huir aunque lo sigan varios monstruos."
+   ],
+   "en": [
+    "New: Macros (its own «Macros» tab, exclusive to the Gold license). Write your own rules in plain words, one per line: «if (condition) then (action)». For example: if monsters >= 3 and players == 0 then rune \"great fireball\" on target every 2s.",
+    "With help from an AI: write in normal words what you want your character to do, tap «Copy instructions for the AI», paste them into ChatGPT (or the AI you use) and paste its answer here. If something is wrong, the helper gives you a message so the AI fixes it.",
+    "Conditions: your health and mana (in % or points), cap, monsters on screen or next to you, players and players with a skull, your target and its health, protection zone, how many of a monster you see and how many items you have.",
+    "Actions: say a spell, throw a rune at your target or at yourself, use an item, press a hotbar key, attack the nearest one, release the target, alert you (also on your phone), pause the hunt, runes or training while it is true, and «stop» to skip the rules below.",
+    "The helper checks what you write instantly and tells you which line has an error and why. It comes with ready examples and a help with everything you can use. It also works in Spanish (si / entonces / cada).",
+    "Safe: rules only read the game and do game actions; they cannot touch your files or your licenses.",
+    "Cave hunt: the monsters to attack are now saved together with the named route (and travel with it when you copy or paste a route). When you load the route you no longer have to type them again.",
+    "New «📡 Add monsters around me» button: it types only the monsters you see on screen, without repeats and without players, NPCs or summons.",
+    "Kiting rebuilt (paladins, sorcerers and druids): it now keeps monsters at the distance you choose (3 sqm by default) and stands still shooting; it only takes a step when one gets closer. It walks straight like a player, does not bump into walls, does not get into corners and finds where to run even when several monsters chase it."
+   ]
+  }
+ },
+ {
+  "version": "5.34",
+  "fecha": "2026-10-11",
+  "titulo": {
+   "es": "Defensa contra PK y avisos al celular",
+   "en": "PK defense and phone alerts"
+  },
+  "cambios": {
+   "es": [
+    "Cave hunt · Defensa contra jugadores (PK): nueva casilla «Defenderme si un jugador me ataca». Si alguien te ataca a ti, el helper cuenta tus runas de ataque y tus curaciones, revisa tu vida y cuántos PKs son, y decide solo: pelear con runas o escapar por la ruta. Nunca ataca a quien no te atacó, ni a tu party.",
+    "Al pelear quita el PVP Lock solo durante la pelea y lo vuelve a poner al terminar. Si tu vida baja durante la pelea, cambia a escapar. Si el PK ya casi muere (20 % o menos), lo remata.",
+    "Después de escapar vuelve a cazar solo cuando pasa un rato sin ataques (60 s por defecto) y tu vida se recuperó.",
+    "Te avisa de todo: cuando te defiendes, cuando escapas, cuando muere el PK y cuando vuelves a cazar.",
+    "Avisos al celular (pestaña Alertas): recibe las alertas en tu celular aunque juegues en la PC, por Telegram (recomendado), WhatsApp (CallMeBot) o la app ntfy. Viene apagado; trae pasos para activarlo y un botón de prueba. Solo se envía el texto de la alerta al servicio que elijas."
+   ],
+   "en": [
+    "Cave hunt · Defense against players (PK): new checkbox «Defend myself if a player attacks me». If someone attacks you, the helper counts your attack runes and heals, checks your health and how many PKs there are, and decides by itself: fight back with runes or escape along the route. It never attacks someone who did not attack you, nor your party.",
+    "When fighting it removes the PVP Lock only during the fight and puts it back afterwards. If your health drops during the fight, it switches to escaping. If the PK is almost dead (20% or less), it finishes him.",
+    "After escaping it goes back to hunting only after a while without attacks (60 s by default) and once your health has recovered.",
+    "It alerts you about everything: when you fight back, when you escape, when the PK dies and when you go back to hunting.",
+    "Phone alerts (Alerts tab): get your alerts on your phone even if you play on PC, through Telegram (recommended), WhatsApp (CallMeBot) or the ntfy app. Off by default; it includes setup steps and a test button. Only the alert text is sent to the service you choose."
+   ]
+  }
+ },
+ {
+  "version": "5.33",
+  "fecha": "2026-10-10",
+  "titulo": {
+   "es": "Cave hunt: escaleras, rope y shovel",
+   "en": "Cave hunt: stairs, rope and shovel"
+  },
+  "cambios": {
+   "es": [
+    "Arreglado: el Cave hunt a veces se ponía a escarbar con la shovel en tierra normal. Ahora solo usa la shovel en hoyos cerrados de verdad (stone pile, loose stone pile...).",
+    "Ida y vuelta arreglado: al regresar por la ruta, el Cave hunt ya sabe subir con la rope por donde bajó por un hoyo, bajar por el hoyo por donde subió con la rope (abriéndolo con la shovel si está cerrado) y bajar o subir por las escaleras. Antes se quedaba atorado empujando con las flechas.",
+    "Al regresar ya no repite la rope o la shovel que grabaste para la ida (te subía o te abría un hoyo en el lugar equivocado).",
+    "Escaleras de distintos tipos: las «ladder» y «trapdoor» que se pisan ya no se confunden con las de clic derecho. Las que se pisan, las camina; las de clic derecho (ladder, rope-ladder, sewer grate), las usa.",
+    "Si un hoyo se vuelve a cerrar antes de pisarlo, lo abre otra vez con la shovel en lugar de quedarse atorado.",
+    "Después de cambiar de piso sigue con el punto que le toca y no se salta partes de la ruta."
+   ],
+   "en": [
+    "Fixed: Cave hunt sometimes started digging with the shovel on normal ground. Now it only uses the shovel on real closed holes (stone pile, loose stone pile...).",
+    "Round trip fixed: when going back along the route, Cave hunt now knows how to go up with the rope where it went down a hole, go down the hole where it went up with the rope (opening it with the shovel if it is closed) and go down or up stairs. Before, it got stuck pushing the arrow keys.",
+    "On the way back it no longer repeats the rope or shovel you recorded for the way out (it used to take you up or open a hole in the wrong place).",
+    "Different kinds of stairs: «ladder» and «trapdoor» tiles you step on are no longer mixed up with right-click ones. It walks onto the ones you step on and uses the right-click ones (ladder, rope-ladder, sewer grate).",
+    "If a hole closes again before it steps on it, it opens it again with the shovel instead of getting stuck.",
+    "After changing floors it continues with the right point and does not skip parts of the route."
+   ]
+  }
+ },
+ {
   "version": "5.31",
+  "fecha": "2026-10-10",
   "titulo": {
    "es": "Nuevas licencias, Combo runa y Training",
    "en": "New licenses, Rune combo and Training"
@@ -46,6 +129,7 @@
  },
  {
   "version": "5.10",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Más fluido",
    "en": "Smoother"
@@ -61,6 +145,7 @@
  },
  {
   "version": "5.8",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Licencias por personaje",
    "en": "Per-character licenses"
@@ -84,6 +169,7 @@
  },
  {
   "version": "5.7",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Idioma: español e inglés",
    "en": "Language: Spanish and English"
@@ -103,6 +189,7 @@
  },
  {
   "version": "5.6",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "iPhone y navegador",
    "en": "iPhone and browser"
@@ -122,6 +209,7 @@
  },
  {
   "version": "5.5",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Guía y novedades",
    "en": "Guide and what's new"
@@ -137,6 +225,7 @@
  },
  {
   "version": "5.4",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Licencias",
    "en": "Licenses"
@@ -158,6 +247,7 @@
  },
  {
   "version": "5.3",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Segundo plano y notificaciones (app de Android)",
    "en": "Background and notifications (Android app)"
@@ -179,6 +269,7 @@
  },
  {
   "version": "5.2",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Hotbar del celular",
    "en": "Phone hotbar"
@@ -198,6 +289,7 @@
  },
  {
   "version": "5.1",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "Icono y gestos",
    "en": "Icon and gestures"
@@ -217,6 +309,7 @@
  },
  {
   "version": "5.0",
+  "fecha": "2026-10-08",
   "titulo": {
    "es": "App para Android",
    "en": "Android app"
