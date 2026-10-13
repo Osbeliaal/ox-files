@@ -1,5 +1,21 @@
 [
  {
+  "version": "5.37",
+  "fecha": "2026-10-12",
+  "titulo": {
+   "es": "Activar licencia más fácil",
+   "en": "Easier license activation"
+  },
+  "cambios": {
+   "es": [
+    "Al activar tu licencia ya puedes pegar el mensaje completo que te mandó tu vendedor: el helper encuentra la licencia sola."
+   ],
+   "en": [
+    "When activating your license you can now paste the whole message your seller sent you: the helper finds the license by itself."
+   ]
+  }
+ },
+ {
   "version": "5.36",
   "fecha": "2026-10-12",
   "titulo": {
