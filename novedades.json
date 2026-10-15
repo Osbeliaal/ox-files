@@ -11,13 +11,15 @@
     "Combo runa: ahora tira la misma runa que el líder (si el líder tira HMM, tú HMM; si tira GFB o explosion, tú la de fuego que tengas). Si el objetivo tiene poca vida (30 % o menos), cambia a SD para rematar. Puedes apagar cada opción y elegir el %.",
     "Arreglado: si tenías una prueba de 1 día y activabas la licencia que compraste (o una renovación), seguía mostrando la prueba. Ahora la prueba se quita y queda la que compraste.",
     "Mientras usas la prueba, arriba de la pestaña Runas sale un aviso con el botón «Activar licencia nueva» para pegar la que compres.",
-    "Nuevo botón «Mis licencias» en «Acerca de»: ves las licencias guardadas en tu dispositivo y puedes quitar la que quieras."
+    "Nuevo botón «Mis licencias» en «Acerca de»: ves las licencias guardadas en tu dispositivo y puedes quitar la que quieras.",
+    "Captcha anti-bot del juego: el aviso (y el mensaje a tu celular) ahora te dice cuántos segundos te quedan para resolverlo, y te vuelve a avisar más fuerte cuando faltan 15 segundos."
    ],
    "en": [
     "Rune combo: it now fires the same rune as the leader (if the leader fires HMM, you fire HMM; if GFB or explosion, the fire rune you have). If the target is low on health (30% or less), it switches to SD to finish it. You can turn each option off and choose the %.",
     "Fixed: if you had a 1-day trial and activated the license you bought (or a renewal), it kept showing the trial. Now the trial is removed and the license you bought stays.",
     "While you use the trial, a notice with an «Activate new license» button appears at the top of the Runes tab so you can paste the one you buy.",
-    "New «My licenses» button in «About»: see the licenses saved on your device and remove any of them."
+    "New «My licenses» button in «About»: see the licenses saved on your device and remove any of them.",
+    "Game anti-bot captcha: the alert (and the message to your phone) now tells you how many seconds you have left to solve it, and warns you again louder when 15 seconds are left."
    ]
   }
  },
