@@ -1,5 +1,53 @@
 [
  {
+  "version": "5.39",
+  "fecha": "2026-10-14",
+  "titulo": {
+   "es": "Combo runa más listo y licencias",
+   "en": "Smarter rune combo and licenses"
+  },
+  "cambios": {
+   "es": [
+    "Combo runa: ahora tira la misma runa que el líder (si el líder tira HMM, tú HMM; si tira GFB o explosion, tú la de fuego que tengas). Si el objetivo tiene poca vida (30 % o menos), cambia a SD para rematar. Puedes apagar cada opción y elegir el %.",
+    "Arreglado: si tenías una prueba de 1 día y activabas la licencia que compraste (o una renovación), seguía mostrando la prueba. Ahora la prueba se quita y queda la que compraste.",
+    "Mientras usas la prueba, arriba de la pestaña Runas sale un aviso con el botón «Activar licencia nueva» para pegar la que compres.",
+    "Nuevo botón «Mis licencias» en «Acerca de»: ves las licencias guardadas en tu dispositivo y puedes quitar la que quieras."
+   ],
+   "en": [
+    "Rune combo: it now fires the same rune as the leader (if the leader fires HMM, you fire HMM; if GFB or explosion, the fire rune you have). If the target is low on health (30% or less), it switches to SD to finish it. You can turn each option off and choose the %.",
+    "Fixed: if you had a 1-day trial and activated the license you bought (or a renewal), it kept showing the trial. Now the trial is removed and the license you bought stays.",
+    "While you use the trial, a notice with an «Activate new license» button appears at the top of the Runes tab so you can paste the one you buy.",
+    "New «My licenses» button in «About»: see the licenses saved on your device and remove any of them."
+   ]
+  }
+ },
+ {
+  "version": "5.38",
+  "fecha": "2026-10-14",
+  "titulo": {
+   "es": "Munición automática, aviso de monstruo y descansos",
+   "en": "Automatic ammo, monster alert and breaks"
+  },
+  "cambios": {
+   "es": [
+    "Cave hunt (paladin): sube la munición sola al slot de flechas. Busca en tus mochilas abiertas flechas si traes arco o bolts si traes ballesta, de cualquier tipo (arrow, poison arrow, power bolt...). Primero junta las del mismo tipo y, cuando se acaban, pone otro tipo. Te avisa cuando ya no queda nada.",
+    "Training: cuando se acaban las small stones de tu mano, toma más de la mochila y las pone en la misma mano.",
+    "Puedes elegir con cuántas rellenar (20 de munición y 5 piedras por defecto) o apagar cada opción.",
+    "Nuevo aviso: si aparece un monstruo que no te ataca y te pregunta \"are you there?\", el helper pausa el Cave hunt, el runeo y el training, suena la alarma y te avisa (también al celular). Contéstale tú y luego toca «Reanudar helper».",
+    "Cave hunt: recordatorio para tomar un descanso cada 60 minutos de caza (puedes cambiar el tiempo o hacer que el Cave hunt se detenga al recordártelo).",
+    "Al abrir el helper por primera vez sale un aviso de uso responsable que hay que aceptar."
+   ],
+   "en": [
+    "Cave hunt (paladin): moves ammo to the arrow slot by itself. It looks in your open backpacks for arrows if you carry a bow or bolts if you carry a crossbow, of any kind (arrow, poison arrow, power bolt...). It first stacks the same kind and, when they run out, uses another kind. It warns you when there is nothing left.",
+    "Training: when the small stones in your hand run out, it takes more from your backpack and puts them in the same hand.",
+    "You can choose when to refill (20 ammo and 5 stones by default) or turn each option off.",
+    "New alert: if a monster that does not attack you shows up and asks \"are you there?\", the helper pauses Cave hunt, rune making and training, sounds the alarm and alerts you (also on your phone). Answer it yourself and then tap «Resume helper».",
+    "Cave hunt: reminder to take a break every 60 minutes of hunting (you can change the time or make Cave hunt stop when it reminds you).",
+    "When you open the helper for the first time, a responsible-use notice appears that you have to accept."
+   ]
+  }
+ },
+ {
   "version": "5.37",
   "fecha": "2026-10-12",
   "titulo": {

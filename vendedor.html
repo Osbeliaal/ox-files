@@ -210,7 +210,7 @@
   function ventas() { try { var v = JSON.parse(ls(K_VENTAS) || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
   function guardarVentas(v) { ls(K_VENTAS, JSON.stringify(v)); }
   function limpio(s) { return String(s || '').replace(/[|\r\n]+/g, ' / ').trim(); }
-  function lineaReporte(v) { return ['MBHR1', llave.c, v.cuando, NOMBRE[v.t], limpio(v.personaje), v.fin, limpio(v.cobro), limpio(v.nota), v.lic].join('|'); }
+  function lineaReporte(v) { var c = ['MBHR1', llave.c, v.cuando, NOMBRE[v.t], limpio(v.personaje), v.fin, limpio(v.cobro), limpio(v.nota), v.lic]; if (v.anulada) { c.push('ANULADA'); } return c.join('|'); }
   function reporte(lista) {
     return 'Reporte de ventas de ' + llave.n + ' (' + llave.c + ') · ' + lista.length + ' venta(s) · ' + ahoraTxt() + '\n' + lista.map(lineaReporte).join('\n');
   }
@@ -227,24 +227,36 @@
       'Cualquier duda, aquí ando. — ' + llave.n;
   }
   function pintarVentas() {
-    var v = ventas(), hoy = ahoraTxt().slice(0, 10), mes = hoy.slice(0, 7);
+    var todas = ventas(), v = todas.filter(function (x) { return !x.anulada; }), hoy = ahoraTxt().slice(0, 10), mes = hoy.slice(0, 7);
     $('rHoy').textContent = v.filter(function (x) { return x.cuando.slice(0, 10) === hoy; }).length;
     $('rMes').textContent = v.filter(function (x) { return x.cuando.slice(0, 7) === mes; }).length;
     $('rTot').textContent = v.length;
-    $('rNuevas').textContent = v.filter(function (x) { return !x.rep; }).length;
+    $('rNuevas').textContent = todas.filter(function (x) { return !x.rep; }).length;
     var cont = $('lista'); cont.innerHTML = '';
+    v = todas;
     if (!v.length) { cont.innerHTML = '<p class="nota">Todavía no has vendido licencias en este dispositivo.</p>'; return; }
     v.slice().reverse().slice(0, 60).forEach(function (x) {
       var f = document.createElement('div'); f.className = 'venta';
       var d = document.createElement('div'); d.className = 'd';
       var b = document.createElement('b'); b.textContent = x.personaje; d.appendChild(b);
       var tg = document.createElement('span'); tg.className = 'tag' + (x.rep ? '' : ' nuevo'); tg.textContent = x.rep ? 'reportada' : 'sin reportar'; d.appendChild(tg);
+      if (x.anulada) { var ta = document.createElement('span'); ta.className = 'tag'; ta.style.cssText = 'border-color:#ff9b8a;color:#ff9b8a'; ta.textContent = 'anulada'; d.appendChild(ta); b.style.textDecoration = 'line-through'; }
       var s = document.createElement('div'); s.className = 'x';
       s.textContent = NOMBRE[x.t] + ' · vence ' + fechaTxt(x.fin) + ' · ' + x.cuando + (x.cobro ? ' · $' + String(x.cobro).replace(/^\$/, '') : '') + (x.nota ? ' · ' + x.nota : '');
       d.appendChild(s); f.appendChild(d);
       var bt = document.createElement('button'); bt.textContent = 'Mensaje';
       bt.onclick = function () { mostrarResultado(x); window.scrollTo({ top: $('res').offsetTop - 10, behavior: 'smooth' }); };
-      f.appendChild(bt); cont.appendChild(f);
+      f.appendChild(bt);
+      if (!x.anulada) {
+        var ba = document.createElement('button'); ba.textContent = 'Anular';
+        ba.onclick = function () {
+          if (!confirm('¿Anular la licencia ' + NOMBRE[x.t] + ' de ' + x.personaje + '?\n\nVa en tu próximo reporte y Osbeliaal la cancela (deja de funcionar). Úsalo si te equivocaste de nombre o de tipo.')) { return; }
+          var l = ventas(); l.forEach(function (y) { if (y.lic === x.lic) { y.anulada = ahoraTxt(); y.rep = 0; } }); guardarVentas(l); pintarVentas();
+          msg('msgRep', 'Venta anulada. Manda tu reporte a Osbeliaal para que la cancele.', 'ok');
+        };
+        f.appendChild(ba);
+      }
+      cont.appendChild(f);
     });
   }
   function copiar(t, idMsg, ok) {
