@@ -1,5 +1,23 @@
 [
  {
+  "version": "5.41",
+  "fecha": "2026-10-16",
+  "titulo": {
+   "es": "Depósito en la casa",
+   "en": "House deposit"
+  },
+  "cambios": {
+   "es": [
+    "Nuevo en la sección Casa (pestaña Runas): cuando tu cap baja, tu personaje camina a un baúl de tu casa, guarda las runas y la munición de tus mochilas abiertas y regresa a seguir runeando. Párate junto al baúl y toca «Marcar depósito»; también puedes poner el ID del baúl.",
+    "Con el depósito activo, la cap baja ya no detiene el runeo: espera a que guarde y sigue solo. Las blank runes no se guardan, y puedes agregar otros objetos por nombre."
+   ],
+   "en": [
+    "New in the House section (Runes tab): when your cap gets low, your character walks to a chest in your house, stores the runes and ammo from your open backpacks and goes back to keep making runes. Stand next to the chest and tap «Mark deposit»; you can also enter the chest ID.",
+    "With the deposit on, low cap no longer stops rune making: it waits until it stores and continues by itself. Blank runes are not stored, and you can add other items by name."
+   ]
+  }
+ },
+ {
   "version": "5.40",
   "fecha": "2026-10-16",
   "titulo": {
