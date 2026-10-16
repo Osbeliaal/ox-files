@@ -9,11 +9,13 @@
   "cambios": {
    "es": [
     "Todo lo de alertas quedó junto en la pestaña Alertas, también el sonido: ahí eliges el tono (suave, campana, digital, sirena o grave), el volumen, subes tu propio audio y lo pruebas con «Probar sonido».",
-    "La pestaña Sistema quedó solo con lo del sistema: perfil, estado, idioma, dispositivo y los botones de prueba."
+    "La pestaña Sistema quedó solo con lo del sistema: perfil, estado, idioma, dispositivo y los botones de prueba.",
+    "Arreglado: si abrías el helper en otra ventana o pestaña del mismo navegador, a veces te volvía a pedir la licencia. Ahora tu licencia Estándar, Gold o Founder se reconoce en todas tus ventanas y pestañas, aunque la actives en otra."
    ],
    "en": [
     "Everything about alerts is now together in the Alerts tab, sound included: pick the tone (soft, bell, digital, siren or low), the volume, upload your own audio and try it with «Test sound».",
-    "The System tab now only has system stuff: profile, status, language, device and the test buttons."
+    "The System tab now only has system stuff: profile, status, language, device and the test buttons.",
+    "Fixed: if you opened the helper in another window or tab of the same browser, it sometimes asked for your license again. Now your Standard, Gold or Founder license works in all your windows and tabs, even if you activate it in another one."
    ]
   }
  },
