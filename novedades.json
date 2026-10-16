@@ -1,5 +1,63 @@
 [
  {
+  "version": "5.42",
+  "fecha": "2026-10-16",
+  "titulo": {
+   "es": "Alertas más ordenadas y tonos nuevos",
+   "en": "Tidier alerts and new tones"
+  },
+  "cambios": {
+   "es": [
+    "Todo lo de alertas quedó junto en la pestaña Alertas, también el sonido: ahí eliges el tono (suave, campana, digital, sirena o grave), el volumen, subes tu propio audio y lo pruebas con «Probar sonido».",
+    "La pestaña Sistema quedó solo con lo del sistema: perfil, estado, idioma, dispositivo y los botones de prueba."
+   ],
+   "en": [
+    "Everything about alerts is now together in the Alerts tab, sound included: pick the tone (soft, bell, digital, siren or low), the volume, upload your own audio and try it with «Test sound».",
+    "The System tab now only has system stuff: profile, status, language, device and the test buttons."
+   ]
+  }
+ },
+ {
+  "version": "5.41",
+  "fecha": "2026-10-16",
+  "titulo": {
+   "es": "Depósito en la casa",
+   "en": "House deposit"
+  },
+  "cambios": {
+   "es": [
+    "Nuevo en la sección Casa (pestaña Runas): cuando tu cap baja, tu personaje camina a un baúl de tu casa, guarda las runas y la munición de tus mochilas abiertas y regresa a seguir runeando. Párate junto al baúl y toca «Marcar depósito»; también puedes poner el ID del baúl.",
+    "Con el depósito activo, la cap baja ya no detiene el runeo: espera a que guarde y sigue solo. Las blank runes no se guardan, y puedes agregar otros objetos por nombre."
+   ],
+   "en": [
+    "New in the House section (Runes tab): when your cap gets low, your character walks to a chest in your house, stores the runes and ammo from your open backpacks and goes back to keep making runes. Stand next to the chest and tap «Mark deposit»; you can also enter the chest ID.",
+    "With the deposit on, low cap no longer stops rune making: it waits until it stores and continues by itself. Blank runes are not stored, and you can add other items by name."
+   ]
+  }
+ },
+ {
+  "version": "5.40",
+  "fecha": "2026-10-16",
+  "titulo": {
+   "es": "Autohechizos, refugio en casa y esquivar ondas",
+   "en": "Auto spells, house refuge and wave dodging"
+  },
+  "cambios": {
+   "es": [
+    "Nuevo: auto utamo vita y auto utana vid (pestaña Combate, desde la licencia Estándar). Cuando se te acaba el efecto lo vuelve a lanzar si tienes el maná. Utamo vita: elige si lo quieres siempre puesto o solo cuando tu vida baje del % que pongas.",
+    "Nuevo: refugio en la casa al runear (pestaña Runas). Marca tu lugar de runeo y una casilla dentro de tu casa: si aparece un PK o alguien te ataca, tu personaje se mete a la casa (abre la puerta si está cerrada) y regresa cuando pasa 1 minuto sin verlo. Mete a party a tus farmers para que no los confunda; si uno de ellos ve al PK, todos se meten.",
+    "Cave hunt: esquiva las ondas y rayos de dragon, dragon lord y demon. Si te tienen en línea recta, da un paso en diagonal sin despegarse del objetivo. Puedes editar la lista de monstruos.",
+    "Tu código de referido aparece en «Acerca de»: compártelo y si alguien nuevo compra con tu código, te regalamos 3 días extra."
+   ],
+   "en": [
+    "New: auto utamo vita and auto utana vid (Combat tab, from the Standard license). When the effect ends it casts it again if you have the mana. Utamo vita: choose to keep it always on or only when your health drops below the % you set.",
+    "New: house refuge while making runes (Runes tab). Mark your rune spot and a tile inside your house: if a PK shows up or someone attacks you, your character goes into the house (opening the door if closed) and comes back after 1 minute without seeing them. Put your farmers in party so they are not mistaken; if one of them sees the PK, all of them go in.",
+    "Cave hunt: dodges the waves and beams of dragons, dragon lords and demons. If they have you in a straight line, it steps diagonally without leaving the target. You can edit the monster list.",
+    "Your referral code appears in «About»: share it and if someone new buys with your code, we give you 3 extra days."
+   ]
+  }
+ },
+ {
   "version": "5.39",
   "fecha": "2026-10-14",
   "titulo": {
@@ -11,13 +69,17 @@
     "Combo runa: ahora tira la misma runa que el líder (si el líder tira HMM, tú HMM; si tira GFB o explosion, tú la de fuego que tengas). Si el objetivo tiene poca vida (30 % o menos), cambia a SD para rematar. Puedes apagar cada opción y elegir el %.",
     "Arreglado: si tenías una prueba de 1 día y activabas la licencia que compraste (o una renovación), seguía mostrando la prueba. Ahora la prueba se quita y queda la que compraste.",
     "Mientras usas la prueba, arriba de la pestaña Runas sale un aviso con el botón «Activar licencia nueva» para pegar la que compres.",
-    "Nuevo botón «Mis licencias» en «Acerca de»: ves las licencias guardadas en tu dispositivo y puedes quitar la que quieras."
+    "Nuevo botón «Mis licencias» en «Acerca de»: ves las licencias guardadas en tu dispositivo y puedes quitar la que quieras.",
+    "Captcha anti-bot del juego: el aviso (y el mensaje a tu celular) ahora te dice cuántos segundos te quedan para resolverlo, y te vuelve a avisar más fuerte cuando faltan 15 segundos.",
+    "Las casillas dibujadas (resaltadas, hoyos, rope, escaleras, spawns y timers) empiezan ocultas al abrir el juego para que cargue más rápido. Muéstralas con Ctrl+Shift+X o con el botón «Mostrar / ocultar casillas» (pestaña Casillas o Cave hunt)."
    ],
    "en": [
     "Rune combo: it now fires the same rune as the leader (if the leader fires HMM, you fire HMM; if GFB or explosion, the fire rune you have). If the target is low on health (30% or less), it switches to SD to finish it. You can turn each option off and choose the %.",
     "Fixed: if you had a 1-day trial and activated the license you bought (or a renewal), it kept showing the trial. Now the trial is removed and the license you bought stays.",
     "While you use the trial, a notice with an «Activate new license» button appears at the top of the Runes tab so you can paste the one you buy.",
-    "New «My licenses» button in «About»: see the licenses saved on your device and remove any of them."
+    "New «My licenses» button in «About»: see the licenses saved on your device and remove any of them.",
+    "Game anti-bot captcha: the alert (and the message to your phone) now tells you how many seconds you have left to solve it, and warns you again louder when 15 seconds are left.",
+    "Drawn tiles (highlighted, holes, rope, stairs, spawns and timers) start hidden when you open the game so it loads faster. Show them with Ctrl+Shift+X or the «Show / hide tiles» button (Tiles tab or Cave hunt)."
    ]
   }
  },
