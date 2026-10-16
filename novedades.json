@@ -1,5 +1,23 @@
 [
  {
+  "version": "5.42",
+  "fecha": "2026-10-16",
+  "titulo": {
+   "es": "Alertas más ordenadas y tonos nuevos",
+   "en": "Tidier alerts and new tones"
+  },
+  "cambios": {
+   "es": [
+    "Todo lo de alertas quedó junto en la pestaña Alertas, también el sonido: ahí eliges el tono (suave, campana, digital, sirena o grave), el volumen, subes tu propio audio y lo pruebas con «Probar sonido».",
+    "La pestaña Sistema quedó solo con lo del sistema: perfil, estado, idioma, dispositivo y los botones de prueba."
+   ],
+   "en": [
+    "Everything about alerts is now together in the Alerts tab, sound included: pick the tone (soft, bell, digital, siren or low), the volume, upload your own audio and try it with «Test sound».",
+    "The System tab now only has system stuff: profile, status, language, device and the test buttons."
+   ]
+  }
+ },
+ {
   "version": "5.41",
   "fecha": "2026-10-16",
   "titulo": {
