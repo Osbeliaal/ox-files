@@ -8,7 +8,7 @@
   },
   "cambios": {
    "es": [
-    "Vigía (pestaña Runas, sección Casa): para subir magic level, pescar o runear lejos de una zona protegida. Si en pantalla hay los jugadores que elijas (sin contar tu party ni tus farmers), cierra sesión y vuelve a entrar a los minutos que pongas, retomando lo que hacía. Si al volver sigue viendo gente, sale otra vez.",
+    "Vigía (pestaña Runas, sección Casa): para subir magic level, pescar o runear lejos de una zona protegida. Si en pantalla hay los jugadores que elijas (sin contar tu party ni tus farmers), cierra sesión y vuelve a entrar a los minutos que pongas, retomando lo que hacía. Si al volver sigue viendo gente, sale otra vez. Para volver a entrar necesita tu usuario y contraseña guardados en el navegador (el helper no guarda tus datos); con cuenta de Google no puede volver a entrar solo.",
     "Antipush (sección Casa): si te empujan mientras runeas o entrenas, regresas solo a tu lugar.",
     "Luz máxima y outfit visual (pestaña Mapa): quita la oscuridad de cuevas y noches, y te deja verte con cualquier outfit. Todo es solo en tu pantalla.",
     "Silenciar todo el juego (pestaña Alertas): en iPhone y en muchos Android el volumen 0% del juego no apaga el sonido; con esta casilla se apaga todo de verdad, y las alertas del helper siguen sonando.",
@@ -17,7 +17,7 @@
     "Licencia Beta tester de 30 días, y tu código de referido (en «Acerca de») te da 3 días extra por cada persona nueva que compre con él, o 5 días si eres Beta tester."
    ],
    "en": [
-    "Watchman (Runes tab, House section): for training magic level, fishing or making runes far from a protection zone. If the number of players you choose is on screen (not counting your party or your farmers), it logs out and logs back in after the minutes you set, resuming what it was doing. If it still sees people when it comes back, it leaves again.",
+    "Watchman (Runes tab, House section): for training magic level, fishing or making runes far from a protection zone. If the number of players you choose is on screen (not counting your party or your farmers), it logs out and logs back in after the minutes you set, resuming what it was doing. If it still sees people when it comes back, it leaves again. To log back in it needs your username and password saved in the browser (the helper doesn't store your details); with a Google account it can't log back in on its own.",
     "Antipush (House section): if someone pushes you while you make runes or train, you walk back to your spot on your own.",
     "Max light and visual outfit (Map tab): removes the darkness of caves and nights, and lets you see yourself with any outfit. Everything is only on your screen.",
     "Mute the whole game (Alerts tab): on iPhone and many Androids the game's 0% volume doesn't silence anything; this checkbox really turns it all off, and the helper's alerts still sound.",
