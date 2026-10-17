@@ -9,11 +9,13 @@
   "cambios": {
    "es": [
     "Nuevo en la pestaña Combate: trasheo. En PC pulsa Shift+T y haz clic en una casilla; en el teléfono toca 3 veces la casilla. El helper tira ahí tus worms, gold coins o mushrooms (o lo que escribas), uno por uno, hasta que lo apagues o se acaben.",
-    "Antipush de combate: en PC con Shift+P; en el teléfono tocando 3 veces a tu personaje. Tira objetos bajo tus pies y, si te empujan, regresas solo a tu casilla."
+    "Antipush de combate: en PC con Shift+P; en el teléfono tocando 3 veces a tu personaje. Tira objetos bajo tus pies y, si te empujan, regresas solo a tu casilla.",
+    "Herramienta flotante sobre el mapa que te dice si el trasheo y el antipush están en ON u OFF; la tocas para prenderlos o apagarlos y la escondes cuando quieras. Además, cada función nueva trae su cuadro «Cómo usar» con los pasos."
    ],
    "en": [
     "New in the Combat tab: trashing. On PC press Shift+T and click a tile; on your phone tap the tile 3 times. The helper throws your worms, gold coins or mushrooms (or whatever you type) there, one by one, until you turn it off or they run out.",
-    "Combat antipush: on PC with Shift+P; on your phone by tapping your character 3 times. It drops items under your feet and, if you get pushed, you walk back to your tile on your own."
+    "Combat antipush: on PC with Shift+P; on your phone by tapping your character 3 times. It drops items under your feet and, if you get pushed, you walk back to your tile on your own.",
+    "Floating tool over the map that tells you whether trashing and antipush are ON or OFF; tap it to turn them on or off, and hide it whenever you want. Also, every new feature now has a «How to use» box with the steps."
    ]
   }
  },
