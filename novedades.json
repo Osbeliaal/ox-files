@@ -10,7 +10,7 @@
    "es": [
     "Vigía (pestaña Runas, sección Casa): para subir magic level, pescar o runear lejos de una zona protegida. Si en pantalla hay los jugadores que elijas (sin contar tu party ni tus farmers), cierra sesión y vuelve a entrar a los minutos que pongas, retomando lo que hacía. Si al volver sigue viendo gente, sale otra vez. Para volver a entrar necesita tu usuario y contraseña guardados en el navegador (el helper no guarda tus datos); con cuenta de Google no puede volver a entrar solo.",
     "Antipush (sección Casa): si te empujan mientras runeas o entrenas, regresas solo a tu lugar.",
-    "Luz máxima y outfit visual (pestaña Mapa): quita la oscuridad de cuevas y noches, y te deja verte con cualquier outfit. Todo es solo en tu pantalla.",
+    "Luz máxima y outfit visual (pestaña Mapa): quita la oscuridad de cuevas y noches, y te deja verte con cualquier outfit del juego y sus addons, incluido el Deluxe Nobleman. También salen todos en la ventana de outfits del juego. Todo es solo en tu pantalla.",
     "Silenciar todo el juego (pestaña Alertas): en iPhone y en muchos Android el volumen 0% del juego no apaga el sonido; con esta casilla se apaga todo de verdad, y las alertas del helper siguen sonando.",
     "Nueva alerta: si una runa de tus mochilas se gasta sola, o se te acaba la comida, el helper pausa todo y te avisa.",
     "Kiting mejorado: invisible con utana vid y sin que te ataquen, te quedas quieto matando a tu objetivo; si te rodean, huyes hacia donde hay menos monstruos.",
@@ -19,7 +19,7 @@
    "en": [
     "Watchman (Runes tab, House section): for training magic level, fishing or making runes far from a protection zone. If the number of players you choose is on screen (not counting your party or your farmers), it logs out and logs back in after the minutes you set, resuming what it was doing. If it still sees people when it comes back, it leaves again. To log back in it needs your username and password saved in the browser (the helper doesn't store your details); with a Google account it can't log back in on its own.",
     "Antipush (House section): if someone pushes you while you make runes or train, you walk back to your spot on your own.",
-    "Max light and visual outfit (Map tab): removes the darkness of caves and nights, and lets you see yourself with any outfit. Everything is only on your screen.",
+    "Max light and visual outfit (Map tab): removes the darkness of caves and nights, and lets you see yourself with any outfit in the game and its addons, including the Deluxe Nobleman. They all show up in the game's outfit window too. Everything is only on your screen.",
     "Mute the whole game (Alerts tab): on iPhone and many Androids the game's 0% volume doesn't silence anything; this checkbox really turns it all off, and the helper's alerts still sound.",
     "New alert: if a rune in your backpacks gets used by itself, or you run out of food, the helper pauses everything and warns you.",
     "Better kiting: invisible with utana vid and nobody attacking you, you stay still killing your target; if you get surrounded, you run toward the side with fewer monsters.",
