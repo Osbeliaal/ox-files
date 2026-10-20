@@ -1,5 +1,25 @@
 [
  {
+  "version": "5.45",
+  "fecha": "2026-10-19",
+  "titulo": {
+   "es": "Arreglos del parche de Minibia y Chancellors",
+   "en": "Fixes for the Minibia patch and Chancellors"
+  },
+  "cambios": {
+   "es": [
+    "Arreglado tras el parche de Minibia del 19 de octubre: la luz máxima, el outfit visual y el kiting con utana vid volvieron a funcionar en PC y en teléfono.",
+    "Silencio forzado más fuerte: ahora también calla la música, el ambiente y los efectos que el juego guarda aparte, para que en teléfono no se cuele nada.",
+    "Chancellors: si uno aparece en tu pantalla o te escribe, el helper pausa todo y te avisa (también al celular), igual que con un GM. El vigía también los cuenta siempre."
+   ],
+   "en": [
+    "Fixed after Minibia's October 19 patch: max light, the visual outfit and kiting with utana vid work again on PC and phone.",
+    "Stronger forced mute: it now also silences the music, ambient and effects the game keeps separately, so nothing slips through on phones.",
+    "Chancellors: if one shows up on your screen or writes to you, the helper pauses everything and warns you (on your phone too), just like with a GM. The watchman always counts them too."
+   ]
+  }
+ },
+ {
   "version": "5.44",
   "fecha": "2026-10-17",
   "titulo": {
