@@ -1,5 +1,41 @@
 [
  {
+  "version": "5.47",
+  "fecha": "2026-10-20",
+  "titulo": {
+   "es": "Modo ligero para teléfonos",
+   "en": "Light mode for phones"
+  },
+  "cambios": {
+   "es": [
+    "Modo ligero (Sistema, viene activado en teléfonos): el helper le da mucho menos trabajo al celular. Se acabaron los lagueos y las desconexiones que daba en celulares de gama baja como el Oppo A54.",
+    "El sonido anti-desconexión del juego ya no se calla con el silencio forzado (a menos que tú lo pidas): callado, el teléfono dormía el juego y se cortaba la conexión."
+   ],
+   "en": [
+    "Light mode (System, on by default on phones): the helper gives your phone much less work. No more lag and disconnections on low-end phones like the Oppo A54.",
+    "The game's anti-disconnect sound is no longer muted by the forced mute (unless you ask for it): muted, the phone put the game to sleep and the connection dropped."
+   ]
+  }
+ },
+ {
+  "version": "5.46",
+  "fecha": "2026-10-20",
+  "titulo": {
+   "es": "Curarte con runas y auto sio",
+   "en": "Heal yourself with runes and auto sio"
+  },
+  "cambios": {
+   "es": [
+    "Autoheal con runas: en cualquier fila de cura escribe «uh» (ultimate healing rune) o «ih» (intense healing rune) con Mana 0 y el helper la usa sobre ti cuando tu vida baje de ese %.",
+    "Nuevo en la pestaña Combate: Auto sio. Escribe el nombre de tu knight (o de varios) y el % de vida: si baja de ahí, el helper lo cura. Los druids con exura sio; los sorcerers y paladins con una runa UH o IH sobre él. Tu propia cura va primero."
+   ],
+   "en": [
+    "Autoheal with runes: in any heal row type «uh» (ultimate healing rune) or «ih» (intense healing rune) with Mana 0 and the helper uses it on you when your health drops below that %.",
+    "New in the Combat tab: Auto sio. Type your knight's name (or several) and the health %: if it drops below that, the helper heals them. Druids with exura sio; sorcerers and paladins with a UH or IH rune on them. Your own healing goes first."
+   ]
+  }
+ },
+ {
   "version": "5.45",
   "fecha": "2026-10-19",
   "titulo": {
