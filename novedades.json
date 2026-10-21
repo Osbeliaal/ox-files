@@ -1,5 +1,21 @@
 [
  {
+  "version": "5.46",
+  "fecha": "2026-10-20",
+  "titulo": {
+   "es": "Registro de ventas de socios",
+   "en": "Partner sales registration"
+  },
+  "cambios": {
+   "es": [
+    "Las licencias que venden los socios ahora quedan registradas con Osbeliaal. Si tu vendedor no reporta tu venta, a los 2 días el helper te avisa que le pidas registrarla; en cuanto lo hace, tu licencia vuelve a funcionar sola."
+   ],
+   "en": [
+    "Licenses sold by partners are now registered with Osbeliaal. If your seller doesn't report your sale, after 2 days the helper tells you to ask them to register it; as soon as they do, your license works again on its own."
+   ]
+  }
+ },
+ {
   "version": "5.45",
   "fecha": "2026-10-19",
   "titulo": {

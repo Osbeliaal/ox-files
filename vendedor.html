@@ -128,7 +128,8 @@
     <div class="card">
       <h2>Mis ventas</h2>
       <div class="resumen"><div><b id="rHoy">0</b>hoy</div><div><b id="rMes">0</b>este mes</div><div><b id="rTot">0</b>en total</div><div><b id="rNuevas">0</b>sin reportar</div></div>
-      <p class="nota">Mándale tu reporte a Osbeliaal (por ejemplo cada semana): toca el botón y pégalo en su WhatsApp o Telegram.</p>
+      <p class="nota" id="notaRep">Mándale tu reporte a Osbeliaal (por ejemplo cada semana): toca el botón y pégalo en su WhatsApp o Telegram.</p>
+      <p class="nota oculto" id="notaReg" style="color:#ffd166;border:1px solid #5a4a20;background:#2c2614;padding:8px 10px;border-radius:6px"></p>
       <button class="btn" id="btnReporte">Copiar reporte de ventas nuevas</button>
       <div>
         <button class="btn chico gris" id="btnReporteTodo">Copiar reporte completo</button>
@@ -319,8 +320,21 @@
     llave = ll; priv = pk;
     $('quien').classList.remove('oculto'); $('qNom').textContent = ll.n; $('qCod').textContent = 'código ' + ll.c;
     $('refLink').textContent = linkRef();
-    ver('vVender'); pintarVentas();
+    ver('vVender'); pintarVentas(); revisarRegistro();
     setTimeout(function () { try { $('inChar').focus(); } catch (e) {} }, 50);
+  }
+  // Registro obligatorio: si Osbeliaal lo activó para este vendedor, las ventas que no reporte dejan de funcionar
+  // a los pocos días. Se avisa aquí para que mande su reporte el mismo día.
+  function revisarRegistro() {
+    try {
+      fetch(PAGINA + 'c.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+        if (!j || !j.g || !llave || !j.g[llave.c]) { return; }
+        var d = Number(j.gd) >= 0 ? Number(j.gd) : 2;
+        $('notaReg').textContent = '⚠ Registro obligatorio: cada licencia que vendas funciona ' + d + ' días; después sigue funcionando solo si Osbeliaal ya recibió tu reporte. Mándale «Copiar reporte de ventas nuevas» el mismo día que vendas.';
+        $('notaReg').classList.remove('oculto');
+        $('notaRep').textContent = 'Toca el botón y pégalo en el WhatsApp o Telegram de Osbeliaal cada día que vendas.';
+      }).catch(function () {});
+    } catch (e) {}
   }
   function inicio() {
     if (!(window.crypto && crypto.subtle && window.TextEncoder)) { ver('vSinCrypto'); return; }
