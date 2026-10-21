@@ -52,6 +52,12 @@
   .autor .cap{padding:10px 16px 12px;background:#0d0d0d;border-top:1px solid #3a2a10;text-align:center}
   .autor .k{font-size:11px;color:#d8d8d8;text-transform:uppercase;letter-spacing:.12em}
   .autor .pj{font:400 44px/1 'UnifrakturMaguntia',serif;color:#ffd166;text-shadow:0 0 12px rgba(255,90,0,.6),0 2px 0 #000}
+  .video{margin:0 0 14px}
+  .video:empty{display:none}
+  .video .marco{position:relative;padding-top:56.25%;background:#000;border:1px solid var(--line)}
+  .video iframe,.video video{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video .tit{font-size:13px;color:#ffd166;margin:0 0 6px;font-weight:700}
+  .aviso.seguro{border-left-color:var(--verde);background:rgba(159,232,112,.07)}
   .plan-b{margin-top:14px;border:1px solid var(--line);background:#252727;padding:0 12px}
   .plan-b summary{cursor:pointer;padding:12px 0;color:#ffd166;font-weight:700;font-size:14px}
   .plan-b p{margin:0 0 4px;font-size:14px}
@@ -139,21 +145,22 @@
   <div class="card">
 
     <div class="sec" id="android">
+      <div class="video" data-v="android"></div>
       <ol>
         <li data-es="Toca el botón para descargar la app:" data-en="Tap the button to download the app:">Toca el botón para descargar la app:
           <a class="btn" id="apk" href="app.apk" data-es="⬇ Descargar Minibia Helper" data-en="⬇ Download Minibia Helper">⬇ Descargar Minibia Helper</a></li>
-        <li data-es="Abre el archivo descargado y toca &lt;b&gt;Instalar&lt;/b&gt;. Si Android dice que no se permite, toca &lt;b&gt;Ajustes → Permitir de esta fuente&lt;/b&gt; y regresa."
-            data-en="Open the downloaded file and tap &lt;b&gt;Install&lt;/b&gt;. If Android says it is not allowed, tap &lt;b&gt;Settings → Allow from this source&lt;/b&gt; and go back.">Abre el archivo descargado y toca <b>Instalar</b>. Si Android dice que no se permite, toca <b>Ajustes → Permitir de esta fuente</b> y regresa.</li>
-        <li data-es="Si sale &lt;b&gt;Play Protect&lt;/b&gt;, toca &lt;b&gt;Más detalles → Instalar de todas formas&lt;/b&gt;."
-            data-en="If &lt;b&gt;Play Protect&lt;/b&gt; shows up, tap &lt;b&gt;More details → Install anyway&lt;/b&gt;.">Si sale <b>Play Protect</b>, toca <b>Más detalles → Instalar de todas formas</b>.</li>
-        <li data-es="Abre &lt;b&gt;Minibia Helper&lt;/b&gt;, elige tu idioma, entra con tu personaje y toca el icono redondo para activar tu licencia."
-            data-en="Open &lt;b&gt;Minibia Helper&lt;/b&gt;, choose your language, log in with your character and tap the round icon to activate your license.">Abre <b>Minibia Helper</b>, elige tu idioma, entra con tu personaje y toca el icono redondo para activar tu licencia.</li>
+        <li data-es="Cuando termine, toca la notificación de la descarga (o abre la app &lt;b&gt;Archivos → Descargas&lt;/b&gt;) y toca &lt;b&gt;app.apk&lt;/b&gt; → &lt;b&gt;Instalar&lt;/b&gt;." data-en="When it finishes, tap the download notification (or open the &lt;b&gt;Files&lt;/b&gt; app → &lt;b&gt;Downloads&lt;/b&gt;) and tap &lt;b&gt;app.apk&lt;/b&gt; → &lt;b&gt;Install&lt;/b&gt;.">Cuando termine, toca la notificación de la descarga (o abre la app <b>Archivos → Descargas</b>) y toca <b>app.apk</b> → <b>Instalar</b>.</li>
+        <li data-es="Si sale &lt;b&gt;«Por tu seguridad, no se pueden instalar apps desconocidas de esta fuente»&lt;/b&gt;: toca &lt;b&gt;Ajustes&lt;/b&gt;, activa &lt;b&gt;Permitir de esta fuente&lt;/b&gt; y regresa con la flecha para tocar &lt;b&gt;Instalar&lt;/b&gt;. (También está en &lt;b&gt;Ajustes → Aplicaciones → Acceso especial → Instalar apps desconocidas&lt;/b&gt; → tu navegador o Archivos.)" data-en="If you see &lt;b&gt;«For your security, your phone is not allowed to install unknown apps from this source»&lt;/b&gt;: tap &lt;b&gt;Settings&lt;/b&gt;, turn on &lt;b&gt;Allow from this source&lt;/b&gt; and go back to tap &lt;b&gt;Install&lt;/b&gt;. (It is also in &lt;b&gt;Settings → Apps → Special access → Install unknown apps&lt;/b&gt; → your browser or Files.)">Si sale <b>«Por tu seguridad, no se pueden instalar apps desconocidas de esta fuente»</b>: toca <b>Ajustes</b>, activa <b>Permitir de esta fuente</b> y regresa con la flecha para tocar <b>Instalar</b>. (También está en <b>Ajustes → Aplicaciones → Acceso especial → Instalar apps desconocidas</b> → tu navegador o Archivos.)</li>
+        <li data-es="Si sale &lt;b&gt;Play Protect&lt;/b&gt; («app no reconocida»), toca &lt;b&gt;Más detalles → Instalar de todas formas&lt;/b&gt;. Sale con cualquier app que no venga de la Play Store." data-en="If &lt;b&gt;Play Protect&lt;/b&gt; shows up («unrecognized app»), tap &lt;b&gt;More details → Install anyway&lt;/b&gt;. It shows up for any app that doesn&#x27;t come from the Play Store.">Si sale <b>Play Protect</b> («app no reconocida»), toca <b>Más detalles → Instalar de todas formas</b>. Sale con cualquier app que no venga de la Play Store.</li>
+        <li data-es="Abre &lt;b&gt;Minibia Helper&lt;/b&gt;, elige tu idioma, entra con tu personaje y toca el icono redondo para activar tu licencia." data-en="Open &lt;b&gt;Minibia Helper&lt;/b&gt;, choose your language, log in with your character and tap the round icon to activate your license.">Abre <b>Minibia Helper</b>, elige tu idioma, entra con tu personaje y toca el icono redondo para activar tu licencia.</li>
       </ol>
+      <div class="aviso seguro" data-es="&lt;b&gt;¿Es seguro para mi teléfono?&lt;/b&gt; Sí. Minibia Helper funciona como una versión modificada del Minibia original: la app abre el mismo juego (minibia.com) y le agrega el panel del helper. Solo pide internet, mantener la pantalla encendida, avisos y seguir trabajando en segundo plano; &lt;b&gt;no pide&lt;/b&gt; tus contactos, fotos, archivos, ubicación, cámara ni micrófono. «Permitir de esta fuente» solo deja que tu navegador (o Archivos) instale esta app; no cambia nada más de tu teléfono y, si quieres, lo puedes volver a apagar después de instalar. No necesitas activar el modo desarrollador ni rootear tu teléfono." data-en="&lt;b&gt;Is it safe for my phone?&lt;/b&gt; Yes. Minibia Helper works as a modified version of the original Minibia: the app opens the same game (minibia.com) and adds the helper panel to it. It only asks for internet, keeping the screen on, notifications and keeping working in the background; it &lt;b&gt;does not ask&lt;/b&gt; for your contacts, photos, files, location, camera or microphone. «Allow from this source» only lets your browser (or Files) install this app; it doesn&#x27;t change anything else on your phone and you can turn it off again after installing. You don&#x27;t need developer mode or root."><b>¿Es seguro para mi teléfono?</b> Sí. Minibia Helper funciona como una versión modificada del Minibia original: la app abre el mismo juego (minibia.com) y le agrega el panel del helper. Solo pide internet, mantener la pantalla encendida, avisos y seguir trabajando en segundo plano; <b>no pide</b> tus contactos, fotos, archivos, ubicación, cámara ni micrófono. «Permitir de esta fuente» solo deja que tu navegador (o Archivos) instale esta app; no cambia nada más de tu teléfono y, si quieres, lo puedes volver a apagar después de instalar. No necesitas activar el modo desarrollador ni rootear tu teléfono.</div>
       <div class="aviso" data-es="Cuando haya una versión nueva, la app te avisará y la descargas con un toque (se instala encima, sin perder tu configuración)."
            data-en="When there is a new version the app will tell you and you download it with one tap (it installs over the old one, keeping your settings).">Cuando haya una versión nueva, la app te avisará y la descargas con un toque (se instala encima, sin perder tu configuración).</div>
     </div>
 
     <div class="sec" id="iphone">
+      <div class="video" data-v="iphone"></div>
       <ol>
         <li data-es="Instala la app gratuita &lt;b&gt;Userscripts&lt;/b&gt; y ábrela una vez (no toques nada):"
             data-en="Install the free &lt;b&gt;Userscripts&lt;/b&gt; app and open it once (no need to touch anything):">Instala la app gratuita <b>Userscripts</b> y ábrela una vez (no toques nada):
@@ -180,11 +187,13 @@
         </ol>
         <div class="aviso" data-es="&lt;b&gt;¿Debajo del archivo sale «↑ Error»?&lt;/b&gt; Es iCloud, no el helper: Safari lo guardó en iCloud Drive y no se pudo subir (iCloud lleno o sin conexión). Userscripts no lee iCloud: muévelo a &lt;b&gt;En mi iPhone → Userscripts&lt;/b&gt; como dice el paso 2. Si lo descargaste varias veces, borra los repetidos («MinibiaHelper.user 2.js») y deja uno solo. Si aun así no aparece, abre la app &lt;b&gt;Userscripts&lt;/b&gt; y revisa que su carpeta sea &lt;b&gt;En mi iPhone → Userscripts&lt;/b&gt;." data-en="&lt;b&gt;Does «↑ Error» show under the file?&lt;/b&gt; That is iCloud, not the helper: Safari saved it to iCloud Drive and it could not upload (iCloud full or offline). Userscripts does not read iCloud: move it to &lt;b&gt;On My iPhone → Userscripts&lt;/b&gt; as step 2 says. If you downloaded it several times, delete the copies («MinibiaHelper.user 2.js») and keep only one. If it still does not show up, open the &lt;b&gt;Userscripts&lt;/b&gt; app and check that its folder is &lt;b&gt;On My iPhone → Userscripts&lt;/b&gt;."><b>¿Debajo del archivo sale «↑ Error»?</b> Es iCloud, no el helper: Safari lo guardó en iCloud Drive y no se pudo subir (iCloud lleno o sin conexión). Userscripts no lee iCloud: muévelo a <b>En mi iPhone → Userscripts</b> como dice el paso 2. Si lo descargaste varias veces, borra los repetidos («MinibiaHelper.user 2.js») y deja uno solo. Si aun así no aparece, abre la app <b>Userscripts</b> y revisa que su carpeta sea <b>En mi iPhone → Userscripts</b>.</div>
       </details>
+      <div class="aviso seguro" data-es="&lt;b&gt;¿Es seguro para mi iPhone?&lt;/b&gt; Sí. En iPhone no se instala ninguna app aparte: &lt;b&gt;Userscripts&lt;/b&gt; es una extensión gratuita de Safari (de código abierto) que solo corre los scripts que tú instalas. Minibia Helper funciona como una versión modificada del Minibia original dentro de Safari: &lt;b&gt;solo se activa en minibia.com/play&lt;/b&gt;, aunque Safari te pida permitir Userscripts en todos los sitios. No lee tus otras páginas, fotos ni contactos, y no cambia nada de tu iPhone. Para quitarlo, borra el script en la app Userscripts." data-en="&lt;b&gt;Is it safe for my iPhone?&lt;/b&gt; Yes. On iPhone no separate app is installed: &lt;b&gt;Userscripts&lt;/b&gt; is a free (open source) Safari extension that only runs the scripts you install. Minibia Helper works as a modified version of the original Minibia inside Safari: &lt;b&gt;it only runs on minibia.com/play&lt;/b&gt;, even if Safari asks you to allow Userscripts on every website. It doesn&#x27;t read your other pages, photos or contacts, and it doesn&#x27;t change anything on your iPhone. To remove it, delete the script in the Userscripts app."><b>¿Es seguro para mi iPhone?</b> Sí. En iPhone no se instala ninguna app aparte: <b>Userscripts</b> es una extensión gratuita de Safari (de código abierto) que solo corre los scripts que tú instalas. Minibia Helper funciona como una versión modificada del Minibia original dentro de Safari: <b>solo se activa en minibia.com/play</b>, aunque Safari te pida permitir Userscripts en todos los sitios. No lee tus otras páginas, fotos ni contactos, y no cambia nada de tu iPhone. Para quitarlo, borra el script en la app Userscripts.</div>
       <div class="aviso" data-es="Para actualizar a una versión nueva, vuelve a tocar &lt;b&gt;Instalar Minibia Helper&lt;/b&gt; (o vuelve a descargar el archivo). Para dejarlo trabajando: Safari abierto en el juego, el iPhone cargando y &lt;b&gt;Ajustes → Pantalla y brillo → Bloqueo automático → Nunca&lt;/b&gt;."
            data-en="To update to a new version, tap &lt;b&gt;Install Minibia Helper&lt;/b&gt; again (or download the file again). To leave it working: Safari open on the game, the iPhone charging and &lt;b&gt;Settings → Display &amp; Brightness → Auto-Lock → Never&lt;/b&gt;.">Para actualizar a una versión nueva, vuelve a tocar <b>Instalar Minibia Helper</b> (o vuelve a descargar el archivo). Para dejarlo trabajando: Safari abierto en el juego, el iPhone cargando y <b>Ajustes → Pantalla y brillo → Bloqueo automático → Nunca</b>.</div>
     </div>
 
     <div class="sec" id="pc">
+      <div class="video" data-v="pc"></div>
       <ol>
         <li data-es="Instala la extensión &lt;b&gt;Tampermonkey&lt;/b&gt; en tu navegador (Chrome, Edge, Firefox u Opera):"
             data-en="Install the &lt;b&gt;Tampermonkey&lt;/b&gt; extension in your browser (Chrome, Edge, Firefox or Opera):">Instala la extensión <b>Tampermonkey</b> en tu navegador (Chrome, Edge, Firefox u Opera):
@@ -197,6 +206,7 @@
         <li data-es="Entra a &lt;b&gt;minibia.com/play&lt;/b&gt;: elige tu idioma y pulsa &lt;b&gt;Ctrl+Shift+H&lt;/b&gt; para abrir el helper y activar tu licencia."
             data-en="Go to &lt;b&gt;minibia.com/play&lt;/b&gt;: choose your language and press &lt;b&gt;Ctrl+Shift+H&lt;/b&gt; to open the helper and activate your license.">Entra a <b>minibia.com/play</b>: elige tu idioma y pulsa <b>Ctrl+Shift+H</b> para abrir el helper y activar tu licencia.</li>
       </ol>
+      <div class="aviso seguro" data-es="&lt;b&gt;¿Es seguro?&lt;/b&gt; Sí. Tampermonkey es una extensión conocida y gratuita; el «Modo de desarrollador» de Chrome/Edge solo hace falta para que pueda correr scripts (Chrome lo pide así), no cambia nada más de tu computadora. Minibia Helper funciona como una versión modificada del Minibia original dentro de tu navegador: &lt;b&gt;solo se activa en minibia.com/play&lt;/b&gt; y no lee tus otras páginas ni tus archivos." data-en="&lt;b&gt;Is it safe?&lt;/b&gt; Yes. Tampermonkey is a well-known free extension; Chrome/Edge «Developer mode» is only needed so it can run scripts (Chrome requires it), it doesn&#x27;t change anything else on your computer. Minibia Helper works as a modified version of the original Minibia inside your browser: &lt;b&gt;it only runs on minibia.com/play&lt;/b&gt; and doesn&#x27;t read your other pages or your files."><b>¿Es seguro?</b> Sí. Tampermonkey es una extensión conocida y gratuita; el «Modo de desarrollador» de Chrome/Edge solo hace falta para que pueda correr scripts (Chrome lo pide así), no cambia nada más de tu computadora. Minibia Helper funciona como una versión modificada del Minibia original dentro de tu navegador: <b>solo se activa en minibia.com/play</b> y no lee tus otras páginas ni tus archivos.</div>
       <div class="aviso" data-es="Se actualiza solo (Tampermonkey revisa las versiones nuevas)." data-en="It updates itself (Tampermonkey checks for new versions).">Se actualiza solo (Tampermonkey revisa las versiones nuevas).</div>
     </div>
 
@@ -266,6 +276,36 @@
   }
   document.querySelectorAll('.tabs button').forEach(function (b) { b.onclick = function () { verSec(b.getAttribute('data-s')); }; });
   verSec(so);
+  // Videos tutoriales: se editan en videos.json (links de YouTube o un .mp4). Si no hay link, no se muestra nada.
+  var videos = {};
+  function idYoutube(u) {
+    var m = /(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/))([A-Za-z0-9_-]{11})/.exec(String(u || ''));
+    return m ? m[1] : null;
+  }
+  function pintarVideos() {
+    document.querySelectorAll('.video[data-v]').forEach(function (c) {
+      var u = videos[c.getAttribute('data-v')];
+      c.innerHTML = '';
+      if (!u) { return; }
+      var t = document.createElement('div'); t.className = 'tit';
+      t.textContent = lang === 'en' ? '▶ Video tutorial' : '▶ Video tutorial: cómo instalarlo';
+      var marco = document.createElement('div'); marco.className = 'marco';
+      var id = idYoutube(u);
+      if (id) {
+        var f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0';
+        f.allow = 'accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+        f.allowFullscreen = true; f.loading = 'lazy'; f.title = 'Video tutorial';
+        marco.appendChild(f);
+      } else if (/^https:\/\/\S+\.mp4(\?.*)?$/i.test(u) || /^[\w.\-\/]+\.mp4$/i.test(u)) {
+        var v = document.createElement('video'); v.src = u; v.controls = true; v.preload = 'metadata'; v.playsInline = true;
+        marco.appendChild(v);
+      } else { return; }
+      c.appendChild(t); c.appendChild(marco);
+    });
+  }
+  fetch('videos.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : {}; })
+    .then(function (j) { videos = j || {}; pintarVideos(); }).catch(function () {});
   function idioma(l) {
     document.documentElement.lang = l;
     document.querySelectorAll('[data-' + l + ']').forEach(function (e) {
@@ -276,7 +316,7 @@
     });
     document.querySelectorAll('.lang button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-l') === l); });
     try { localStorage.setItem('l', l); } catch (e) {}
-    lang = l; pintarLog(); pintarRef();
+    lang = l; pintarLog(); pintarRef(); try { pintarVideos(); } catch (e) {}
   }
   // Link de referido (?ref=CODIGO): muestra el contacto del vendedor autorizado que te mandó.
   // Se recuerda 60 días en este navegador. Los vendedores válidos salen de c.json (los publica Osbeliaal).
