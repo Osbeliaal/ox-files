@@ -1,5 +1,23 @@
 [
  {
+  "version": "5.47",
+  "fecha": "2026-10-20",
+  "titulo": {
+   "es": "Modo ligero para teléfonos",
+   "en": "Light mode for phones"
+  },
+  "cambios": {
+   "es": [
+    "Modo ligero (Sistema, viene activado en teléfonos): el helper le da mucho menos trabajo al celular. Se acabaron los lagueos y las desconexiones que daba en celulares de gama baja como el Oppo A54.",
+    "El sonido anti-desconexión del juego ya no se calla con el silencio forzado (a menos que tú lo pidas): callado, el teléfono dormía el juego y se cortaba la conexión."
+   ],
+   "en": [
+    "Light mode (System, on by default on phones): the helper gives your phone much less work. No more lag and disconnections on low-end phones like the Oppo A54.",
+    "The game's anti-disconnect sound is no longer muted by the forced mute (unless you ask for it): muted, the phone put the game to sleep and the connection dropped."
+   ]
+  }
+ },
+ {
   "version": "5.46",
   "fecha": "2026-10-20",
   "titulo": {
