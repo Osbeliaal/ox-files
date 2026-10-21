@@ -1,5 +1,23 @@
 [
  {
+  "version": "5.46",
+  "fecha": "2026-10-20",
+  "titulo": {
+   "es": "Curarte con runas y auto sio",
+   "en": "Heal yourself with runes and auto sio"
+  },
+  "cambios": {
+   "es": [
+    "Autoheal con runas: en cualquier fila de cura escribe «uh» (ultimate healing rune) o «ih» (intense healing rune) con Mana 0 y el helper la usa sobre ti cuando tu vida baje de ese %.",
+    "Nuevo en la pestaña Combate: Auto sio. Escribe el nombre de tu knight (o de varios) y el % de vida: si baja de ahí, el helper lo cura. Los druids con exura sio; los sorcerers y paladins con una runa UH o IH sobre él. Tu propia cura va primero."
+   ],
+   "en": [
+    "Autoheal with runes: in any heal row type «uh» (ultimate healing rune) or «ih» (intense healing rune) with Mana 0 and the helper uses it on you when your health drops below that %.",
+    "New in the Combat tab: Auto sio. Type your knight's name (or several) and the health %: if it drops below that, the helper heals them. Druids with exura sio; sorcerers and paladins with a UH or IH rune on them. Your own healing goes first."
+   ]
+  }
+ },
+ {
   "version": "5.45",
   "fecha": "2026-10-19",
   "titulo": {
