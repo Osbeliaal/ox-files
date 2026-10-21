@@ -58,6 +58,11 @@
   .video iframe,.video video{position:absolute;inset:0;width:100%;height:100%;border:0}
   .video .tit{font-size:13px;color:#ffd166;margin:0 0 6px;font-weight:700}
   .aviso.seguro{border-left-color:var(--verde);background:rgba(159,232,112,.07)}
+  .galeria{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:6px;scrollbar-width:thin}
+  .galeria a{flex:0 0 min(86%,380px);scroll-snap-align:start}
+  .galeria img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+  .gal-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin:8px 0 2px;color:var(--dim);font-size:13px}
+  .gal-nav button{background:#2b2d2d;color:#ffd166;border:1px solid var(--line);width:36px;height:32px;font-size:20px;line-height:1;cursor:pointer}
   .plan-b{margin-top:14px;border:1px solid var(--line);background:#252727;padding:0 12px}
   .plan-b summary{cursor:pointer;padding:12px 0;color:#ffd166;font-weight:700;font-size:14px}
   .plan-b p{margin:0 0 4px;font-size:14px}
@@ -220,6 +225,11 @@
       <div class="pj">Osbeliaal</div>
     </div>
   </div>
+  <h2 data-es="Conócelo por dentro" data-en="Take a look inside">Conócelo por dentro</h2>
+  <div class="galeria" id="galeria"><a href="promo/01-portada.jpg" target="_blank" rel="noopener"><img src="promo/01-portada.jpg" alt="Minibia Helper: portada" loading="lazy" width="1080" height="1350"></a><a href="promo/02-runas.jpg" target="_blank" rel="noopener"><img src="promo/02-runas.jpg" alt="Minibia Helper: runas" loading="lazy" width="1080" height="1350"></a><a href="promo/03-casa.jpg" target="_blank" rel="noopener"><img src="promo/03-casa.jpg" alt="Minibia Helper: casa" loading="lazy" width="1080" height="1350"></a><a href="promo/04-combate.jpg" target="_blank" rel="noopener"><img src="promo/04-combate.jpg" alt="Minibia Helper: combate" loading="lazy" width="1080" height="1350"></a><a href="promo/05-caza.jpg" target="_blank" rel="noopener"><img src="promo/05-caza.jpg" alt="Minibia Helper: caza" loading="lazy" width="1080" height="1350"></a><a href="promo/06-macros.jpg" target="_blank" rel="noopener"><img src="promo/06-macros.jpg" alt="Minibia Helper: macros" loading="lazy" width="1080" height="1350"></a><a href="promo/07-mapa.jpg" target="_blank" rel="noopener"><img src="promo/07-mapa.jpg" alt="Minibia Helper: mapa" loading="lazy" width="1080" height="1350"></a><a href="promo/08-alertas.jpg" target="_blank" rel="noopener"><img src="promo/08-alertas.jpg" alt="Minibia Helper: alertas" loading="lazy" width="1080" height="1350"></a><a href="promo/09-licencias.jpg" target="_blank" rel="noopener"><img src="promo/09-licencias.jpg" alt="Minibia Helper: licencias" loading="lazy" width="1080" height="1350"></a></div>
+  <div class="gal-nav"><button type="button" id="galAnt" aria-label="Anterior">‹</button><span id="galNum">1 / 9</span><button type="button" id="galSig" aria-label="Siguiente">›</button></div>
+  <a class="btn" href="demo.html" data-es="🎮 Pruébalo en el simulador" data-en="🎮 Try it in the simulator">🎮 Pruébalo en el simulador</a>
+  <p class="nota" data-es="Un Minibia de mentira donde puedes mover todas las opciones del helper y ver qué hace cada una, sin instalar nada." data-en="A fake Minibia where you can move every helper option and see what each one does, without installing anything.">Un Minibia de mentira donde puedes mover todas las opciones del helper y ver qué hace cada una, sin instalar nada.</p>
   <h2 data-es="Licencias" data-en="Licenses">Licencias</h2>
   <p class="nota" data-es="Toca una licencia para ver todo lo que incluye." data-en="Tap a license to see everything it includes.">Toca una licencia para ver todo lo que incluye.</p>
   <div class="tiers">
@@ -276,6 +286,16 @@
   }
   document.querySelectorAll('.tabs button').forEach(function (b) { b.onclick = function () { verSec(b.getAttribute('data-s')); }; });
   verSec(so);
+  // Galería: flechas y contador
+  (function () {
+    var g = document.getElementById('galeria'); if (!g) { return; }
+    var n = g.children.length;
+    function idx() { var w = g.children[0].getBoundingClientRect().width + 10; return Math.round(g.scrollLeft / w); }
+    function ir(d) { var w = g.children[0].getBoundingClientRect().width + 10; g.scrollTo({ left: Math.max(0, Math.min(n - 1, idx() + d)) * w, behavior: 'smooth' }); }
+    document.getElementById('galAnt').onclick = function () { ir(-1); };
+    document.getElementById('galSig').onclick = function () { ir(1); };
+    g.addEventListener('scroll', function () { document.getElementById('galNum').textContent = (Math.min(n, idx() + 1)) + ' / ' + n; });
+  })();
   // Videos tutoriales: se editan en videos.json (links de YouTube o un .mp4). Si no hay link, no se muestra nada.
   var videos = {};
   function idYoutube(u) {

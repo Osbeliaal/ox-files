@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Simulador · Minibia Helper</title>
+<meta name="description" content="Prueba Minibia Helper en un Minibia simulado: mueve las opciones y mira cómo funciona cada cosa.">
+<link rel="icon" href="icon.png">
+<style>
+:root{--bg:#161818;--panel:#222424;--panel2:#2b2d2d;--line:#3a3d3d;--txt:#dcdcdc;--dim:#9a9d9d;--oro:#f5a400;--oro2:#ffd166;--verde:#9fe870;--rojo:#ff6b6b}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.45 Verdana,Tahoma,sans-serif}
+a{color:var(--oro2)}
+.top{max-width:1180px;margin:0 auto;padding:14px 16px 6px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.top img{width:36px;height:36px;image-rendering:pixelated}
+.top h1{font-size:18px;margin:0;color:#ececec}
+.top .sub{color:var(--dim);font-size:12px}
+.top .volver{margin-left:auto}
+.tour{max-width:1180px;margin:0 auto;padding:4px 16px 10px;display:flex;gap:6px;flex-wrap:wrap}
+.tour button{background:#2b2d2d;color:var(--txt);border:1px solid var(--line);padding:7px 11px;font:700 12px Verdana,Tahoma,sans-serif;cursor:pointer}
+.tour button:hover{border-color:var(--oro)}
+.tour .t{color:var(--oro);font-weight:700;font-size:12px;align-self:center;margin-right:4px}
+.app{max-width:1180px;margin:0 auto;padding:0 16px 30px;display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:16px;align-items:start}
+@media (max-width:900px){.app{grid-template-columns:1fr}}
+/* ---- juego ---- */
+.juego{background:#000;border:1px solid #000;box-shadow:0 0 0 1px #3a3d3d}
+.juego .barra{display:flex;gap:6px;padding:6px;background:#1b1c1c;border-bottom:1px solid #000}
+.juego .bar{flex:1;height:16px;position:relative;background:#111;border:1px solid #000}
+.juego .bar i{position:absolute;left:0;top:0;bottom:0}
+.juego .bar.hp i{background:linear-gradient(#e0473b,#a1241b)}
+.juego .bar.mp i{background:linear-gradient(#4b7bf0,#2148a8)}
+.juego .bar b{position:absolute;inset:0;text-align:center;font-size:11px;line-height:15px;color:#fff;text-shadow:1px 1px 0 #000}
+.lienzo{position:relative}
+canvas#mapa{display:block;width:100%;height:auto;image-rendering:pixelated;cursor:crosshair;touch-action:manipulation}
+.sello{position:absolute;right:6px;top:6px;font-size:10px;background:rgba(0,0,0,.6);color:#ffd166;padding:2px 6px;pointer-events:none}
+.consola{height:118px;overflow-y:auto;background:#0f1010;border-top:1px solid #000;padding:4px 8px;font-size:12px}
+.consola div{white-space:pre-wrap}
+.c-say{color:#ffeb3b}.c-sys{color:#fff}.c-gm{color:#ff8a65;font-weight:700}.c-loot{color:#9fe870}.c-dmg{color:#ff6b6b}.c-help{color:#8ad0ff}
+.inv{display:flex;gap:10px;flex-wrap:wrap;padding:6px 8px;background:#1b1c1c;border-top:1px solid #000;font-size:12px;color:var(--dim)}
+.inv b{color:#ececec}
+.avisoJuego{position:absolute;left:50%;top:10px;transform:translateX(-50%);max-width:92%;display:none;text-align:center;background:#3b0f0c;color:#fff;font:bold 13px/1.4 Verdana,Tahoma,sans-serif;padding:10px 16px;border:1px solid #000;box-shadow:inset 1px 1px 0 #ff8a78,inset -1px -1px 0 #5a0c06,0 6px 22px rgba(0,0,0,.7);z-index:5}
+.avisoJuego button{margin-top:8px}
+.desconectado{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:8px;background:rgba(0,0,0,.88);color:#ffd166;font-weight:700;text-align:center;z-index:4}
+/* ---- panel (réplica del helper) ---- */
+.panel{background:var(--panel);border:1px solid #000;box-shadow:inset 0 0 0 1px #555959,0 6px 24px rgba(0,0,0,.5);position:sticky;top:10px}
+.ptit{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid #000;box-shadow:0 1px 0 #3a3d3d}
+.ptit img{width:28px;height:28px;image-rendering:pixelated}
+.ptit b{font-size:14px;color:#ececec}.ptit span{font-size:11px;color:var(--dim)}
+.ptit .demo{margin-left:auto;font-size:10px;color:#10140c;background:var(--verde);padding:2px 6px;font-weight:700}
+.pcuerpo{display:grid;grid-template-columns:118px 1fr;min-height:470px}
+.nav{padding:6px;border-right:1px solid #000;display:flex;flex-direction:column;gap:4px}
+.nav button{display:flex;align-items:center;gap:6px;text-align:left;padding:7px 8px;background:linear-gradient(#3e4142,#2b2d2d);color:#dcdcdc;border:1px solid;border-color:#767a7a #060707 #060707 #767a7a;font:700 12px Verdana,Tahoma,sans-serif;cursor:pointer}
+.nav button.on{background:linear-gradient(#4a4d4e,#353838);color:#fff;box-shadow:inset 0 0 0 1px var(--oro)}
+.paginas{padding:6px 8px;max-height:560px;overflow-y:auto}
+.pag{display:none}.pag.on{display:block}
+.sec{border-bottom:1px solid #3a3d3d;margin-bottom:4px}
+.sec-h{padding:8px 2px;font-weight:700;color:#ececec;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:13px}
+.sec-h:before{content:'▶';color:var(--oro);font-size:10px}
+.sec.open .sec-h:before{content:'▼'}
+.sec-h .tag{margin-left:auto;font-size:10px;color:var(--oro);border:1px solid var(--oro);padding:1px 5px}
+.sec-b{display:none;padding:2px 2px 10px}
+.sec.open .sec-b{display:block}
+.fila{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:4px 0;padding:5px 6px;background:#1d1f1f;border:1px solid #2f3232;font-size:12px}
+.fila input[type=checkbox]{width:16px;height:16px;accent-color:var(--oro)}
+.fila input[type=number],.fila input[type=text],.fila select{width:110px;background:#0b0c0c;color:#ececec;border:1px solid;border-color:#000 #5a5e5e #5a5e5e #000;padding:3px 5px;font:12px Verdana,Tahoma,sans-serif}
+.fila input[type=number]{width:62px}
+.fila input[type=range]{width:120px;accent-color:var(--oro)}
+.sub2{color:var(--oro);font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin:10px 0 4px}
+.hint{font-size:11px;color:#9a9;margin:4px 0}
+.prueba{font-size:11px;color:#ffd166;background:rgba(245,197,66,.07);border-left:3px solid #f5c542;padding:5px 7px;margin:6px 0}
+.est{font-size:11px;color:#8f8;margin:4px 0}
+.btns{display:flex;gap:4px;flex-wrap:wrap;margin:6px 0}
+.btn{padding:5px 10px;font:700 12px Verdana,Tahoma,sans-serif;color:#ececec;background:linear-gradient(#3e4142,#2b2d2d);border:1px solid;border-color:#767a7a #060707 #060707 #767a7a;cursor:pointer}
+.btn:active{border-color:#060707 #767a7a #767a7a #060707}
+.btn.verde{color:#9fe870}
+.curas{display:grid;grid-template-columns:44px 1fr 46px 46px;gap:4px;align-items:center;font-size:11px;margin:4px 0}
+.curas input{width:100%;background:#0b0c0c;color:#ececec;border:1px solid;border-color:#000 #5a5e5e #5a5e5e #000;padding:3px 4px;font:12px Verdana,Tahoma,sans-serif}
+.curas .h{color:#8f8;font-size:10px}
+textarea{width:100%;min-height:96px;background:#0b0c0c;color:#ececec;border:1px solid;border-color:#000 #5a5e5e #5a5e5e #000;font:11px/1.4 Consolas,monospace;padding:5px}
+.pie{display:flex;align-items:center;gap:6px;padding:8px;border-top:1px solid #000;box-shadow:inset 0 1px 0 #3a3d3d}
+.pie .led{width:10px;height:10px;border-radius:50%;background:#444;box-shadow:inset 0 0 2px #000}
+.pie .led.on{background:#7dff7d;box-shadow:0 0 6px #7dff7d}
+.pie .led.gm{background:#ff5a4a;box-shadow:0 0 6px #ff5a4a}
+.pie .quien{font-weight:700;font-size:12px;flex:1}
+.nota{max-width:1180px;margin:0 auto;padding:0 16px 30px;color:var(--dim);font-size:12px}
+</style>
+</head>
+<body>
+<div class="top">
+  <img src="icon.png" alt="">
+  <div><h1>Simulador de Minibia Helper</h1><div class="sub">Un Minibia de mentira para que pruebes el helper: mueve las opciones del panel y mira qué hace en el juego.</div></div>
+  <a class="volver" href="./">← Volver a la descarga</a>
+</div>
+<div class="tour">
+  <span class="t">Pruébalo:</span>
+  <button data-tour="runas">🔮 Runear</button>
+  <button data-tour="combate">⚔️ Pelear y curarte</button>
+  <button data-tour="sio">🤝 Curar a tu knight</button>
+  <button data-tour="caza">🗺️ Cave hunt</button>
+  <button data-tour="pk">🏠 Llega un PK</button>
+  <button data-tour="luz">💡 Luz y outfit</button>
+  <button data-tour="gm">🔔 Alerta de GM</button>
+  <button data-tour="macro">🤖 Macro con IA</button>
+  <button onclick="location.reload()" title="Empezar de cero">↺ Reiniciar</button>
+</div>
+
+<div class="app">
+  <div class="juego">
+    <div class="barra"><div class="bar hp" id="gHp"><i></i><b></b></div><div class="bar mp" id="gMp"><i></i><b></b></div></div>
+    <div class="lienzo">
+      <canvas id="mapa" width="480" height="352"></canvas>
+      <div class="sello">SIMULACIÓN · no es el juego real</div>
+      <div class="avisoJuego" id="aviso"><div id="avisoTxt"></div><button class="btn" id="avisoReanudar">Reanudar helper</button></div>
+      <div class="desconectado" id="desc"><div id="descTxt">Desconectado</div></div>
+    </div>
+    <div class="inv" id="inv"></div>
+    <div class="consola" id="consola"></div>
+  </div>
+
+  <div class="panel">
+    <div class="ptit"><img src="icon.png" alt=""><b>Minibia Helper</b><span>v5.47</span><span class="demo">DEMO</span></div>
+    <div class="pcuerpo">
+      <div class="nav" id="nav">
+        <button data-p="runas">🔮 Runas</button>
+        <button data-p="combate">🗡️ Combate</button>
+        <button data-p="caza">🗺️ Caza</button>
+        <button data-p="macros">⭐ Macros</button>
+        <button data-p="mapa">🟦 Mapa</button>
+        <button data-p="alertas">🔔 Alertas</button>
+        <button data-p="sistema">⚙️ Sistema</button>
+      </div>
+      <div class="paginas">
+        <!-- RUNAS -->
+        <div class="pag" id="p-runas">
+          <div class="sec open"><div class="sec-h">Runas y comida</div><div class="sec-b">
+            <div class="fila">Runas y comida activas <input type="checkbox" data-c="runasOn" checked></div>
+            <div class="fila">Hechizo <input type="text" data-c="runaHechizo" value="adori gran"></div>
+            <div class="fila">Mana por hechizo <input type="number" data-c="runaMana" value="300"></div>
+            <div class="fila">Comer automáticamente <input type="checkbox" data-c="comer" checked></div>
+            <div class="fila">Parar runas si la cap es baja <input type="checkbox" data-c="capOn" checked></div>
+            <div class="fila">Alerta de vida baja (%) <input type="number" data-c="alertaVida" value="50"></div>
+            <div class="prueba">Pruébalo: toca «Iniciar runeo» abajo. Cuando juntas el maná, el helper dice el hechizo y la runa aparece en tu mochila. Si el maná deja de subir, come solo.</div>
+            <div class="est" id="estRunas">Runas: detenido</div>
+          </div></div>
+          <div class="sec open"><div class="sec-h">Casa: refugio contra PKs</div><div class="sec-b">
+            <div class="fila">Refugiarme en la casa si veo un PK <input type="checkbox" data-c="casaOn" checked></div>
+            <div class="fila">Antipush (regresar a mi lugar) <input type="checkbox" data-c="antipush" checked></div>
+            <div class="fila">Vigía: salir del juego si llegan jugadores <input type="checkbox" data-c="vigia"></div>
+            <div class="btns"><button class="btn" data-a="pk">Simular un PK</button><button class="btn" data-a="empujon">Simular un empujón</button></div>
+            <div class="prueba">Con «Refugiarme» tu personaje corre a la casa y regresa cuando el PK se va. Con «Vigía» sale del juego y vuelve a entrar después (aquí, en 5 segundos).</div>
+            <div class="est" id="estCasa">Casa: vigilando</div>
+          </div></div>
+        </div>
+        <!-- COMBATE -->
+        <div class="pag" id="p-combate">
+          <div class="sec open"><div class="sec-h">Autoheal (el primero que cumpla se lanza)</div><div class="sec-b">
+            <div class="fila">Autoheal activo <input type="checkbox" data-c="healOn" checked></div>
+            <div class="curas">
+              <span></span><span class="h">HECHIZO O RUNA</span><span class="h">MANA</span><span class="h">HP ≤ %</span>
+              <span>Cura 1</span><input data-cura="0" data-k="t" value="exura vita"><input type="number" data-cura="0" data-k="m" value="160"><input type="number" data-cura="0" data-k="h" value="35">
+              <span>Cura 2</span><input data-cura="1" data-k="t" value="ultimate healing rune"><input type="number" data-cura="1" data-k="m" value="0"><input type="number" data-cura="1" data-k="h" value="50">
+              <span>Cura 3</span><input data-cura="2" data-k="t" value="exura gran"><input type="number" data-cura="2" data-k="m" value="70"><input type="number" data-cura="2" data-k="h" value="75">
+            </div>
+            <div class="hint">También puedes usar runas: «uh» o «ih» con Mana 0.</div>
+            <div class="btns"><button class="btn" data-a="monstruos">Traer monstruos</button><button class="btn" data-a="golpe">Recibir un golpe fuerte</button></div>
+            <div class="est" id="estHeal">Autoheal: listo</div>
+          </div></div>
+          <div class="sec open"><div class="sec-h">Auto sio (curar a un amigo)</div><div class="sec-b">
+            <div class="fila">Auto sio activo <input type="checkbox" data-c="sioOn" checked></div>
+            <div class="fila">Curar a <input type="text" data-c="sioNombre" value="Mi Knight"></div>
+            <div class="fila">Curar si su vida baja de (%) <input type="number" data-c="sioPct" value="60"></div>
+            <div class="fila">Cómo curarlo <select data-c="sioModo"><option value="hechizo">Exura sio (druid)</option><option value="runa">Runa UH sobre él</option></select></div>
+            <div class="btns"><button class="btn" data-a="knight">Traer a mi knight</button></div>
+            <div class="est" id="estSio">Auto sio: esperando a tu knight</div>
+          </div></div>
+          <div class="sec"><div class="sec-h">Autolife y automana (pociones)</div><div class="sec-b">
+            <div class="fila">Autolife activo <input type="checkbox" data-c="potOn" checked></div>
+            <div class="fila">Tomar poción si HP ≤ % <input type="number" data-c="potPct" value="25"></div>
+            <div class="fila">Automana activo <input type="checkbox" data-c="manaOn"></div>
+            <div class="fila">Tomar poción si MP ≤ % <input type="number" data-c="manaPct" value="20"></div>
+          </div></div>
+          <div class="sec"><div class="sec-h">Autohaste y autohechizos</div><div class="sec-b">
+            <div class="fila">Autohaste (utani hur) <input type="checkbox" data-c="hasteOn" checked></div>
+            <div class="fila">Auto utamo vita <input type="checkbox" data-c="utamoOn"></div>
+            <div class="hint">Cuando se te acaba el efecto, lo vuelve a lanzar si tienes el maná.</div>
+          </div></div>
+          <div class="sec"><div class="sec-h">Trasheo y antipush (combate)</div><div class="sec-b">
+            <div class="fila">Objetos a tirar <input type="text" data-c="trashItems" value="worm, gold coin"></div>
+            <div class="btns"><button class="btn" data-a="trash">Trasheo: elegir casilla</button><button class="btn" data-a="trashOff">Parar</button></div>
+            <div class="prueba">Toca «Trasheo» y luego una casilla del mapa: el helper tira ahí tus worms y gold coins uno por uno. En el juego real es Shift+T (PC) o 3 toques en la casilla (celular).</div>
+            <div class="est" id="estTrash">Trasheo: apagado</div>
+          </div></div>
+        </div>
+        <!-- CAZA -->
+        <div class="pag" id="p-caza">
+          <div class="sec open"><div class="sec-h">Cave hunt <span class="tag">GOLD</span></div><div class="sec-b">
+            <div class="btns"><button class="btn verde" data-a="caza">▶ Iniciar cavehunt</button><button class="btn" data-a="cazaStop">Detener</button></div>
+            <div class="sub2">1) Ruta grabada</div>
+            <div class="hint">Ruta de ejemplo: 6 puntos dentro de la cueva (los ves en el mapa).</div>
+            <div class="fila">Ir y volver por la ruta <input type="checkbox" data-c="idaVuelta" checked></div>
+            <div class="sub2">2) Combate</div>
+            <div class="fila">Atacar monstruos a (casillas) <input type="number" data-c="rango" value="5"></div>
+            <div class="fila">Ataque <select data-c="ataque"><option value="melee">Cuerpo a cuerpo</option><option value="runa">Runa (sudden death)</option></select></div>
+            <div class="sub2">3) Kiting (para magos)</div>
+            <div class="fila">Mantener distancia <input type="checkbox" data-c="kiting"></div>
+            <div class="fila">Esquivar ondas de dragón <input type="checkbox" data-c="esquivar" checked></div>
+            <div class="sub2">4) Supervivencia</div>
+            <div class="fila">Huir a la ruta si HP ≤ % <input type="number" data-c="huir" value="20"></div>
+            <div class="est" id="estCaza">Cave hunt: detenido</div>
+          </div></div>
+        </div>
+        <!-- MACROS -->
+        <div class="pag" id="p-macros">
+          <div class="sec open"><div class="sec-h">Macros <span class="tag">GOLD</span></div><div class="sec-b">
+            <div class="hint" style="color:#ffd166">Haz que tu personaje haga lo que tú quieras, sin saber programar. Una IA (ChatGPT, Gemini, Claude…) te escribe las reglas: tú solo copias y pegas.</div>
+            <div class="sub2">Reglas de ejemplo</div>
+            <textarea id="reglas"># una regla por línea
+si vida < 40 entonces decir "exura vita"
+si monstruos >= 3 entonces runa "great fireball"
+si jugadores > 0 entonces avisar "¡Hay alguien cerca!"</textarea>
+            <div class="btns"><button class="btn verde" data-a="macro">▶ Activar macros</button><button class="btn" data-a="macroOff">Apagar</button><button class="btn" data-a="monstruos">Traer monstruos</button><button class="btn" data-a="pk">Traer un jugador</button></div>
+            <div class="est" id="estMacro">Macros: apagadas</div>
+          </div></div>
+        </div>
+        <!-- MAPA -->
+        <div class="pag" id="p-mapa">
+          <div class="sec open"><div class="sec-h">Visual: luz y outfit</div><div class="sec-b">
+            <div class="fila">Luz máxima (ver en cuevas y de noche) <input type="checkbox" data-c="luzOn"></div>
+            <div class="fila">Cuánta luz (%) <input type="range" min="0" max="100" data-c="luzPct" value="100"></div>
+            <div class="fila">Outfit visual (solo tú lo ves) <input type="checkbox" data-c="outfitOn"></div>
+            <div class="fila">Outfit <select data-c="outfit"><option value="knight">Knight</option><option value="mage">Mage</option><option value="hunter">Hunter</option><option value="noble">Deluxe Nobleman</option><option value="warrior">Warrior</option></select></div>
+            <div class="fila">Addon 1 <input type="checkbox" data-c="addon1"></div>
+            <div class="fila">Addon 2 <input type="checkbox" data-c="addon2"></div>
+          </div></div>
+          <div class="sec open"><div class="sec-h">Casillas, timers y magic wall</div><div class="sec-b">
+            <div class="btns"><button class="btn" data-a="marcar">Modo marcar casillas</button><button class="btn" data-a="mw">Simular magic wall</button><button class="btn" data-a="borrarCasillas">Borrar casillas</button></div>
+            <div class="prueba">Con «Modo marcar», toca casillas del mapa para resaltarlas (por ejemplo, para saber dónde pararte). El magic wall muestra cuántos segundos le quedan.</div>
+            <div class="est" id="estMapa">Modo marcar: apagado</div>
+          </div></div>
+        </div>
+        <!-- ALERTAS -->
+        <div class="pag" id="p-alertas">
+          <div class="sec open"><div class="sec-h">Alertas y Sonido</div><div class="sec-b">
+            <div class="fila">Detectar GM y Chancellor (pausa todo) <input type="checkbox" data-c="gmOn" checked></div>
+            <div class="fila">Sonido en las alertas <input type="checkbox" data-c="sonido" checked></div>
+            <div class="fila">Tono <select data-c="tono"><option value="suave">Suave</option><option value="campana">Campana</option><option value="digital">Digital</option><option value="sirena">Sirena</option><option value="grave">Grave</option></select></div>
+            <div class="fila">Volumen (1-100) <input type="number" data-c="vol" value="40"></div>
+            <div class="btns"><button class="btn" data-a="probarSonido">Probar sonido</button><button class="btn" data-a="gm">Simular un GM</button></div>
+            <div class="prueba">Si un GM o un Chancellor aparece o te escribe, el helper pausa todo, suena la alarma y te avisa (también al celular) para que contestes tú.</div>
+          </div></div>
+          <div class="sec"><div class="sec-h">Reinicio automático tras desconexión</div><div class="sec-b">
+            <div class="fila">Reconectar solo <input type="checkbox" data-c="reconectar" checked></div>
+            <div class="btns"><button class="btn" data-a="desconexion">Simular desconexión</button></div>
+          </div></div>
+        </div>
+        <!-- SISTEMA -->
+        <div class="pag" id="p-sistema">
+          <div class="sec open"><div class="sec-h">Perfil y dispositivo</div><div class="sec-b">
+            <div class="hint">Cada personaje guarda su propia configuración. El helper funciona en PC (Chrome, Edge, Firefox, Opera), Android (app) e iPhone (Safari), en español o inglés.</div>
+            <div class="fila">Modo ligero (para teléfonos lentos) <input type="checkbox" checked disabled></div>
+            <div class="fila">Silenciar todo el juego (forzado) <input type="checkbox"></div>
+            <div class="btns"><a class="btn" href="./" style="text-decoration:none">⬇ Descargar Minibia Helper</a></div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pie"><span class="led" id="led"></span><span class="quien" id="quien">Osbeliaal</span>
+      <button class="btn verde" data-a="runeo" id="btnRuneo">▶ Iniciar runeo</button></div>
+  </div>
+</div>
+<p class="nota">Esto es una simulación hecha para que veas cómo funciona: el juego, los monstruos y los números son de mentira. El helper de verdad trabaja dentro de Minibia (minibia.com) con tu personaje y necesita una licencia.</p>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var cv = $('mapa'), ctx = cv.getContext('2d');
+  var T = 32, W = 15, H = 11;
+  // ---------- mapa: casa a la izquierda, pasto en medio, cueva a la derecha ----------
+  var MAPA = [
+    '######.........',
+    '#wwww#....rrrrr',
+    '#wwww#....ccccr',
+    '#wwww#...rccccc',
+    '##D###....ccccr',
+    '.........cccccr',
+    '.........ccrccr',
+    '..........ccccr',
+    '.....~~...rcccr',
+    '....~~~~...ccrr',
+    '...............'
+  ];
+  function tile(x, y) { return (MAPA[y] || '')[x] || '#'; }
+  function pisable(x, y) { var t = tile(x, y); return t !== '#' && t !== 'r' && t !== '~' && x >= 0 && y >= 0 && x < W && y < H; }
+  function enCueva(x, y) { var t = tile(x, y); return t === 'c' || t === 'r'; }
+  var LUGAR = { x: 7, y: 6 }, CASA = { x: 2, y: 2 };
+  var RUTA = [{ x: 10, y: 2 }, { x: 13, y: 3 }, { x: 13, y: 6 }, { x: 12, y: 8 }, { x: 10, y: 7 }, { x: 10, y: 5 }];
+
+  // ---------- configuración del panel ----------
+  var cfg = {};
+  document.querySelectorAll('[data-c]').forEach(function (e) {
+    var k = e.getAttribute('data-c');
+    function leer() { cfg[k] = e.type === 'checkbox' ? e.checked : (e.type === 'number' || e.type === 'range') ? Number(e.value) : e.value; }
+    leer(); e.addEventListener('input', leer); e.addEventListener('change', leer);
+  });
+  var curas = [{}, {}, {}];
+  document.querySelectorAll('[data-cura]').forEach(function (e) {
+    var i = +e.getAttribute('data-cura'), k = e.getAttribute('data-k');
+    function leer() { curas[i][k] = k === 't' ? e.value : Number(e.value); }
+    leer(); e.addEventListener('input', leer);
+  });
+
+  // ---------- estado del juego ----------
+  var yo = { x: LUGAR.x, y: LUGAR.y, hp: 920, max: 920, mp: 1200, maxMp: 2400, nombre: 'Osbeliaal', paso: 0, haste: 0, utamo: 0 };
+  var inv = { runas: 0, blank: 60, uh: 25, pociones: 40, manaPots: 30, comida: 12, worms: 30, oro: 0, cap: 820 };
+  var mons = [], amigos = [], jugadores = [], items = [], textos = [], casillas = [], mws = [];
+  var runeo = false, caza = false, cazaIdx = 0, cazaDir = 1, pausa = false, desconectado = false, modoMarcar = false, trash = { sel: false, on: false, tile: null }, macros = false;
+  var refugio = null, objetivo = null, gm = null, ultimaComida = 0, manaPrev = 0, manaQuietoT = 0;
+  var ahora = 0;
+  function log(t, c) { var d = document.createElement('div'); d.className = c || 'c-sys'; var h = new Date(); d.textContent = ('0' + h.getHours()).slice(-2) + ':' + ('0' + h.getMinutes()).slice(-2) + ' ' + t; var k = $('consola'); k.appendChild(d); while (k.children.length > 60) { k.removeChild(k.firstChild); } k.scrollTop = k.scrollHeight; }
+  function decir(quien, t) { textos.push({ x: quien.x, y: quien.y, t: t, c: '#ffeb3b', fin: ahora + 1800 }); log((quien.nombre || 'Osbeliaal') + ' says: ' + t, 'c-say'); }
+  function flotar(x, y, t, c) { textos.push({ x: x, y: y, t: t, c: c, fin: ahora + 900, sube: true }); }
+  function est(id, t) { var e = $(id); if (e) { e.textContent = t; } }
+  function dist(a, b) { return Math.max(Math.abs(a.x - b.x), Math.abs(a.y - b.y)); }
+  function rnd(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
+
+  // ---------- movimiento por casillas (BFS) ----------
+  function camino(desde, hasta, junto) {
+    var cola = [[desde.x, desde.y]], prev = {}, vis = {}; vis[desde.x + ',' + desde.y] = 1;
+    var ocupado = {}; mons.concat(amigos, jugadores).forEach(function (m) { ocupado[m.x + ',' + m.y] = 1; });
+    while (cola.length) {
+      var c = cola.shift(), x = c[0], y = c[1];
+      if ((junto && Math.max(Math.abs(x - hasta.x), Math.abs(y - hasta.y)) === 1) || (!junto && x === hasta.x && y === hasta.y)) {
+        var r = [], k = x + ',' + y; while (prev[k]) { r.unshift(k.split(',').map(Number)); k = prev[k]; } return r;
+      }
+      [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [-1, -1], [1, -1], [-1, 1]].forEach(function (d) {
+        var nx = x + d[0], ny = y + d[1], nk = nx + ',' + ny;
+        if (vis[nk] || !pisable(nx, ny) || (ocupado[nk] && !(nx === hasta.x && ny === hasta.y && !junto))) { return; }
+        vis[nk] = 1; prev[nk] = x + ',' + y; cola.push([nx, ny]);
+      });
+    }
+    return null;
+  }
+  function pasoHacia(e, destino, junto) {
+    var vel = e === yo && yo.haste > ahora ? 180 : 300;
+    if (ahora - (e.paso || 0) < vel) { return; }
+    var r = camino(e, destino, junto); if (!r || !r.length) { return; }
+    e.x = r[0][0]; e.y = r[0][1]; e.paso = ahora;
+  }
+
+  // ---------- acciones del helper ----------
+  function usarHeal(texto, m, conMana) {
+    var t = texto.trim().toLowerCase();
+    if (/^(uh|ultimate healing( rune)?)$/.test(t)) { if (inv.uh <= 0) { return false; } inv.uh--; var c = rnd(300, 480); yo.hp = Math.min(yo.max, yo.hp + c); flotar(yo.x, yo.y, '+' + c, '#7dff7d'); log('Usaste una ultimate healing rune en ti.', 'c-help'); return true; }
+    if (/^(ih|intense healing( rune)?)$/.test(t)) { if (inv.uh <= 0) { return false; } inv.uh--; var c2 = rnd(150, 260); yo.hp = Math.min(yo.max, yo.hp + c2); flotar(yo.x, yo.y, '+' + c2, '#7dff7d'); return true; }
+    if (yo.mp < m) { return false; }
+    yo.mp -= m; var cura = /vita/.test(t) ? rnd(380, 560) : /gran/.test(t) ? rnd(160, 260) : rnd(60, 110);
+    yo.hp = Math.min(yo.max, yo.hp + cura); decir(yo, texto); flotar(yo.x, yo.y, '+' + cura, '#7dff7d'); return true;
+  }
+  var healProx = 0, potProx = 0, sioProx = 0;
+  function autoheal() {
+    if (!cfg.healOn || ahora < healProx) { return false; }
+    var pct = yo.hp * 100 / yo.max;
+    for (var i = 0; i < curas.length; i++) {
+      var c = curas[i]; if (!c.t || !c.t.trim()) { continue; }
+      if (pct <= c.h && usarHeal(c.t, c.m)) { healProx = ahora + 1000; est('estHeal', 'Autoheal: «' + c.t + '» con HP ' + Math.round(pct) + '%'); return true; }
+    }
+    return false;
+  }
+  function pociones() {
+    if (ahora < potProx) { return; }
+    if (cfg.potOn && yo.hp * 100 / yo.max <= cfg.potPct && inv.pociones > 0) { inv.pociones--; var c = rnd(150, 250); yo.hp = Math.min(yo.max, yo.hp + c); flotar(yo.x, yo.y, '+' + c, '#7dff7d'); log('Tomaste una health potion.', 'c-help'); potProx = ahora + 1000; }
+    else if (cfg.manaOn && yo.mp * 100 / yo.maxMp <= cfg.manaPct && inv.manaPots > 0) { inv.manaPots--; yo.mp = Math.min(yo.maxMp, yo.mp + 200); flotar(yo.x, yo.y, '+200', '#6ea8ff'); potProx = ahora + 1000; }
+  }
+  function autoSio() {
+    if (!cfg.sioOn || ahora < sioProx) { return false; }
+    var k = amigos.filter(function (a) { return a.nombre.toLowerCase() === String(cfg.sioNombre || '').trim().toLowerCase(); })[0];
+    if (!k) { est('estSio', amigos.length ? 'Auto sio: ese nombre no está en pantalla' : 'Auto sio: esperando a tu knight'); return false; }
+    var v = k.hp * 100 / k.max;
+    if (v > cfg.sioPct) { est('estSio', 'Auto sio: vigilando a ' + k.nombre + ' (' + Math.round(v) + '%)'); return false; }
+    if (cfg.sioModo === 'runa') { if (inv.uh <= 0) { return false; } inv.uh--; log('Usaste una ultimate healing rune en ' + k.nombre + '.', 'c-help'); }
+    else { if (yo.mp < 140) { est('estSio', 'Auto sio: sin maná para curar a ' + k.nombre); return false; } yo.mp -= 140; decir(yo, 'exura sio "' + k.nombre + '"'); }
+    var c = rnd(250, 400); k.hp = Math.min(k.max, k.hp + c); flotar(k.x, k.y, '+' + c, '#7dff7d');
+    est('estSio', 'Auto sio: curé a ' + k.nombre + ' (' + Math.round(v) + '%)'); sioProx = ahora + 1200; return true;
+  }
+  function autoHechizos() {
+    if (cfg.hasteOn && yo.haste < ahora && (caza || objetivo) && yo.mp >= 60) { yo.mp -= 60; yo.haste = ahora + 15000; decir(yo, 'utani hur'); }
+    if (cfg.utamoOn && yo.utamo < ahora && yo.mp >= 50) { yo.mp -= 50; yo.utamo = ahora + 20000; decir(yo, 'utamo vita'); }
+  }
+  function runear() {
+    if (!runeo || !cfg.runasOn) { est('estRunas', 'Runas: ' + (runeo ? 'pausado (desactivado)' : 'detenido')); return; }
+    if (cfg.capOn && inv.cap < 20) { est('estRunas', 'Runas: cap baja, me detengo'); return; }
+    if (yo.mp >= cfg.runaMana) {
+      if (inv.blank <= 0) { est('estRunas', 'Runas: no quedan blank runes'); return; }
+      yo.mp -= cfg.runaMana; inv.blank--; inv.runas++; inv.cap -= 0.5; decir(yo, cfg.runaHechizo);
+      est('estRunas', 'Runas: hechas ' + inv.runas + ' (' + cfg.runaHechizo + ')');
+    }
+    if (cfg.comer && ahora - ultimaComida > 20000 && inv.comida > 0) { inv.comida--; ultimaComida = ahora; log('Comiste un ham. (el maná dejó de subir: el helper come solo)', 'c-help'); }
+  }
+  // ---------- casa, vigía y antipush ----------
+  function casaTick() {
+    var pk = jugadores.filter(function (j) { return j.pk; })[0];
+    if (pk && cfg.vigia && !desconectado) { vigiaSalir(pk); return true; }
+    if (pk && cfg.casaOn) {
+      if (!refugio) { refugio = { desde: ahora }; log('PK a la vista: me meto a la casa.', 'c-help'); }
+      pasoHacia(yo, CASA, false); est('estCasa', 'Casa: escondido (PK ' + pk.nombre + ' cerca)'); return true;
+    }
+    if (refugio) {
+      if (yo.x !== LUGAR.x || yo.y !== LUGAR.y) { pasoHacia(yo, LUGAR, false); est('estCasa', 'Casa: el PK se fue, regreso a runear'); return true; }
+      refugio = null; est('estCasa', 'Casa: vigilando'); log('De vuelta en mi lugar de runeo.', 'c-help');
+    }
+    if (cfg.antipush && runeo && !caza && (yo.x !== LUGAR.x || yo.y !== LUGAR.y)) { pasoHacia(yo, LUGAR, false); est('estCasa', 'Antipush: regresando a mi lugar'); return true; }
+    return false;
+  }
+  function vigiaSalir(pk) {
+    desconectado = true; $('desc').style.display = 'flex'; log('Vigía: llegó ' + pk.nombre + '. Cierro sesión.', 'c-help');
+    var n = 5; $('descTxt').textContent = 'Vigía: sesión cerrada · vuelvo a entrar en ' + n + ' s';
+    var iv = setInterval(function () {
+      n--; $('descTxt').textContent = 'Vigía: sesión cerrada · vuelvo a entrar en ' + n + ' s';
+      if (n <= 0) { clearInterval(iv); jugadores = jugadores.filter(function (j) { return !j.pk; }); desconectado = false; $('desc').style.display = 'none'; log('Vigía: volví a entrar, ya no hay nadie. Sigo runeando.', 'c-help'); }
+    }, 1000);
+  }
+  // ---------- cave hunt ----------
+  var atkProx = 0;
+  function cazar() {
+    if (!caza) { return; }
+    var pct = yo.hp * 100 / yo.max;
+    var cerca = mons.filter(function (m) { return enCueva(m.x, m.y) || dist(m, yo) <= cfg.rango; }).filter(function (m) { return dist(m, yo) <= cfg.rango; });
+    if (pct <= cfg.huir && cerca.length) { est('estCaza', 'Cave hunt: vida baja, me alejo'); var w0 = RUTA[cazaIdx]; pasoHacia(yo, w0, false); return; }
+    if (!objetivo || objetivo.hp <= 0 || mons.indexOf(objetivo) < 0) { objetivo = cerca.sort(function (a, b) { return dist(a, yo) - dist(b, yo); })[0] || null; }
+    if (objetivo) {
+      est('estCaza', 'Cave hunt: atacando ' + objetivo.nombre);
+      var d = dist(objetivo, yo);
+      if (cfg.ataque === 'runa' || cfg.kiting) {
+        if (cfg.kiting && d < 3) { alejarse(objetivo); }
+        else if (d > 4) { pasoHacia(yo, objetivo, true); }
+        if (ahora >= atkProx && d <= 5) { atkProx = ahora + 1200; var dmg = cfg.ataque === 'runa' ? rnd(120, 220) : rnd(40, 90); golpear(objetivo, dmg, cfg.ataque === 'runa' ? '#c77dff' : '#ff6b6b'); if (cfg.ataque === 'runa') { log('Usaste una sudden death rune en ' + objetivo.nombre + '.', 'c-help'); } }
+      } else {
+        if (d > 1) { pasoHacia(yo, objetivo, true); }
+        else if (ahora >= atkProx) { atkProx = ahora + 1000; golpear(objetivo, rnd(40, 95), '#ff6b6b'); }
+      }
+      return;
+    }
+    var w = RUTA[cazaIdx];
+    if (yo.x === w.x && yo.y === w.y) {
+      if (cfg.idaVuelta) { if (cazaIdx + cazaDir < 0 || cazaIdx + cazaDir >= RUTA.length) { cazaDir = -cazaDir; } cazaIdx += cazaDir; } else { cazaIdx = (cazaIdx + 1) % RUTA.length; }
+    } else { pasoHacia(yo, w, false); }
+    est('estCaza', 'Cave hunt: caminando la ruta (punto ' + (cazaIdx + 1) + ' de ' + RUTA.length + ')');
+  }
+  function alejarse(m) {
+    if (ahora - (yo.paso || 0) < 300) { return; }
+    var mejor = null;
+    [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [-1, -1], [1, -1], [-1, 1]].forEach(function (d) {
+      var nx = yo.x + d[0], ny = yo.y + d[1]; if (!pisable(nx, ny) || mons.some(function (o) { return o.x === nx && o.y === ny; })) { return; }
+      var s = Math.max(Math.abs(nx - m.x), Math.abs(ny - m.y)); if (!mejor || s > mejor.s) { mejor = { x: nx, y: ny, s: s }; }
+    });
+    if (mejor) { yo.x = mejor.x; yo.y = mejor.y; yo.paso = ahora; }
+  }
+  function golpear(m, dmg, color) {
+    m.hp -= dmg; flotar(m.x, m.y, '-' + dmg, color);
+    if (m.hp <= 0) {
+      var oro = rnd(5, 40); inv.oro += oro; log('Loot of a ' + m.nombre.toLowerCase() + ': ' + oro + ' gold coins.', 'c-loot');
+      mons.splice(mons.indexOf(m), 1); objetivo = null;
+      if (caza) { setTimeout(function () { if (caza && mons.length < 4) { traerMonstruo(true); } }, 3000); }
+    }
+  }
+  // ---------- monstruos, amigos y jugadores ----------
+  var TIPOS = [{ nombre: 'Dragon', max: 1000, dmg: [60, 140], color: '#3fae4a', ondas: true }, { nombre: 'Cyclops', max: 260, dmg: [30, 70], color: '#b08355' }, { nombre: 'Orc Berserker', max: 210, dmg: [25, 60], color: '#8c9b3a' }];
+  function libreCerca(cx, cy, enCuevaSolo) {
+    for (var i = 0; i < 60; i++) {
+      var x = rnd(Math.max(0, cx - 4), Math.min(W - 1, cx + 4)), y = rnd(Math.max(0, cy - 4), Math.min(H - 1, cy + 4));
+      if (!pisable(x, y) || (x === yo.x && y === yo.y) || (enCuevaSolo && !enCueva(x, y))) { continue; }
+      if (mons.concat(amigos, jugadores).some(function (o) { return o.x === x && o.y === y; })) { continue; }
+      return { x: x, y: y };
+    }
+    return null;
+  }
+  function traerMonstruo(enLaCueva) {
+    var t = TIPOS[rnd(0, TIPOS.length - 1)], p = enLaCueva ? libreCerca(11, 5, true) : libreCerca(yo.x, yo.y, false);
+    if (!p) { return; }
+    mons.push({ nombre: t.nombre, x: p.x, y: p.y, hp: t.max, max: t.max, dmg: t.dmg, color: t.color, ondas: t.ondas, golpe: 0, paso: 0 });
+  }
+  function monstruosTick() {
+    mons.forEach(function (m) {
+      var blanco = yo;
+      var k = amigos[0]; if (k && dist(m, k) < dist(m, yo)) { blanco = k; }
+      if (dist(m, blanco) > 1) { if (dist(m, blanco) < 8) { pasoHacia(m, blanco, true); } return; }
+      if (ahora - m.golpe < 1500) { return; }
+      m.golpe = ahora;
+      var dmg = rnd(m.dmg[0], m.dmg[1]);
+      if (blanco === yo) {
+        if (desconectado || refugio) { return; }
+        if (yo.utamo > ahora) { dmg = Math.round(dmg * 0.4); }
+        yo.hp = Math.max(1, yo.hp - dmg); flotar(yo.x, yo.y, '-' + dmg, '#ff6b6b'); log('You lose ' + dmg + ' hitpoints due to an attack by a ' + m.nombre.toLowerCase() + '.', 'c-dmg');
+      } else { k.hp = Math.max(1, k.hp - dmg); flotar(k.x, k.y, '-' + dmg, '#ff6b6b'); }
+      if (m.ondas && cfg.esquivar && caza && blanco === yo && Math.random() < 0.4) { log('Esquivé la onda del dragón (paso en diagonal).', 'c-help'); alejarse(m); }
+    });
+  }
+  // ---------- macros ----------
+  var macroProx = 0;
+  function macrosTick() {
+    if (!macros || ahora < macroProx) { return; }
+    var lineas = $('reglas').value.split('\n'), pct = yo.hp * 100 / yo.max, n = mons.filter(function (m) { return dist(m, yo) <= 7; }).length, js = jugadores.length;
+    for (var i = 0; i < lineas.length; i++) {
+      var l = lineas[i].trim(); if (!l || l[0] === '#') { continue; }
+      var m = /^si\s+(vida|monstruos|jugadores)\s*(<=|>=|<|>|=)\s*(\d+)\s+entonces\s+(decir|runa|avisar)\s+"([^"]*)"/i.exec(l);
+      if (!m) { continue; }
+      var v = m[1] === 'vida' ? pct : m[1] === 'monstruos' ? n : js, x = +m[3], ok = { '<': v < x, '>': v > x, '<=': v <= x, '>=': v >= x, '=': v === x }[m[2]];
+      if (!ok) { continue; }
+      macroProx = ahora + 2000;
+      est('estMacro', 'Macros: se cumplió «' + l + '»');
+      if (m[4] === 'decir') { usarHeal(m[5], 160) || decir(yo, m[5]); }
+      else if (m[4] === 'runa') { log('Usaste una ' + m[5] + ' rune.', 'c-help'); mons.filter(function (o) { return dist(o, yo) <= 3; }).forEach(function (o) { golpear(o, rnd(80, 150), '#ff9e4a'); }); }
+      else { alertar('🧩 Macro: ' + m[5], false); }
+      return;
+    }
+    est('estMacro', 'Macros: activas, revisando ' + lineas.filter(function (x) { return /^si\s/i.test(x.trim()); }).length + ' reglas');
+  }
+  // ---------- alertas ----------
+  var actx = null;
+  var TONOS = { suave: [660, 'sine'], campana: [880, 'triangle'], digital: [1200, 'square'], sirena: [520, 'sawtooth'], grave: [300, 'sine'] };
+  function pitido(veces) {
+    if (!cfg.sonido) { return; }
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      var tn = TONOS[cfg.tono] || TONOS.suave, vol = Math.max(0.01, Math.min(1, (cfg.vol || 40) / 100)) * 0.25;
+      for (var i = 0; i < (veces || 2); i++) {
+        var o = actx.createOscillator(), g = actx.createGain(), t0 = actx.currentTime + i * 0.28;
+        o.type = tn[1]; o.frequency.setValueAtTime(tn[0] * (cfg.tono === 'sirena' && i % 2 ? 1.3 : 1), t0);
+        g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(vol, t0 + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.22);
+        o.connect(g); g.connect(actx.destination); o.start(t0); o.stop(t0 + 0.25);
+      }
+    } catch (e) {}
+  }
+  function alertar(t, pausar) {
+    $('avisoTxt').textContent = t; $('aviso').style.display = 'block'; $('avisoReanudar').style.display = pausar ? '' : 'none';
+    pitido(3); if (pausar) { pausa = true; } else { setTimeout(function () { if (!pausa) { $('aviso').style.display = 'none'; } }, 2500); }
+  }
+  $('avisoReanudar').onclick = function () { pausa = false; $('aviso').style.display = 'none'; if (gm) { jugadores.splice(jugadores.indexOf(gm), 1); gm = null; } log('Helper reanudado.', 'c-help'); };
+
+  // ---------- botones ----------
+  var ACCIONES = {
+    runeo: function () { runeo = !runeo; if (runeo) { caza = false; } pintarBotones(); log(runeo ? 'Runeo iniciado.' : 'Runeo detenido.', 'c-help'); },
+    pk: function () { var p = libreCerca(12, 9, false) || { x: 14, y: 10 }; jugadores.push({ nombre: 'PK Malo', x: p.x, y: p.y, pk: true, color: '#e04040', paso: 0, hasta: ahora + 9000 }); log('Un jugador con calavera aparece: PK Malo.', 'c-gm'); },
+    empujon: function () { var opts = [[1, 0], [0, 1], [-1, 0], [0, -1]]; for (var i = 0; i < 4; i++) { var d = opts[i]; if (pisable(yo.x + d[0], yo.y + d[1])) { yo.x += d[0]; yo.y += d[1]; yo.paso = ahora; log('¡Alguien te empujó!', 'c-dmg'); break; } } if (!runeo) { log('(El antipush trabaja mientras runeas: toca «Iniciar runeo».)', 'c-help'); } },
+    monstruos: function () { for (var i = 0; i < 3; i++) { traerMonstruo(false); } log('Llegan monstruos.', 'c-dmg'); },
+    golpe: function () { var d = rnd(380, 520); yo.hp = Math.max(1, yo.hp - d); flotar(yo.x, yo.y, '-' + d, '#ff6b6b'); log('You lose ' + d + ' hitpoints due to an attack by a dragon.', 'c-dmg'); },
+    knight: function () { if (amigos.length) { return; } var p = libreCerca(yo.x, yo.y, false); if (!p) { return; } amigos.push({ nombre: 'Mi Knight', x: p.x, y: p.y, hp: 1400, max: 1400, color: '#5f8ee0', paso: 0 }); traerMonstruo(false); traerMonstruo(false); log('Llega tu knight peleando con monstruos.', 'c-help'); },
+    caza: function () { caza = true; runeo = false; cazaIdx = 0; for (var i = mons.length; i < 3; i++) { traerMonstruo(true); } pintarBotones(); log('Cave hunt iniciado.', 'c-help'); },
+    cazaStop: function () { caza = false; objetivo = null; pintarBotones(); est('estCaza', 'Cave hunt: detenido'); },
+    trash: function () { trash.sel = true; trash.on = false; est('estTrash', 'Trasheo: toca una casilla del mapa'); },
+    trashOff: function () { trash.sel = false; trash.on = false; est('estTrash', 'Trasheo: apagado'); },
+    marcar: function () { modoMarcar = !modoMarcar; est('estMapa', 'Modo marcar: ' + (modoMarcar ? 'toca casillas del mapa' : 'apagado')); },
+    mw: function () { var p = libreCerca(yo.x + 2, yo.y, false); if (p) { mws.push({ x: p.x, y: p.y, fin: ahora + 20000 }); log('Alguien puso un magic wall.', 'c-sys'); } },
+    borrarCasillas: function () { casillas = []; },
+    probarSonido: function () { pitido(3); },
+    gm: function () {
+      if (!cfg.gmOn) { log('GM Pepe [GM] says: hola, todo bien?', 'c-gm'); return; }
+      var p = libreCerca(yo.x, yo.y, false); gm = { nombre: 'GM Pepe', x: p ? p.x : yo.x + 1, y: p ? p.y : yo.y, color: '#ffffff', gm: true, paso: 0 }; jugadores.push(gm);
+      log('GM Pepe [GM] says: hola, todo bien?', 'c-gm');
+      alertar('⚠ El GM dijo: «hola, todo bien?». Helper en pausa: contéstale TÚ en el juego y luego toca «Reanudar helper».', true);
+    },
+    desconexion: function () {
+      desconectado = true; $('desc').style.display = 'flex'; $('descTxt').textContent = 'Se cayó la conexión…' + (cfg.reconectar ? ' reconectando' : '');
+      log('Connection lost.', 'c-dmg');
+      if (cfg.reconectar) { setTimeout(function () { desconectado = false; $('desc').style.display = 'none'; log('Reinicio automático: volví a entrar y sigo donde estaba.', 'c-help'); }, 3500); }
+      else { setTimeout(function () { $('descTxt').textContent = 'Desconectado (activa «Reconectar solo»)'; }, 1500); setTimeout(function () { desconectado = false; $('desc').style.display = 'none'; }, 6000); }
+    },
+    macro: function () { macros = true; est('estMacro', 'Macros: activas'); log('Macros activadas.', 'c-help'); },
+    macroOff: function () { macros = false; est('estMacro', 'Macros: apagadas'); }
+  };
+  document.addEventListener('click', function (e) { var b = e.target.closest('[data-a]'); if (b && ACCIONES[b.getAttribute('data-a')]) { ACCIONES[b.getAttribute('data-a')](); } });
+  function pintarBotones() {
+    $('btnRuneo').textContent = runeo ? '■ Detener runeo' : '▶ Iniciar runeo';
+    $('led').className = 'led' + (pausa ? ' gm' : (runeo || caza) ? ' on' : '');
+  }
+  // pestañas y secciones
+  function verPag(p) {
+    document.querySelectorAll('.nav button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-p') === p); });
+    document.querySelectorAll('.pag').forEach(function (g) { g.classList.toggle('on', g.id === 'p-' + p); });
+  }
+  $('nav').onclick = function (e) { var b = e.target.closest('button'); if (b) { verPag(b.getAttribute('data-p')); } };
+  document.querySelectorAll('.sec-h').forEach(function (h) { h.onclick = function () { h.parentNode.classList.toggle('open'); }; });
+  verPag('runas');
+  // recorrido guiado
+  function poner(clave, v) { var e = document.querySelector('[data-c="' + clave + '"]'); if (!e) { return; } if (e.type === 'checkbox') { e.checked = v; } else { e.value = v; } e.dispatchEvent(new Event('change')); }
+  var TOUR = {
+    runas: function () { verPag('runas'); if (!runeo) { ACCIONES.runeo(); } },
+    combate: function () { verPag('combate'); ACCIONES.monstruos(); setTimeout(ACCIONES.golpe, 1500); },
+    sio: function () { verPag('combate'); ACCIONES.knight(); },
+    caza: function () { verPag('caza'); ACCIONES.caza(); },
+    pk: function () { verPag('runas'); if (!runeo) { ACCIONES.runeo(); } setTimeout(ACCIONES.pk, 800); },
+    luz: function () { verPag('mapa'); poner('luzOn', true); poner('outfitOn', true); poner('outfit', 'noble'); poner('addon1', true); poner('addon2', true); },
+    gm: function () { verPag('alertas'); ACCIONES.gm(); },
+    macro: function () { verPag('macros'); ACCIONES.macro(); ACCIONES.monstruos(); }
+  };
+  document.querySelectorAll('[data-tour]').forEach(function (b) { b.onclick = function () { TOUR[b.getAttribute('data-tour')](); }; });
+
+  // clic en el mapa: marcar casillas o elegir casilla de trasheo
+  cv.addEventListener('click', function (e) {
+    var r = cv.getBoundingClientRect(), x = Math.floor((e.clientX - r.left) / r.width * W), y = Math.floor((e.clientY - r.top) / r.height * H);
+    if (trash.sel) { trash.sel = false; trash.on = true; trash.tile = { x: x, y: y }; est('estTrash', 'Trasheo: tirando en esa casilla'); return; }
+    if (modoMarcar) { var i = casillas.findIndex(function (c) { return c.x === x && c.y === y; }); if (i >= 0) { casillas.splice(i, 1); } else { casillas.push({ x: x, y: y }); } }
+  });
+  var trashProx = 0;
+  function trashTick() {
+    if (!trash.on || ahora < trashProx) { return; }
+    if (dist(yo, trash.tile) > 7) { trash.on = false; est('estTrash', 'Trasheo: casilla muy lejos'); return; }
+    if (inv.worms <= 0) { trash.on = false; est('estTrash', 'Trasheo: se acabaron los objetos'); return; }
+    inv.worms--; items.push({ x: trash.tile.x, y: trash.tile.y, k: items.length % 2 ? 'oro' : 'worm' }); trashProx = ahora + 300;
+    est('estTrash', 'Trasheo: ' + items.filter(function (i) { return i.x === trash.tile.x && i.y === trash.tile.y; }).length + ' objetos en la casilla');
+  }
+
+  // ---------- bucle del juego ----------
+  function tick() {
+    ahora = Date.now();
+    jugadores = jugadores.filter(function (j) { return !j.hasta || ahora < j.hasta || desconectado; });
+    if (!desconectado) {
+      monstruosTick();
+      if (amigos.length && !mons.length && Math.random() < 0.02) { traerMonstruo(false); }
+      var regen = runeo ? 24 : 8; yo.mp = Math.min(yo.maxMp, yo.mp + regen);
+      if (!pausa) {
+        var ocupado = casaTick();
+        if (!(autoheal() || autoSio())) { pociones(); }
+        autoHechizos();
+        if (!ocupado) { runear(); cazar(); }
+        trashTick(); macrosTick();
+      } else { est('estRunas', 'Runas: PAUSADO (alerta)'); }
+      jugadores.forEach(function (j) { if (j.pk && !j.gm) { pasoHacia(j, yo, true); } });
+    }
+    pintarBotones(); pintarInv();
+  }
+  function pintarInv() {
+    $('inv').innerHTML = '<span>Runas hechas: <b>' + inv.runas + '</b></span><span>Blank: <b>' + inv.blank + '</b></span><span>UH: <b>' + inv.uh + '</b></span><span>Pociones: <b>' + inv.pociones + '</b></span><span>Comida: <b>' + inv.comida + '</b></span><span>Worms: <b>' + inv.worms + '</b></span><span>Oro: <b>' + inv.oro + '</b></span><span>Cap: <b>' + Math.round(inv.cap) + '</b></span>';
+    var hp = $('gHp'), mp = $('gMp');
+    hp.querySelector('i').style.width = (yo.hp * 100 / yo.max) + '%'; hp.querySelector('b').textContent = Math.round(yo.hp) + ' / ' + yo.max;
+    mp.querySelector('i').style.width = (yo.mp * 100 / yo.maxMp) + '%'; mp.querySelector('b').textContent = Math.round(yo.mp) + ' / ' + yo.maxMp;
+  }
+  setInterval(tick, 100);
+
+  // ---------- dibujo ----------
+  var COL = { '.': ['#3f7a33', '#447f37'], 'w': ['#8a6a43', '#8f6f47'], '#': ['#5a5a5a', '#4e4e4e'], 'D': ['#6b4a22', '#6b4a22'], 'c': ['#5c4a36', '#56452f'], 'r': ['#3a332b', '#342e27'], '~': ['#2f5f9a', '#32649f'] };
+  var OUTFITS = { knight: ['#8b8f96', '#5a5f66'], mage: ['#5a3c8f', '#3d2866'], hunter: ['#4f7d39', '#365a26'], noble: ['#b8892e', '#7d1f2b'], warrior: ['#8f3a2a', '#5e2419'] };
+  function persona(x, y, ropa, piel, nombre, hpPct, colorNombre, extra) {
+    var px = x * T, py = y * T;
+    ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.fillRect(px + 8, py + 26, 16, 4);
+    ctx.fillStyle = ropa[1]; ctx.fillRect(px + 10, py + 22, 5, 6); ctx.fillRect(px + 17, py + 22, 5, 6);
+    ctx.fillStyle = ropa[0]; ctx.fillRect(px + 8, py + 11, 16, 12);
+    if (extra && extra.capa) { ctx.fillStyle = ropa[1]; ctx.fillRect(px + 6, py + 12, 3, 13); ctx.fillRect(px + 23, py + 12, 3, 13); }
+    ctx.fillStyle = piel || '#e3b38a'; ctx.fillRect(px + 11, py + 3, 10, 9);
+    if (extra && extra.sombrero) { ctx.fillStyle = '#ffd166'; ctx.fillRect(px + 10, py + 1, 12, 3); ctx.fillRect(px + 13, py - 2, 6, 3); }
+    if (extra && extra.calavera) { ctx.fillStyle = '#fff'; ctx.fillRect(px + 24, py + 1, 6, 6); ctx.fillStyle = '#000'; ctx.fillRect(px + 25, py + 3, 1, 1); ctx.fillRect(px + 28, py + 3, 1, 1); }
+    etiqueta(px + 16, py - 3, nombre, colorNombre, hpPct);
+  }
+  function bicho(m) {
+    var px = m.x * T, py = m.y * T;
+    ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.fillRect(px + 5, py + 25, 22, 5);
+    ctx.fillStyle = m.color; ctx.fillRect(px + 5, py + 10, 22, 16); ctx.fillRect(px + 9, py + 5, 14, 7);
+    ctx.fillStyle = '#ffeb3b'; ctx.fillRect(px + 11, py + 8, 3, 2); ctx.fillRect(px + 18, py + 8, 3, 2);
+    if (m.nombre === 'Dragon') { ctx.fillStyle = '#2b7a35'; ctx.fillRect(px + 1, py + 12, 5, 9); ctx.fillRect(px + 26, py + 12, 5, 9); }
+    etiqueta(px + 16, py - 3, m.nombre, '#4fd14f', m.hp / m.max);
+  }
+  function etiqueta(cx, y, t, color, pct) {
+    ctx.font = 'bold 9px Verdana'; ctx.textAlign = 'center';
+    ctx.lineWidth = 2.5; ctx.strokeStyle = '#000'; ctx.strokeText(t, cx, y - 4); ctx.fillStyle = color; ctx.fillText(t, cx, y - 4);
+    if (pct !== null && pct !== undefined) {
+      ctx.fillStyle = '#000'; ctx.fillRect(cx - 14, y - 1, 28, 4);
+      ctx.fillStyle = pct > 0.6 ? '#3fd13f' : pct > 0.3 ? '#e8c43a' : '#e04040'; ctx.fillRect(cx - 13, y, Math.max(1, 26 * pct), 2);
+    }
+  }
+  var sombra = document.createElement('canvas'); sombra.width = cv.width; sombra.height = cv.height; var sctx = sombra.getContext('2d');
+  function dibujar() {
+    var t = Date.now();
+    for (var y = 0; y < H; y++) { for (var x = 0; x < W; x++) { var c = COL[tile(x, y)] || COL['.']; ctx.fillStyle = c[(x + y) % 2]; ctx.fillRect(x * T, y * T, T, T); if (tile(x, y) === 'r') { ctx.fillStyle = '#4a4036'; ctx.fillRect(x * T + 6, y * T + 8, 20, 16); } } }
+    // ruta del cave hunt
+    if (caza || document.getElementById('p-caza').classList.contains('on')) { RUTA.forEach(function (w, i) { ctx.fillStyle = i === cazaIdx && caza ? 'rgba(255,209,102,.9)' : 'rgba(255,209,102,.45)'; ctx.beginPath(); ctx.arc(w.x * T + 16, w.y * T + 16, 4, 0, 7); ctx.fill(); }); }
+    // casillas resaltadas y magic walls
+    casillas.forEach(function (c) { ctx.fillStyle = 'rgba(0,229,255,.28)'; ctx.fillRect(c.x * T + 2, c.y * T + 2, T - 4, T - 4); ctx.strokeStyle = 'rgba(0,229,255,.9)'; ctx.lineWidth = 1.5; ctx.strokeRect(c.x * T + 2, c.y * T + 2, T - 4, T - 4); });
+    mws = mws.filter(function (m) { return m.fin > t; });
+    mws.forEach(function (m) { ctx.fillStyle = 'rgba(110,193,255,.55)'; ctx.fillRect(m.x * T + 3, m.y * T + 3, T - 6, T - 6); ctx.font = 'bold 11px Verdana'; ctx.textAlign = 'center'; ctx.lineWidth = 3; ctx.strokeStyle = '#000'; var s = Math.ceil((m.fin - t) / 1000) + 's'; ctx.strokeText(s, m.x * T + 16, m.y * T + 20); ctx.fillStyle = '#fff'; ctx.fillText(s, m.x * T + 16, m.y * T + 20); });
+    if (trash.on || trash.sel) { if (trash.tile) { ctx.strokeStyle = '#ffd166'; ctx.lineWidth = 2; ctx.strokeRect(trash.tile.x * T + 1, trash.tile.y * T + 1, T - 2, T - 2); } }
+    items.slice(-40).forEach(function (it, i) { var px = it.x * T + 6 + (i * 5) % 18, py = it.y * T + 14 + (i * 3) % 10; ctx.fillStyle = it.k === 'oro' ? '#ffd23f' : '#d98fa0'; ctx.fillRect(px, py, it.k === 'oro' ? 5 : 7, it.k === 'oro' ? 5 : 2); });
+    // criaturas
+    mons.forEach(bicho);
+    amigos.forEach(function (a) { persona(a.x, a.y, ['#7b8a9e', '#4f5b6b'], null, a.nombre, a.hp / a.max, '#7ec8ff'); });
+    jugadores.forEach(function (j) { persona(j.x, j.y, j.gm ? ['#f0f0f0', '#c0c0c0'] : ['#3a3a3a', '#202020'], null, j.nombre, j.gm ? null : 1, j.gm ? '#ffffff' : '#ff6b6b', { calavera: j.pk }); });
+    var ropa = cfg.outfitOn ? OUTFITS[cfg.outfit] || OUTFITS.knight : ['#3d6fb0', '#264a7d'];
+    if (!desconectado) { persona(yo.x, yo.y, ropa, null, yo.nombre, yo.hp / yo.max, '#4fd14f', { capa: cfg.outfitOn && cfg.addon1, sombrero: cfg.outfitOn && cfg.addon2 }); }
+    if (yo.utamo > t && !desconectado) { ctx.strokeStyle = 'rgba(120,180,255,.7)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(yo.x * T + 16, yo.y * T + 15, 16, 0, 7); ctx.stroke(); }
+    // oscuridad (de noche / en la cueva) con la luz alrededor del personaje
+    var base = 0.62 * (cfg.luzOn ? (1 - (cfg.luzPct || 0) / 100) : 1);
+    if (base > 0.01) {
+      sctx.clearRect(0, 0, sombra.width, sombra.height);
+      sctx.fillStyle = 'rgba(0,0,12,' + base + ')'; sctx.fillRect(0, 0, sombra.width, sombra.height);
+      for (var yy = 0; yy < H; yy++) { for (var xx = 0; xx < W; xx++) { if (enCueva(xx, yy)) { sctx.fillStyle = 'rgba(0,0,0,' + (base * 0.45) + ')'; sctx.fillRect(xx * T, yy * T, T, T); } } }
+      sctx.globalCompositeOperation = 'destination-out';
+      var g = sctx.createRadialGradient(yo.x * T + 16, yo.y * T + 16, 10, yo.x * T + 16, yo.y * T + 16, 90);
+      g.addColorStop(0, 'rgba(0,0,0,1)'); g.addColorStop(1, 'rgba(0,0,0,0)'); sctx.fillStyle = g; sctx.fillRect(0, 0, sombra.width, sombra.height);
+      sctx.globalCompositeOperation = 'source-over';
+      ctx.drawImage(sombra, 0, 0);
+    }
+    // textos
+    textos = textos.filter(function (x) { return x.fin > t; });
+    textos.forEach(function (x) { var dy = x.sube ? (1 - (x.fin - t) / 900) * 18 : 0; ctx.font = 'bold 10px Verdana'; ctx.textAlign = 'center'; ctx.lineWidth = 3; ctx.strokeStyle = '#000'; ctx.strokeText(x.t, x.x * T + 16, x.y * T - 14 - dy); ctx.fillStyle = x.c; ctx.fillText(x.t, x.x * T + 16, x.y * T - 14 - dy); });
+    if (modoMarcar) { ctx.font = 'bold 11px Verdana'; ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(0,0,0,.6)'; ctx.fillRect(110, cv.height - 22, 260, 18); ctx.fillStyle = '#ffd166'; ctx.fillText('Modo marcar · toca una casilla', 240, cv.height - 9); }
+    requestAnimationFrame(dibujar);
+  }
+  requestAnimationFrame(dibujar);
+  log('Bienvenido al simulador. Toca los botones de «Pruébalo» o mueve las opciones del panel.', 'c-help');
+  pintarInv();
+})();
+</script>
+</body>
+</html>
