@@ -281,6 +281,7 @@
     dur.dataset.t = t;
   }
   function crear() {
+    if (candado) { msg('msgCrear', 'Tienes ventas sin registrar de hace más de ' + (reg ? reg.gd : 2) + ' días: manda tu reporte a Osbeliaal para seguir vendiendo.', 'err'); return; }
     var nom = $('inChar').value.trim().replace(/\s+/g, ' ');
     if (nom.length < 2) { msg('msgCrear', 'Escribe el nombre del personaje del cliente.', 'err'); $('inChar').focus(); return; }
     var n = Math.floor(+$('inDur').value);
@@ -323,19 +324,47 @@
     ver('vVender'); pintarVentas(); revisarRegistro();
     setTimeout(function () { try { $('inChar').focus(); } catch (e) {} }, 50);
   }
-  // Registro obligatorio: si Osbeliaal lo activó para este vendedor, las ventas que no reporte dejan de funcionar
-  // a los pocos días. Se avisa aquí para que mande su reporte el mismo día.
+  // Registro obligatorio: si Osbeliaal lo activó para este vendedor (c.json -> "g"), las ventas tienen que llegarle
+  // reportadas. Las licencias de los clientes NUNCA se cortan: lo que pasa es que, si hay ventas de hace más de
+  // "gd" días (2) que Osbeliaal todavía no registra (c.json -> "r"), esta página no deja crear licencias nuevas
+  // hasta que mandes tu reporte y él lo registre.
+  var reg = null, candado = false;
   function revisarRegistro() {
     try {
       fetch(PAGINA + 'c.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
-        if (!j || !j.g || !llave || !j.g[llave.c]) { return; }
-        var d = Number(j.gd) >= 0 ? Number(j.gd) : 2;
-        $('notaReg').textContent = '⚠ Registro obligatorio: cada licencia que vendas funciona ' + d + ' días; después sigue funcionando solo si Osbeliaal ya recibió tu reporte. Mándale «Copiar reporte de ventas nuevas» el mismo día que vendas.';
-        $('notaReg').classList.remove('oculto');
-        $('notaRep').textContent = 'Toca el botón y pégalo en el WhatsApp o Telegram de Osbeliaal cada día que vendas.';
+        if (!j || !llave) { return; }
+        if (!j.g || !j.g[llave.c]) { reg = null; pintarCandado(); return; }
+        var r = {}; (Array.isArray(j.r) ? j.r : []).forEach(function (h) { r[String(h).toLowerCase().slice(0, 16)] = 1; });
+        reg = { desde: String(j.g[llave.c]), r: r, gd: Number(j.gd) >= 0 ? Number(j.gd) : 2 };
+        pintarCandado();
       }).catch(function () {});
     } catch (e) {}
   }
+  function huella16(t) {
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(String(t).replace(/\s+/g, ''))).then(function (b) {
+      return Array.prototype.map.call(new Uint8Array(b), function (x) { return ('0' + x.toString(16)).slice(-2); }).join('').slice(0, 16);
+    });
+  }
+  function fechaVenta(c) { var m = /^(\d{4})-(\d{2})-(\d{2})(?: (\d{2}):(\d{2}))?/.exec(c || ''); return m ? new Date(+m[1], +m[2] - 1, +m[3], +(m[4] || 0), +(m[5] || 0)).getTime() : 0; }
+  function pintarCandado() {
+    var nota = $('notaReg');
+    if (!reg) { candado = false; nota.classList.add('oculto'); $('btnCrear').disabled = false; return; }
+    var desde = new Date(+reg.desde.slice(0, 4), +reg.desde.slice(4, 6) - 1, +reg.desde.slice(6, 8)).getTime(), limite = Date.now() - reg.gd * 86400000;
+    var revisar = ventas().filter(function (x) { var t = fechaVenta(x.cuando); return !x.anulada && t >= desde && t < limite; });
+    Promise.all(revisar.map(function (x) { return huella16(x.lic); })).then(function (hs) {
+      var faltan = hs.filter(function (h) { return !reg.r[h]; }).length;
+      candado = faltan > 0;
+      $('btnCrear').disabled = candado;
+      nota.classList.remove('oculto');
+      nota.style.color = candado ? '#ff9b8a' : '#ffd166';
+      nota.textContent = candado
+        ? '🔒 Tienes ' + faltan + (faltan === 1 ? ' venta' : ' ventas') + ' de hace más de ' + reg.gd + ' días que Osbeliaal todavía no registra. Toca «Copiar reporte de ventas nuevas» y mándaselo: podrás vender otra vez en cuanto la registre. Tus clientes no pierden nada, sus licencias siguen funcionando.'
+        : 'Registro obligatorio: manda tu reporte a Osbeliaal el mismo día que vendas. Si una venta lleva más de ' + reg.gd + ' días sin registrarse, esta página no te deja crear licencias nuevas hasta que la registre (tus clientes no pierden nada).';
+      if (candado) { msg('msgCrear', 'Primero manda tu reporte a Osbeliaal (mira el aviso en «Mis ventas»).', 'err'); }
+    }).catch(function () {});
+  }
+  setInterval(function () { if (llave && !document.hidden) { revisarRegistro(); } }, 5 * 60 * 1000);
+
   function inicio() {
     if (!(window.crypto && crypto.subtle && window.TextEncoder)) { ver('vSinCrypto'); return; }
     var t = ls(K_LLAVE);
