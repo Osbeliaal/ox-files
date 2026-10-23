@@ -1,5 +1,59 @@
 [
  {
+  "version": "5.49",
+  "fecha": "2026-10-22",
+  "titulo": {
+   "es": "Optimizar Minibia, exori, runas de área y trasheo seguro",
+   "en": "Optimize Minibia, exori, area runes and safe trashing"
+  },
+  "cambios": {
+   "es": [
+    "Nuevo en Sistema: Optimizar Minibia. El helper pone las opciones de gráficos del propio juego para que tu teléfono no se caliente: 30 FPS, Low Spec Mode y sin clima. Viene prendido en teléfonos y con un botón dejas Minibia como lo tenías.",
+    "El límite de FPS ahora usa el del propio juego (más preciso) en vez del del helper.",
+    "Nuevo en Cave hunt (knights): exori o exori gran si te rodean y tienes el maná. Nunca con un jugador que no es de tu party pegado.",
+    "Nuevo en Cave hunt: runas de área (GFB, avalanche, explosion…). Busca la casilla que le pega a más monstruos, también haciendo kiting. No la tira si en el área hay un jugador que no es de tu party (para que nadie te saque calavera) ni si uno de tu party ahí tiene poca vida.",
+    "Nuevo en Combate (knights): remate PvP. Si al jugador que atacas le queda poca vida, le tira exori gran o exori.",
+    "Arreglado en el teléfono: el trasheo ya no se prende solo (por ejemplo al comprar con «+» en el NPC). Ahora se prende SOLO con el botón flotante 🗑 y el antipush solo con 🛡."
+   ],
+   "en": [
+    "New in System: Optimize Minibia. The helper sets the game's own graphics options so your phone doesn't heat up: 30 FPS, Low Spec Mode and no weather. On by default on phones, and one button puts Minibia back as you had it.",
+    "The FPS limit now uses the game's own (more precise) instead of the helper's.",
+    "New in Cave hunt (knights): exori or exori gran when you're surrounded and have the mana. Never with a non-party player next to you.",
+    "New in Cave hunt: area runes (GFB, avalanche, explosion…). Finds the tile that hits the most monsters, also while kiting. It doesn't throw if a non-party player is in the area (so nobody can give you a skull) or if a party member there is low on health.",
+    "New in Combat (knights): PvP finisher. If the player you attack is low on health, it casts exori gran or exori.",
+    "Fixed on phones: trashing no longer turns on by itself (for example when buying with \"+\" at an NPC). Now it only turns on with the 🗑 floating button and antipush only with 🛡."
+   ]
+  }
+ },
+ {
+  "version": "5.48",
+  "fecha": "2026-10-22",
+  "titulo": {
+   "es": "Auto runa, cooldowns, rutas para compartir y menos calor",
+   "en": "Auto rune, cooldowns, shareable routes and less heat"
+  },
+  "cambios": {
+   "es": [
+    "Nuevo en Cave hunt: Auto runa. Le tira SD, HMM (o la runa que elijas) al monstruo más cercano cada vez que se puede. Se prende y se apaga con su casilla o con un atajo de teclado que tú eliges.",
+    "Nuevo en Combate: Cooldowns y prioridad. Cada grupo (curas, otros hechizos, runas de ataque, runas de cura, pociones) tiene su propio tiempo y puedes decir cuáles se comparten. Si te toca curarte, primero se cura: las runas, el haste, utamo y el runeo esperan.",
+    "Rutas para compartir: «Exportar ruta» copia un código (y en PC descarga un archivo) con la ruta, sus acciones y los monstruos. «Importar ruta» la carga con el código o el archivo.",
+    "Nuevo en Cave hunt: límite de tiempo. Pones cuántos minutos cazar y al cumplirlos termina con los monstruos que tiene encima, deja de cazar y cierra sesión (sin volver a entrar solo).",
+    "Si te teletransportan de golpe mientras el helper trabaja (por ejemplo un GM al templo), se pausa todo y suena la alarma para que contestes tú.",
+    "Menos calor en el teléfono: el juego se dibuja a 30 por segundo en teléfonos (se cambia en Sistema); el helper usa un solo temporizador (antes 25) que va más despacio cuando no hace falta, ya no redibuja su capa 60 veces por segundo si no hay casillas y el logo no se anima en teléfonos. Medido: la mitad de trabajo por fotograma.",
+    "Se quitaron los Macros: casi nadie los usaba y el helper queda más ligero."
+   ],
+   "en": [
+    "New in Cave hunt: Auto rune. Shoots SD, HMM (or the rune you choose) at the nearest monster whenever it can. Turn it on and off with its box or with a keyboard shortcut you choose.",
+    "New in Combat: Cooldowns and priority. Each group (heals, other spells, attack runes, healing runes, potions) has its own time and you can say which ones are shared. If you need to heal, it heals first: runes, haste, utamo and rune making wait.",
+    "Shareable routes: \"Export route\" copies a code (and on PC downloads a file) with the route, its actions and the monsters. \"Import route\" loads it from the code or the file.",
+    "New in Cave hunt: time limit. Set how many minutes to hunt and when they're up it finishes the monsters on you, stops hunting and logs out (without logging back in by itself).",
+    "If you get teleported suddenly while the helper is working (for example a GM to the temple), everything pauses and the alarm sounds so you can answer yourself.",
+    "Less phone heat: the game draws 30 times per second on phones (change it in System); the helper uses a single timer (25 before) that slows down when it's not needed, no longer redraws its layer 60 times per second when there are no tiles, and the logo doesn't animate on phones. Measured: half the work per frame.",
+    "Macros were removed: almost nobody used them and the helper is lighter."
+   ]
+  }
+ },
+ {
   "version": "5.47",
   "fecha": "2026-10-20",
   "titulo": {
